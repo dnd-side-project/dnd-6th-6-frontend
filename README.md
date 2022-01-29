@@ -6,7 +6,6 @@
   * styled-component
   * react-query
   * eslint/prettier
-  * dwd
 
 ## Branch Strategy
 * Git flow
