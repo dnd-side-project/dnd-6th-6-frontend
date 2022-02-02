@@ -10,13 +10,14 @@ export interface IMolTextInputProps {
   register?: UseFormRegisterReturn;
   message?: string;
   type?: InputType;
+  mb?: string;
 }
 
 const TextInput = (props: IMolTextInputProps) => {
   return (
-    <StyledTextInput>
+    <StyledTextInput {...props}>
       <Label>{props.labelText}</Label>
-      <Input register={props.register} type={props.type}></Input>
+      <Input register={props.register} type={props.type} mb="10px"></Input>
       <Message className="error">{props.message}</Message>
     </StyledTextInput>
   );

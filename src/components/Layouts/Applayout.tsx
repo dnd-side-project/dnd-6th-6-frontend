@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding: 0 20px;
+  padding: 20px;
+  height: 100%;
 `;
 
 const AppLayout: React.FC = (props) => {
