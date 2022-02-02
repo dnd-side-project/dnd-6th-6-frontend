@@ -4,8 +4,8 @@ import { IAtomButtonProps } from './Button';
 
 export const StyledButton = styled.button<IAtomButtonProps>`
   border: none;
-  radius: 25%;
-  width: 80%;
+  border-radius: 15px;
+  width: 100%;
   color: ${(props) => props.color || props.theme.textColor};
   background-color: ${(props) => props.bgColor || props.theme.bgColor};
   cursor: pointer;
