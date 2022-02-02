@@ -4,13 +4,14 @@ import { StyledHeader } from './HeaderStyled';
 export interface IMoleHeaderProps {
   to?: string;
   title: string;
+  onClick?: () => void;
 }
 
 const Header = (props: IMoleHeaderProps) => {
   return (
     <StyledHeader>
       {/* <Link to={`${props.to}`}> */}
-      <a>
+      <a onClick={props.onClick}>
         <svg width="16" height="16" aria-hidden="true" focusable="false" role="img" viewBox="0 0 320 512">
           <path
             fill="currentColor"
