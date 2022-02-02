@@ -52,9 +52,7 @@ const Login = () => {
                 type="email"
                 message={errors.email?.message || ''}
               />
-              <Button position="fixed" bottom="20%">
-                다음
-              </Button>
+              <Button>다음</Button>
             </>
           )}
           {pageCount === 1 && (
@@ -69,9 +67,7 @@ const Login = () => {
                 type="password"
                 message={errors.password?.message || ''}
               />
-              <Button position="fixed" bottom="20%">
-                로그인
-              </Button>
+              <Button>로그인</Button>
             </>
           )}
         </form>

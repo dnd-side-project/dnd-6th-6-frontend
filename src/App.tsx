@@ -7,7 +7,7 @@ function App() {
     //   <Routes>{/* <Route path="/" element={<Main />} /> */}</Routes>
     // </Router>
     <>
-      <Login />
+      {/* <Login /> */}
       <Join />
     </>
   );
