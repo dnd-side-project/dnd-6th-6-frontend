@@ -1,17 +1,17 @@
 import { Meta, Story } from '@storybook/react';
-import Button, { IAtomButtonProps } from './Button';
+import Textarea, { IAtomTextareaProps } from './Textarea';
 
 export default {
-  title: 'Atoms/Button',
-  component: Button,
+  title: 'Atoms/Textarea',
+  component: Textarea,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<IAtomButtonProps> = (args) => (
+const Template: Story<IAtomTextareaProps> = (args) => (
   <>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Button {...args}>이메일로 회원가입</Button>
+      <Textarea {...args} />
     </div>
   </>
 );
@@ -19,5 +19,5 @@ const Template: Story<IAtomButtonProps> = (args) => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  color: 'black',
+  placeholder: '아무거나 적어보렴',
 };
