@@ -2,7 +2,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from '../../atoms/Label/Label';
 import Input from '../../atoms/Input/Input';
 import Message from '../../atoms/Message/Message';
-import { StyledTextInput } from './TextInputStyles';
+import { StyledTextInput } from './TextInputStyled';
 import { InputType } from '../../atoms/Input/Input';
 
 export interface IMolTextInputProps {

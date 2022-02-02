@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledLabel } from './LabelStyles';
+import { StyledLabel } from './LabelStyled';
 
 export interface IAtomLabelProps {
   color?: string;

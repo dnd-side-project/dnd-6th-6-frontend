@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledTextarea } from './TextareaStyles';
+import { StyledTextarea } from './TextareaStyled';
 
 export interface IAtomTextareaProps {
   bgColor?: string;
