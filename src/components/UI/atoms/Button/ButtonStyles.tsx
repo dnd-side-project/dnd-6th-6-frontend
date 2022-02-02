@@ -7,6 +7,6 @@ export const StyledButton = styled.button<IAtomButtonProps>`
   border-radius: 15px;
   width: 100%;
   color: ${(props) => props.color || props.theme.textColor};
-  background-color: ${(props) => props.bgColor || props.theme.bgColor};
+  background-color: ${(props) => props.theme.bgColor};
   cursor: pointer;
 `;

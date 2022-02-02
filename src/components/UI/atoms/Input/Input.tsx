@@ -8,6 +8,7 @@ export interface IAtomInputProps {
   type?: InputType;
   placeholder?: string;
   register?: UseFormRegisterReturn;
+  mb?: string;
 }
 
 const Input = (props: IAtomInputProps) => {
