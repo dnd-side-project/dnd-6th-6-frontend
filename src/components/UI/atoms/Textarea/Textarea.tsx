@@ -9,12 +9,10 @@ export interface IAtomTextareaProps {
   placeholder?: string;
 }
 
-const Textarea: React.FC<IAtomTextareaProps> = (props) => {
+const Textarea = (props: IAtomTextareaProps) => {
   return (
     <>
-      <StyledTextarea {...props} placeholder={props.placeholder}>
-        {props.children}
-      </StyledTextarea>
+      <StyledTextarea {...props} placeholder={props.placeholder}></StyledTextarea>
     </>
   );
 };
