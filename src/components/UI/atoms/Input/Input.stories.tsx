@@ -18,4 +18,7 @@ const Template: Story<IAtomInputProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  placeholder: 'dwad',
+  width: '200px',
+};
