@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledJoin = styled.div`
-  height: 100%;
-`;
+export const StyledProfileSetting = styled.div``;
 
 export const StyledForm = styled.form`
   display: flex;
@@ -11,4 +9,7 @@ export const StyledForm = styled.form`
   justify-content: space-between;
 `;
 
-export const TextInputWrapper = styled.div``;
+export const StyledBtnWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
