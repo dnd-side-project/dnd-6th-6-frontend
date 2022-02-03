@@ -3,7 +3,7 @@ import { IAtomAvatarProps } from './Avatar';
 
 export const StyledAvatar = styled.div<IAtomAvatarProps>`
   ${(props) => {
-    const avatarBackground = props.imgUrl ? `no-repeat center/80% url("${props.imgUrl}")` : props.theme.bgColor;
+    const avatarBackground = props.imgUrl ? `no-repeat center/center url("${props.imgUrl}")` : props.theme.bgColor;
     return css`
       width: 36px;
       height: 36px;
