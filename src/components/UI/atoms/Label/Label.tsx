@@ -4,6 +4,7 @@ import { StyledLabel } from './LabelStyled';
 export interface IAtomLabelProps {
   color?: string;
   fontSize?: string;
+  mb?: string;
 }
 
 const Label: React.FC<IAtomLabelProps> = (props) => {
