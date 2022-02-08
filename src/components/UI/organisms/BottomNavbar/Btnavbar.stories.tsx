@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import Btnavbar from './Btnavbar';
 
 export default {
-  Header: 'Molecules/Btnavbaritem',
+  Header: 'Organisms/Btnavbaritem',
   component: Btnavbar,
   parameters: {},
   argTypes: {},

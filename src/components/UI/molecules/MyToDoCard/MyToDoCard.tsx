@@ -4,6 +4,7 @@ import Title from '../../atoms/Title/Title';
 import { CardCategoryImg, CardCategoryImgWrapper, StyledMyToDoCard } from './MyToDoCardStyled';
 import basket from '../../../../src_assets/basket.svg';
 import pail from '../../../../src_assets/pail.svg';
+import React from 'react';
 
 export interface IMoleMyToDoCardProps {
   title: string;
@@ -13,6 +14,10 @@ export interface IMoleMyToDoCardProps {
 }
 
 const MyToDoCard = (props: IMoleMyToDoCardProps) => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    console.log('click');
+  };
   return (
     <StyledMyToDoCard>
       <header>
@@ -38,11 +43,11 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
         {props.category === '청소' && <CardCategoryImg src={pail} />}
       </CardCategoryImgWrapper>
       {props.completed_at ? (
-        <Button bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">
+        <Button onClick={onClick} type="button" bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">
           완료됨
         </Button>
       ) : (
-        <Button bgColor="#5D9EFF" color="#ffffff" borderRedius="6px" height="36px">
+        <Button onClick={onClick} type="button" bgColor="#5D9EFF" color="#ffffff" borderRedius="6px" height="36px">
           완료하기
         </Button>
       )}
