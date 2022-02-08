@@ -23,7 +23,7 @@ const Template: Story<IAtomCardButtonProps> = (args) => (
         완료
       </CardButton>
       <hr />
-      <CardButton {...args} className="houseInomplete">
+      <CardButton {...args} className="houseIncomplete">
         미완료
       </CardButton>
     </div>

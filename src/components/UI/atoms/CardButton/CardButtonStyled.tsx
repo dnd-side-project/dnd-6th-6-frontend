@@ -31,7 +31,7 @@ export const StyledCardButton = styled.div`
     color: #ffffff;
     border-radius: 4px;
   }
-  &.houseInomplete {
+  &.houseIncomplete {
     font-weight: 700;
     font-size: 9px;
     width: 38px;

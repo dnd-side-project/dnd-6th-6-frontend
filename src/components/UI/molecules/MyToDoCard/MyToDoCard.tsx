@@ -10,6 +10,18 @@ export interface IMoleMyToDoCardProps {
   status: boolean;
   days: string;
   category: string;
+  // id: number;
+  // planned_at: Date;
+  // completed_at: Date | null;
+  // information: {
+  //   name: string;
+  //   description: string;
+  //   category: {
+  //   name: string
+  // };
+  // repeat_event: {
+  // 	days: string
+  // }
 }
 
 const MyToDoCard = (props: IMoleMyToDoCardProps) => {
