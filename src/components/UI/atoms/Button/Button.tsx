@@ -7,9 +7,11 @@ export interface IAtomButtonProps {
   bgColor?: string;
   color?: string;
   className?: string;
-  position?: string;
   bottom?: string;
   type?: ButtonType;
+  width?: string;
+  height?: string;
+  borderRedius?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
