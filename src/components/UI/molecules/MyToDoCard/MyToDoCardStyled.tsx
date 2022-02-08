@@ -18,6 +18,8 @@ export const StyledMyToDoCard = styled.div`
   .cardInfo {
     .subTitle {
       margin-top: 5px;
+      /* font-size: 14px; */
+      color: #9ca3ab;
     }
   }
 `;

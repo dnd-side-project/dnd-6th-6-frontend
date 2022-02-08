@@ -57,7 +57,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  font-family: 'Noto Sans KR'
+  font-family: 'Noto Sans KR';
+  font-size: 14px;
 }
 a {
   text-decoration: none;
