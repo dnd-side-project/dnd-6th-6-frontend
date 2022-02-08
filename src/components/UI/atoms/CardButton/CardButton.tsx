@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyledCardButton } from './CardButtonStyled';
 
+type CardButton = 'meComplete' | 'meIncomplete' | 'houseComplete' | 'houseInomplete';
+
 export interface IAtomCardButtonProps {
-  className: string;
+  className: CardButton;
 }
 
 const CardButton: React.FC<IAtomCardButtonProps> = (props) => {
