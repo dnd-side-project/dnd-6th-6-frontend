@@ -24,13 +24,21 @@ export const StyledMyToDoCard = styled.div`
   }
 `;
 
-export const CardCategoryImg = styled.div`
+export const CardCategoryImgWrapper = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
-    width: 97px;
-    height: 85px;
-  }
+`;
+
+export const CardCategoryImg = styled.div<{ src: string }>`
+  ${(props) => {
+    const bgURL = `url("${props.src}")`;
+    return css`
+      width: 97px;
+      height: 85px;
+      background: ${bgURL};
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    `;
+  }}
 `;

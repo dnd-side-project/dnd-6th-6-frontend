@@ -1,34 +1,22 @@
 import Button from '../../atoms/Button/Button';
 import CardButton from '../../atoms/CardButton/CardButton';
 import Title from '../../atoms/Title/Title';
-import { CardCategoryImg, StyledMyToDoCard } from './MyToDoCardStyled';
+import { CardCategoryImg, CardCategoryImgWrapper, StyledMyToDoCard } from './MyToDoCardStyled';
 import basket from '../../../../src_assets/basket.svg';
 import pail from '../../../../src_assets/pail.svg';
 
 export interface IMoleMyToDoCardProps {
   title: string;
-  status: boolean;
+  completed_at: string | null; //completed_at: Date | null;
   days: string;
   category: string;
-  // id: number;
-  // planned_at: Date;
-  // completed_at: Date | null;
-  // information: {
-  //   name: string;
-  //   description: string;
-  //   category: {
-  //   name: string
-  // };
-  // repeat_event: {
-  // 	days: string
-  // }
 }
 
 const MyToDoCard = (props: IMoleMyToDoCardProps) => {
   return (
     <StyledMyToDoCard>
       <header>
-        {props.status ? (
+        {props.completed_at ? (
           <CardButton className="meComplete">완료</CardButton>
         ) : (
           <CardButton className="meIncomplete">미완료</CardButton>
@@ -45,11 +33,11 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
         </Title>
         <h6 className="subTitle">매주 {props.days}</h6>
       </div>
-      <CardCategoryImg>
-        {props.category === '세탁' && <img src={basket} alt="세탁하기" />}
-        {props.category === '청소' && <img src={pail} alt="청소하기" />}
-      </CardCategoryImg>
-      {props.status ? (
+      <CardCategoryImgWrapper>
+        {props.category === '세탁' && <CardCategoryImg src={basket} />}
+        {props.category === '청소' && <CardCategoryImg src={pail} />}
+      </CardCategoryImgWrapper>
+      {props.completed_at ? (
         <Button bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">
           완료됨
         </Button>
