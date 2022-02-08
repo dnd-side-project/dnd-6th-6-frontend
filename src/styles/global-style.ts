@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+ @font-face {
+   font-family: 'Noto Sans KR', sans-serif;
+   src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+ }
   html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,7 +57,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  
+  font-family: 'Noto Sans KR'
 }
 a {
   text-decoration: none;

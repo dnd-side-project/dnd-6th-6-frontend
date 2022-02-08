@@ -79,9 +79,7 @@ const Join = () => {
                     mb="20px"
                   />
                 </TextInputWrapper>
-                <Button position="fixed" bottom="20%">
-                  다음
-                </Button>
+                <Button>다음</Button>
               </>
             )}
             {pageCount === 1 && (
@@ -109,9 +107,7 @@ const Join = () => {
                     message={errors.passwordConfirm?.message || ''}
                   />
                 </TextInputWrapper>
-                <Button position="fixed" bottom="20%">
-                  회원가입
-                </Button>
+                <Button>회원가입</Button>
               </>
             )}
           </StyledForm>
