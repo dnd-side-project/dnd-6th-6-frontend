@@ -3,6 +3,7 @@ import { StyledAvatar } from './AvatarStyled';
 export interface IAtomAvatarProps {
   imgUrl?: string;
   name?: string;
+  number: number;
 }
 
 const Avatar = (props: IAtomAvatarProps) => {
