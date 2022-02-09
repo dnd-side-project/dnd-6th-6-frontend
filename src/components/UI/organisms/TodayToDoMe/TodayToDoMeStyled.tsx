@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledTodayToDoMe = styled.div`
+export const StyledTodayToDoMe = styled.div<{ mb?: string }>`
   width: 100%;
   background-color: ${(props) => props.theme.bgColor};
   padding: 25px 0px;
+  margin-bottom: ${(props) => props.mb};
   .todayToDoMe_header {
     padding: 0 20px;
     display: flex;

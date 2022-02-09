@@ -1,6 +1,6 @@
+import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
 import Notice from '../../UI/molecules/Notice/Notice';
-import Btnavbar from '../../UI/organisms/BottomNavbar/Btnavbar';
 import MainHeader from '../../UI/organisms/MainHeader/MainHeader';
 import TodayToDoHouse from '../../UI/organisms/TodayToDoHouse/TodayToDoHouse';
 import TodayToDoMe from '../../UI/organisms/TodayToDoMe/TodayToDoMe';
@@ -89,9 +89,10 @@ const Main = () => {
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
         <Notice notice_title="금요일에 모여서 다같이 대청소 하는 것은 어떨까요?" />
-        <TodayToDoMe />
+        <TodayToDoMe mb="6px" />
         <TodayToDoHouse />
       </StyledMain>
+      <BottomNavBar />
     </>
   );
 };

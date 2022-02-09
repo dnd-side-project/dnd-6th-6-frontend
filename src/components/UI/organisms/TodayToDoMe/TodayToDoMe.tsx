@@ -34,12 +34,14 @@ const todayToDos = [
   },
 ];
 
-export interface IOrgTodayToDoMeProps {}
+export interface IOrgTodayToDoMeProps {
+  mb?: string;
+}
 
 const TodayToDoMe = (props: IOrgTodayToDoMeProps) => {
   // 오늘 내 할 일 목록 GET
   return (
-    <StyledTodayToDoMe>
+    <StyledTodayToDoMe mb={props.mb}>
       <div className="todayToDoMe_header">
         <div>
           <Title fontWeight="700" fontSize="17px" color="#222222">
