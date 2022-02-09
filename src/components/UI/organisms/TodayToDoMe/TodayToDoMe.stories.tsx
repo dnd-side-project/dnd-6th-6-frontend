@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import TodayToDoMe, { IOrgTodayToDoMeProps } from './TodayToDoMe';
 
 export default {
-  Header: 'Organisms/TodayToDoMeitem',
+  title: 'Organisms/TodayToDoMeitem',
   component: TodayToDoMe,
   parameters: {},
   argTypes: {},

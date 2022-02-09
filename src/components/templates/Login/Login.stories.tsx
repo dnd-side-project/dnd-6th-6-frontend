@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import Login from './Login';
 
 export default {
-  Join: 'Templates/Login',
+  title: 'Templates/Login',
   component: Login,
   parameters: {},
   argTypes: {},

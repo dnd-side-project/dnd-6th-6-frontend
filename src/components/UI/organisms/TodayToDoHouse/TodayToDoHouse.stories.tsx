@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import TodayToDoHouse, { IOrgTodayToDoHouseProps } from './TodayToDoHouse';
 
 export default {
-  TodayToDoHouse: 'origanisms/TodayToDoHouse',
+  title: 'origanisms/TodayToDoHouse',
   component: TodayToDoHouse,
   parameters: {},
   argTypes: {},

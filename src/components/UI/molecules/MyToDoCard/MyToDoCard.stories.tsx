@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import MyToDoCard, { IMoleMyToDoCardProps } from './MyToDoCard';
 
 export default {
-  MyToDoCard: 'Molecules/MyToDoCard',
+  title: 'Molecules/MyToDoCard',
   component: MyToDoCard,
   parameters: {},
   argTypes: {},

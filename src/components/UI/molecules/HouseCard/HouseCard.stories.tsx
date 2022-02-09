@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import HouseCard, { IMoleHouseCardProps } from './HouseCard';
 
 export default {
-  Card: 'Molecules/HouseCard',
+  title: 'Molecules/HouseCard',
   component: HouseCard,
   parameters: {},
   argTypes: {},
