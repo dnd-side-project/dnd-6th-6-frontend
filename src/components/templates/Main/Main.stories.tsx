@@ -10,7 +10,7 @@ export default {
 
 const Template: Story = (args) => (
   <>
-    <div style={{ width: '375px', position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
       <Main {...args} />
     </div>
   </>
