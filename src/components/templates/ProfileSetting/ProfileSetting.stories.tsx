@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import ProfileSetting, { ITempProfileSettingProps } from './ProfileSetting';
 
 export default {
-  Join: 'Templates/ProfileSetting',
+  title: 'Templates/ProfileSetting',
   component: ProfileSetting,
   parameters: {},
   argTypes: {},
