@@ -52,14 +52,14 @@ const members = [
   },
 ];
 
-//로그인한 user 정보
+//로그인한 user 정보 Dummy Data
 const me = {
   id: 1,
-  username: '이재훈',
-  first_name: '이재훈',
+  username: '지수',
+  first_name: '지수',
   profile: {
     house: '',
-    gender: '남자',
+    gender: '여자',
     avatar: '',
     life_pattern: '',
     disposition: '',
