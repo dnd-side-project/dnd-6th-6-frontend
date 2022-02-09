@@ -20,7 +20,7 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
   };
   return (
     <StyledMyToDoCard>
-      <header>
+      <header className="myToDoCard_header">
         {props.completed_at ? (
           <CardButton className="meComplete">완료</CardButton>
         ) : (

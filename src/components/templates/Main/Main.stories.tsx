@@ -1,16 +1,18 @@
 import { Meta, Story } from '@storybook/react';
-import Btnavbaritem from './Btnavbaritem';
+import Main from './Main';
 
 export default {
-  title: 'Molecules/Btnavbaritem',
-  component: Btnavbaritem,
+  title: 'Templates/Main',
+  component: Main,
   parameters: {},
   argTypes: {},
 } as Meta;
 
 const Template: Story = (args) => (
   <>
-    <Btnavbaritem {...args}></Btnavbaritem>
+    <div style={{ width: '375px', position: 'relative' }}>
+      <Main {...args} />
+    </div>
   </>
 );
 

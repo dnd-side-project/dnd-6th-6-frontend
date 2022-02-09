@@ -9,7 +9,7 @@ export const StyledMyToDoCard = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: column;
-  header {
+  .myToDoCard_header {
     display: flex;
     justify-content: space-between;
     align-items: center;

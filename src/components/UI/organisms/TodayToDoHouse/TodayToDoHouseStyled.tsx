@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledTodayToDoHouse = styled.div`
   width: 100%;
   padding: 25px 20px;
+  background-color: ${(props) => props.theme.bgColor};
   .TodayToDoHouse_header {
     display: flex;
     justify-content: space-between;

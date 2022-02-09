@@ -3,10 +3,14 @@ import Avatar from '../../atoms/Avatar/Avatar';
 import { ReactComponent as Logo } from '../../../../src_assets/logo.svg';
 import { StyledMainHeader } from './MainHeaderStyled';
 
-const MainHeader = () => {
+export interface IOrgMainHeaderPorps {
+  mb?: string;
+}
+
+const MainHeader = (props: IOrgMainHeaderPorps) => {
   //아바타 넘버는 나중에 컴포넌트 map돌릴때 키값 넣어주면 될듯?
   return (
-    <StyledMainHeader>
+    <StyledMainHeader mb={props.mb}>
       <Logo />
       <div className="innerflex">
         <div className="Avatarbox">
