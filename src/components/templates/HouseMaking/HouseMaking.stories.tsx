@@ -1,22 +1,21 @@
 import { Meta, Story } from '@storybook/react';
-import Login from './Login';
+import HouseMaking from './HouseMaking';
 
 export default {
-  Login: 'Templates/Login',
-  component: Login,
+  HouseMaking: 'Templates/HouseMaking',
+  component: HouseMaking,
   parameters: {},
   argTypes: {},
 } as Meta;
 
 const Template: Story = (args) => (
   <>
-    <Login {...args} />
+    <HouseMaking {...args} />
   </>
 );
 
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  title: '로그인',
-  to: '/join',
+  title: '하우스만들기',
 };
