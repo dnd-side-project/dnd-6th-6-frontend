@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import HouseMaking from './HouseMaking';
 
 export default {
-  HouseMaking: 'Templates/HouseMaking',
+  title: 'Templates/HouseMaking',
   component: HouseMaking,
   parameters: {},
   argTypes: {},

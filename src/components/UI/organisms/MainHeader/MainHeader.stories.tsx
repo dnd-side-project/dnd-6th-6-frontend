@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import MainHeader from './MainHeader';
 
 export default {
-  MainHeader: 'Organisms/MainHeader',
+  title: 'Organisms/MainHeader',
   component: MainHeader,
   parameters: {},
   argTypes: {},
