@@ -8,7 +8,8 @@ export const StyledHeader = styled.header`
       align-items: center;
       text-align: center;
       height: 70px;
-      padding: 20px;
+      font-weight: bold;
+      font-size: 17px;
       a {
         cursor: pointer;
       }
