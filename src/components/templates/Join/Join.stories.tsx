@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import Join, { ITempJoinProps } from './Join';
 
 export default {
-  Join: 'Templates/Join',
+  title: 'Templates/Join',
   component: Join,
   parameters: {},
   argTypes: {},

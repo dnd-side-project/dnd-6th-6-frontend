@@ -1,17 +1,17 @@
 import { Meta, Story } from '@storybook/react';
-import Header, { IMoleHeaderProps } from './Header';
+import Notice, { IMoleNoticeProps } from './Notice';
 
 export default {
-  title: 'Molecules/Header',
-  component: Header,
+  title: 'Molecules/Notice',
+  component: Notice,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<IMoleHeaderProps> = (args) => (
+const Template: Story<IMoleNoticeProps> = (args) => (
   <>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Header {...args}></Header>
+      <Notice {...args}></Notice>
     </div>
   </>
 );
@@ -19,6 +19,5 @@ const Template: Story<IMoleHeaderProps> = (args) => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  title: '회원가입',
-  to: '/join',
+  notice_title: '금요일에 모여서 다같이 대청소 하는 것은 어떨까요?',
 };

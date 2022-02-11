@@ -1,16 +1,16 @@
 import { Meta, Story } from '@storybook/react';
-import Btnavbaritem from './Btnavbaritem';
+import BottomNavBar from './BottomNavBar';
 
 export default {
-  title: 'Molecules/Btnavbaritem',
-  component: Btnavbaritem,
+  title: 'Molecules/BottomNavBar',
+  component: BottomNavBar,
   parameters: {},
   argTypes: {},
 } as Meta;
 
 const Template: Story = (args) => (
   <>
-    <Btnavbaritem {...args}></Btnavbaritem>
+    <BottomNavBar {...args}></BottomNavBar>
   </>
 );
 

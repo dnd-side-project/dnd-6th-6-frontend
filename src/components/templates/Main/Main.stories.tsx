@@ -1,16 +1,18 @@
 import { Meta, Story } from '@storybook/react';
-import Btnavbar from './Btnavbar';
+import Main from './Main';
 
 export default {
-  Header: 'Organisms/Btnavbaritem',
-  component: Btnavbar,
+  title: 'Templates/Main',
+  component: Main,
   parameters: {},
   argTypes: {},
 } as Meta;
 
 const Template: Story = (args) => (
   <>
-    <Btnavbar {...args}></Btnavbar>
+    <div style={{ position: 'relative' }}>
+      <Main {...args} />
+    </div>
   </>
 );
 
