@@ -1,17 +1,19 @@
+import React from 'react';
 import { StyledAvatar } from './AvatarStyled';
 
 export interface IAtomAvatarProps {
   imgUrl?: string;
-  name?: string;
   number?: number;
   position?: string;
   width?: string;
   height?: string;
   mb?: string;
+  bgColor?: string;
+  border?: boolean;
 }
 
-const Avatar = (props: IAtomAvatarProps) => {
-  return <StyledAvatar {...props}>{props.name ? props.name : ''}</StyledAvatar>;
+const Avatar: React.FC<IAtomAvatarProps> = (props) => {
+  return <StyledAvatar {...props}>{props.children}</StyledAvatar>;
 };
 
 export default Avatar;

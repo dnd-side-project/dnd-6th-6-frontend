@@ -1,17 +1,17 @@
 import { Meta, Story } from '@storybook/react';
-import Avatar, { IAtomAvatarProps } from './Avatar';
+import NotificationCard, { IMoleNotificationCardProps } from './NotificationCard';
 
 export default {
-  title: 'Atoms/Avatar',
-  component: Avatar,
+  title: 'Molecules/NotificationCard',
+  component: NotificationCard,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<IAtomAvatarProps> = (args) => (
+const Template: Story<IMoleNotificationCardProps> = (args) => (
   <>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Avatar {...args}>test</Avatar>
+      <NotificationCard {...args}></NotificationCard>
     </div>
   </>
 );
