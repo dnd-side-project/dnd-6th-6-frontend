@@ -10,10 +10,6 @@ export const StyledRequest = styled.div`
       align-self: center;
     }
   }
-  .request_button {
-    font-weight: 700;
-    font-size: 16px;
-  }
   form {
     display: flex;
     flex-direction: column;
@@ -25,5 +21,9 @@ export const StyledRequest = styled.div`
   .request_notice {
     color: #9ca3ab;
     font-size: 12px;
+  }
+  .request_button {
+    font-weight: 700;
+    font-size: 16px;
   }
 `;
