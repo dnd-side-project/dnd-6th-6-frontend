@@ -14,7 +14,11 @@ export const StyledRequest = styled.div`
     font-weight: 700;
     font-size: 16px;
   }
-  .request_swippr {
+  .request_main {
     flex: 1;
+  }
+  .request_notice {
+    color: #9ca3ab;
+    font-size: 12px;
   }
 `;

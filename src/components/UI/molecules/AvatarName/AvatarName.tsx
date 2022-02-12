@@ -1,3 +1,4 @@
+import React from 'react';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Label from '../../atoms/Label/Label';
 import { StyledAvatarName } from './AvatarNameStyled';
@@ -5,11 +6,12 @@ import { StyledAvatarName } from './AvatarNameStyled';
 export interface IMoleAvatarName {
   imgUrl?: string;
   first_name: string;
+  onClick?: () => void;
 }
 
-const AvatarName = ({ imgUrl, first_name }: IMoleAvatarName) => {
+const AvatarName = ({ imgUrl, first_name, onClick }: IMoleAvatarName) => {
   return (
-    <StyledAvatarName>
+    <StyledAvatarName onClick={onClick}>
       <Avatar mb="12px" width="88px" height="88px" />
       <Label fontSize="14px" color="#3f4245">
         {first_name}
