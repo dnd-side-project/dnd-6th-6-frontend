@@ -1,21 +1,23 @@
 import styled, { css } from 'styled-components';
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<{ mb: string }>`
   ${(props) => {
     return css`
       width: 100%;
       display: flex;
       align-items: center;
       text-align: center;
-      height: 70px;
       font-weight: bold;
       font-size: 17px;
+      margin-bottom: ${props.mb};
       a {
         cursor: pointer;
       }
       h3 {
+        color: #3f4245;
+        font-size: 16px;
         flex: 1;
-        color: ${props.theme.textColor};
+        margin-right: 24px;
       }
     `;
   }}

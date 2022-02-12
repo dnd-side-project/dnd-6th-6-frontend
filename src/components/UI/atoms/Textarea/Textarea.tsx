@@ -1,4 +1,5 @@
 import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { StyledTextarea } from './TextareaStyled';
 
 export interface IAtomTextareaProps {
@@ -7,12 +8,13 @@ export interface IAtomTextareaProps {
   width?: string;
   height?: string;
   placeholder?: string;
+  register?: UseFormRegisterReturn;
 }
 
 const Textarea = (props: IAtomTextareaProps) => {
   return (
     <>
-      <StyledTextarea {...props} placeholder={props.placeholder}></StyledTextarea>
+      <StyledTextarea {...props} {...props.register} placeholder={props.placeholder}></StyledTextarea>
     </>
   );
 };
