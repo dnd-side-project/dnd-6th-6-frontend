@@ -16,6 +16,7 @@ export const StyledHeader = styled.header<{ mb: string }>`
       h3 {
         color: #3f4245;
         font-size: 16px;
+        font-weight: 400;
         flex: 1;
         margin-right: 24px;
       }
