@@ -5,6 +5,7 @@ import ProfileSetting from './components/templates/ProfileSetting/ProfileSetting
 import Main from './components/templates/Main/Main';
 import HouseMaking from './components/templates/HouseMaking/HouseMaking';
 import Request from './components/templates/Request/Request';
+import RequestReceive from './components/templates/RequestReceive/RequestReceive';
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/profileSetting" element={<ProfileSetting />} />
         <Route path="housemake" element={<HouseMaking />} />
         <Route path="/request" element={<Request />} />
+        <Route path="/requestReceive" element={<RequestReceive />} />
       </Routes>
     </Router>
     // <>

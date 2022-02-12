@@ -101,6 +101,7 @@ const Request = (props: ITempRequestProps) => {
 
   const onVaild = (data: IForm) => {
     console.log(data);
+    //Axios요청
   };
 
   return (
