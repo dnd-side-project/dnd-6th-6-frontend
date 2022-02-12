@@ -4,10 +4,11 @@ export const StyledNotificationCard = styled.div<{ mb: string }>`
   display: flex;
   width: 100%;
   .notification_info {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 11px;
-    margin: 0 36px 0 28px;
+    margin: 0 0 0 16px;
     margin-bottom: ${(props) => props.mb};
     .notification_tag {
       border: none;
