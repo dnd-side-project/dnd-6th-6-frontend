@@ -1,3 +1,4 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
 import Textarea from '../../atoms/Textarea/Textarea';
 import { StyledSpeechBubble } from './SpeechBubbleStyled';
 
@@ -5,14 +6,15 @@ export interface IMoleSpeechBubbleProps {
   request: boolean;
   first_name?: string;
   response_message?: string;
+  register?: UseFormRegisterReturn;
 }
 
-const SpeechBubble = ({ request, first_name, response_message }: IMoleSpeechBubbleProps) => {
+const SpeechBubble = ({ request, first_name, response_message, register }: IMoleSpeechBubbleProps) => {
   return (
     <StyledSpeechBubble request={request}>
       {request ? (
         <>
-          <Textarea bgColor="#EFF5FE" placeholder="메세지를 작성해주세요." />
+          <Textarea register={register} bgColor="#EFF5FE" placeholder="메세지를 작성해주세요." />
           <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 16.5V0.5H0L16 16.5Z" fill="#E5EFFE" />
           </svg>

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const StyledSpeechBubble = styled.div<{ request: boolean }>`
+  margin: 0 auto;
   width: 297px;
   min-height: 110px;
   height: 110px;

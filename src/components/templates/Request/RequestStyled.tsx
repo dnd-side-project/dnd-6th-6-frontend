@@ -14,6 +14,11 @@ export const StyledRequest = styled.div`
     font-weight: 700;
     font-size: 16px;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
   .request_main {
     flex: 1;
   }
