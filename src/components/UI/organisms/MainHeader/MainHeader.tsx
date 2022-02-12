@@ -14,9 +14,9 @@ const MainHeader = (props: IOrgMainHeaderPorps) => {
       <Logo />
       <div className="innerflex">
         <div className="Avatarbox">
-          <Avatar number={1} />
-          <Avatar number={2} />
-          <Avatar number={3} />
+          <Avatar position="absolute" number={1} />
+          <Avatar position="absolute" number={2} />
+          <Avatar position="absolute" number={3} />
         </div>
         <Alarm active={false} />
       </div>

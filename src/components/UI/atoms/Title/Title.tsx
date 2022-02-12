@@ -5,6 +5,7 @@ export interface IAtomTitleProps {
   fontWeight?: string;
   color?: string;
   mb?: string;
+  lineHeight?: string;
 }
 
 const Title: React.FC<IAtomTitleProps> = (props) => {
