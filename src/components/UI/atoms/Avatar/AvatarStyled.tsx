@@ -3,8 +3,13 @@ import { IAtomAvatarProps } from './Avatar';
 
 export const StyledAvatar = styled.div<IAtomAvatarProps>`
   ${(props) => {
-    const avatarBackground = props.imgUrl ? `no-repeat center/center url("${props.imgUrl}")` : props.theme.bgColor;
+    const avatarBackground = props.imgUrl
+      ? `no-repeat center/center url("${props.imgUrl}")`
+      : props.bgColor
+      ? props.bgColor
+      : props.theme.bgColor;
     const number = props.number ? props.number * 18 : 0;
+    const border = props.border ? '1px solid #E7F0FE' : 'none';
     return css`
       left: ${number}px;
       position: ${props.position || 'static'};
@@ -17,6 +22,7 @@ export const StyledAvatar = styled.div<IAtomAvatarProps>`
       align-items: center;
       justify-content: center;
       margin-bottom: ${props.mb || '0px'};
+      border: ${border};
     `;
   }}
 `;
