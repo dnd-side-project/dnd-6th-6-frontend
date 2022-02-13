@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import Title from '../../UI/atoms/Title/Title';
@@ -11,108 +12,50 @@ export interface ITempJoinProps {}
 
 interface IJoinForm {
   email: string;
-  password: string;
-  passwordConfirm: string;
 }
 
 const Join = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
   } = useForm<IJoinForm>();
-  const [pageCount, setPageCount] = useState(0);
-
-  const onMinusPageCount = () => {
-    if (pageCount === 0) {
-      return;
-    }
-    setPageCount((prev) => prev - 1);
-  };
 
   const onVaild = (data: IJoinForm) => {
-    if (!errors.email && pageCount === 0) {
-      return setPageCount((prev) => prev + 1);
-    }
-    if (data.password !== data.passwordConfirm) {
-      setError('passwordConfirm', { message: '비밀번호가 같지 않습니다.' }, { shouldFocus: true });
-    }
     console.log(data);
-    //axios요청
+    //해당 email이 사용가능한지 check API
+    //setError('email', { message: '이미 존재하는 이메일입니다.' }, { shouldFocus: true });
+    navigate('/join/emailAuth', { state: data.email });
   };
   return (
     <>
-      <StyledJoin>
-        <Header onClick={onMinusPageCount} title={pageCount === 0 ? '회원가입' : '비밀번호 등록'} />
-
-        <AppLayout>
-          {pageCount === 0 && (
-            <>
-              <Title fontWeight="600">이메일로 작성된</Title>
-              <Title fontWeight="600" mb="30px">
-                인증코드를 입력해주세요.
-              </Title>
-            </>
-          )}
-          {pageCount === 1 && (
-            <>
-              <Title fontWeight="600">로그인에 사용할</Title>
-              <Title fontWeight="600" mb="30px">
-                비밀번호를 입력해주세요.
-              </Title>
-            </>
-          )}
+      <AppLayout>
+        <StyledJoin>
+          <Header mb="35px" title="회원가입" />
+          <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
+            로그인에 사용할
+            <br />
+            이메일을 입력해주세요
+          </Title>
           <StyledForm onSubmit={handleSubmit(onVaild)}>
-            {pageCount === 0 && (
-              <>
-                <TextInputWrapper>
-                  <TextInput
-                    register={{
-                      ...register('email', {
-                        required: '이메일을 입력하세요',
-                      }),
-                    }}
-                    labelText="이메일"
-                    type="email"
-                    message={errors.email?.message || ''}
-                    mb="20px"
-                  />
-                </TextInputWrapper>
-                <Button>다음</Button>
-              </>
-            )}
-            {pageCount === 1 && (
-              <>
-                <TextInputWrapper>
-                  <TextInput
-                    register={{
-                      ...register('password', {
-                        required: '비밀번호를 입력하세요',
-                      }),
-                    }}
-                    labelText="비밀번호"
-                    type="password"
-                    message={errors.password?.message || ''}
-                    mb="20px"
-                  />
-                  <TextInput
-                    register={{
-                      ...register('passwordConfirm', {
-                        required: '비밀번호 확인란을 입력하세요',
-                      }),
-                    }}
-                    labelText="비밀번호 확인"
-                    type="password"
-                    message={errors.passwordConfirm?.message || ''}
-                  />
-                </TextInputWrapper>
-                <Button>회원가입</Button>
-              </>
-            )}
+            <TextInputWrapper>
+              <TextInput
+                register={{
+                  ...register('email', {
+                    required: '이메일을 입력하세요',
+                  }),
+                }}
+                placeholder="example@domain.com"
+                labelText="이메일 주소"
+                message={errors.email?.message || ''}
+              />
+            </TextInputWrapper>
+            <Button className="basic">다음</Button>
           </StyledForm>
-        </AppLayout>
-      </StyledJoin>
+        </StyledJoin>
+      </AppLayout>
     </>
   );
 };

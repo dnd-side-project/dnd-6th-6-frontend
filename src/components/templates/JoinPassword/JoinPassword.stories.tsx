@@ -1,16 +1,16 @@
 import { Meta, Story } from '@storybook/react';
-import Join, { ITempJoinProps } from './Join';
+import JoinPassword from './JoinPassword';
 
 export default {
-  title: 'Templates/Join',
-  component: Join,
+  title: 'Templates/JoinPassword',
+  component: JoinPassword,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<ITempJoinProps> = (args) => (
+const Template: Story<any> = (args) => (
   <>
-    <Join {...args} />
+    <JoinPassword {...args} />
   </>
 );
 

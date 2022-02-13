@@ -4,16 +4,19 @@ import { IAtomInputProps } from './Input';
 export const StyledInput = styled.input<IAtomInputProps>`
   ${(props) => {
     return css`
+      font-size: 15px;
       width: ${props.width || '100%'};
-      padding: 5px;
-      border: 1.5px solid rgba(122, 127, 132, 0.3);
+      height: 48px;
+      padding: 16px;
       border-radius: 8px;
       margin-bottom: ${props.mb || 0};
+      border: 1px solid #e4ebf5;
+      background: #eff5fe;
       &:focus {
         outline: none;
       }
-      ::placeholder {
-        color: #878b8e;
+      &::placeholder {
+        color: #9ca3ab;
       }
     `;
   }}

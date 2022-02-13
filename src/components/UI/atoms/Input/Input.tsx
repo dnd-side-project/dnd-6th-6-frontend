@@ -12,7 +12,7 @@ export interface IAtomInputProps {
 }
 
 const Input = (props: IAtomInputProps) => {
-  return <StyledInput {...props} {...props.register}></StyledInput>;
+  return <StyledInput {...props} {...props.register} />;
 };
 
 export default Input;

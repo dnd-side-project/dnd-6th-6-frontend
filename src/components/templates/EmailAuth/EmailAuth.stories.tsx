@@ -1,16 +1,16 @@
 import { Meta, Story } from '@storybook/react';
-import Join, { ITempJoinProps } from './Join';
+import EmailAuth from './EmailAuth';
 
 export default {
-  title: 'Templates/Join',
-  component: Join,
+  title: 'Templates/EmailAuth',
+  component: EmailAuth,
   parameters: {},
   argTypes: {},
 } as Meta;
 
-const Template: Story<ITempJoinProps> = (args) => (
+const Template: Story = (args) => (
   <>
-    <Join {...args} />
+    <EmailAuth {...args} />
   </>
 );
 

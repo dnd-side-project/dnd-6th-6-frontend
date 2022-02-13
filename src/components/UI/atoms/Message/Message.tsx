@@ -1,6 +1,6 @@
 import { StyledMessage } from './MessageStyled';
 
-type MessageType = 'success' | 'error';
+export type MessageType = 'success' | 'error' | 'basic';
 
 export interface IAtomMessageProps {
   className?: MessageType;
