@@ -6,11 +6,15 @@ import Main from './components/templates/Main/Main';
 import HouseMaking from './components/templates/HouseMaking/HouseMaking';
 import Request from './components/templates/Request/Request';
 import RequestReceive from './components/templates/RequestReceive/RequestReceive';
+import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/join" element={<Join />} />
+        <Route path="/join">
+          <Route path="email" element={<Join />} />
+          <Route path="emailAuth" element={<EmailAuth />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
         <Route path="/profileSetting" element={<ProfileSetting />} />

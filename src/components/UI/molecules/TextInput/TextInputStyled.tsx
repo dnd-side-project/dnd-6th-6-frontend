@@ -6,4 +6,8 @@ export const StyledTextInput = styled.div<IMolTextInputProps>`
   flex-direction: column;
   justify-content: center;
   margin-bottom: ${(props) => props.mb || 0};
+  .input_wrapper {
+    display: flex;
+    gap: 8px;
+  }
 `;
