@@ -7,6 +7,7 @@ import HouseMaking from './components/templates/HouseMaking/HouseMaking';
 import Request from './components/templates/Request/Request';
 import RequestReceive from './components/templates/RequestReceive/RequestReceive';
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
+import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/join">
           <Route path="email" element={<Join />} />
           <Route path="emailAuth" element={<EmailAuth />} />
+          <Route path="password" element={<JoinPassword />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />

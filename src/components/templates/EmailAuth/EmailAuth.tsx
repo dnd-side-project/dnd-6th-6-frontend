@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router';
 import AppLayout from '../../Layouts/Applayout';
@@ -22,11 +23,17 @@ const EmailAuth = () => {
     setError,
   } = useForm<IEmailAuthForm>();
 
+  const onResendClick = () => {
+    //이메일 재발송 API
+    //나중에 여러번 클릭 막기
+    console.log('이메일 재발숭');
+  };
+
   const onVaild = (data: IEmailAuthForm) => {
     console.log(data);
-    //axios요청으로 해당 code가 맞는지 check
+    //해당 code가 맞는지 check API
     //setError('code', { message: '인증코드가 일치하지 않습니다.' }, { shouldFocus: true });
-    navigate('/join/password');
+    navigate('/join/password', { state });
   };
   if (!state) {
     navigate('/join/email');
@@ -55,7 +62,9 @@ const EmailAuth = () => {
               labelText="인증코드"
               message={errors.code?.message || ''}
             >
-              <div className="email_resend">재발송</div>
+              <div onClick={onResendClick} className="email_resend">
+                재발송
+              </div>
             </TextInput>
           </TextInputWrapper>
           <Button className="basic">다음</Button>

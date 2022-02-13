@@ -25,7 +25,7 @@ const Join = () => {
 
   const onVaild = (data: IJoinForm) => {
     console.log(data);
-    //axios요청으로 해당 email이 사용가능한지 check
+    //해당 email이 사용가능한지 check API
     //setError('email', { message: '이미 존재하는 이메일입니다.' }, { shouldFocus: true });
     navigate('/join/emailAuth', { state: data.email });
   };

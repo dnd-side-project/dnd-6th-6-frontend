@@ -11,6 +11,9 @@ export const StyledMessage = styled.span<IAtomMessageProps>`
       &.error {
         color: #e52828;
       }
+      &.basic {
+        color: #565a5e;
+      }
     `;
   }}
 `;

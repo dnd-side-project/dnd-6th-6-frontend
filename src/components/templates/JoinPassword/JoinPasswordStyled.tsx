@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledEmailAuth = styled.div`
+export const StyledJoinPassword = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,5 @@ export const TextInputWrapper = styled.div`
     border: 1px solid #e4ebf5;
     border-radius: 8px;
     font-size: 15px;
-    cursor: pointer;
   }
 `;

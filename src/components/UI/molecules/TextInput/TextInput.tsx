@@ -1,7 +1,7 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 import Label from '../../atoms/Label/Label';
 import Input from '../../atoms/Input/Input';
-import Message from '../../atoms/Message/Message';
+import Message, { MessageType } from '../../atoms/Message/Message';
 import { StyledTextInput } from './TextInputStyled';
 import { InputType } from '../../atoms/Input/Input';
 import React from 'react';
@@ -13,6 +13,7 @@ export interface IMolTextInputProps {
   type?: InputType;
   placeholder?: string;
   mb?: string;
+  message_type?: MessageType;
 }
 
 const TextInput: React.FC<IMolTextInputProps> = (props) => {
@@ -25,7 +26,7 @@ const TextInput: React.FC<IMolTextInputProps> = (props) => {
         <Input placeholder={props.placeholder} register={props.register} type={props.type} mb="10px" />
         {props.children}
       </div>
-      <Message className="error">{props.message}</Message>
+      <Message className={props.message_type ? props.message_type : 'error'}>{props.message}</Message>
     </StyledTextInput>
   );
 };
