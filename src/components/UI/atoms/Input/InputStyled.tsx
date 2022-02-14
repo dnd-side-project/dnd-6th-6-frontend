@@ -21,3 +21,13 @@ export const StyledInput = styled.input<IAtomInputProps>`
     `;
   }}
 `;
+
+export const StyledButtonInput = styled.div`
+  position: relative;
+  width: 100%;
+  .delete {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+`;
