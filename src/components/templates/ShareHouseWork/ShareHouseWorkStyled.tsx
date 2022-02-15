@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledShareHouseWork = styled.div`
   position: relative;
-  height: 200vh;
   .shareHouseWork_header {
     line-height: 33px;
     margin-bottom: 39px;

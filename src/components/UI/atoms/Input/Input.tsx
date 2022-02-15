@@ -1,7 +1,7 @@
 import { StyledInput } from './InputStyled';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-export type InputType = 'email' | 'password' | 'text';
+export type InputType = 'email' | 'password' | 'text' | 'date' | 'datetime-local';
 
 export interface IAtomInputProps {
   width?: string;
