@@ -1,0 +1,101 @@
+.customHeader {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.month-day {
+  font-size: 18px;
+}
+.btn_month {
+  font-size: 17px;
+  color: #53a5f8;
+}
+.btn_month-prev {
+  margin-right: 10px;
+}
+.btn_month-next {
+  margin-left: 10px;
+}
+.react-datepicker__portal {
+  align-items: flex-end !important;
+}
+
+.react-datepicker::before {
+  content: '날짜 선택하기';
+  font-size: 17px;
+  padding: 20px;
+}
+
+.react-datepicker {
+  width: 100vw !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+.react-datepicker__month-container {
+  width: 100% !important;
+}
+
+.react-datepicker__day--selected {
+  border-radius: 100% !important;
+  background-color: #53a5f8 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  border-radius: 100% !important;
+  background-color: #53a5f8 !important;
+}
+
+.react-datepicker__header {
+  background-color: white !important;
+  border-bottom: none !important;
+}
+
+.buttonwrapper {
+  display: flex;
+  justify-content: center;
+}
+.pickerbutton {
+  width: 260px;
+  justify-content: center;
+  background-color: #53a5f8;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  height: 56px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 400px) {
+  .pickerbutton {
+    width: 390px;
+    justify-content: center;
+    background-color: #53a5f8;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+}
+
+.CustomInput {
+  width: 100%;
+  height: 56px;
+  align-items: center;
+  display: flex;
+  background-color: #eceef4;
+  border: none;
+  border-radius: 8px;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+}
+.CustomInput > .value {
+  font-size: 14px;
+  color: #abafbb;
+}
+.CustomInput > .icon {
+  font-size: 21px;
+}
