@@ -45,7 +45,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   };
 
   const onVaild = (data: IForm) => {
-    if (!checkMembers || !chooseCategory) return;
+    if (checkMembers.length === 0 || !chooseCategory) return;
     console.log({ ...data, checkMembers, category: chooseCategory.category });
   };
   return (

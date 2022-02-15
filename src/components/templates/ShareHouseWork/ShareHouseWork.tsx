@@ -3,6 +3,7 @@ import Title from '../../UI/atoms/Title/Title';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import { StyledShareHouseWork } from './ShareHouseWorkStyled';
 import { ReactComponent as MakeEventBtn } from '../../../src_assets/makeEventBtn.svg';
+import { Link } from 'react-router-dom';
 
 export interface ITempShareHouseWorkProps {}
 
@@ -24,7 +25,9 @@ const ShareHouseWork = () => {
             <span>아직 분담 계획이 없어요</span>
             <span>일정을 만들고 가사분담을 진행해보세요!</span>
           </div>
-          <MakeEventBtn className="shareHouseWork_makeEventBtn" />
+          <Link to="/eventmake">
+            <MakeEventBtn className="shareHouseWork_makeEventBtn" />
+          </Link>
         </StyledShareHouseWork>
       </AppLayout>
       <BottomNavBar />

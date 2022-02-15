@@ -38,7 +38,7 @@ const EventMaking = (props: ITempEventMakingProps) => {
             반복 일정
           </Button>
         </div>
-        <OneTimeEventForm />
+        {plan === 'oneTime' && <OneTimeEventForm />}
       </StyledEventMaking>
     </AppLayout>
   );
