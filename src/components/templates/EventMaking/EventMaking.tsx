@@ -4,6 +4,7 @@ import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
+import OneTimeEventForm from '../../UI/organisms/OneTimeEventForm/OneTimeEventForm';
 import { StyledEventMaking } from './EventMakingStyled';
 
 export interface ITempEventMakingProps {}
@@ -37,6 +38,7 @@ const EventMaking = (props: ITempEventMakingProps) => {
             반복 일정
           </Button>
         </div>
+        <OneTimeEventForm />
       </StyledEventMaking>
     </AppLayout>
   );

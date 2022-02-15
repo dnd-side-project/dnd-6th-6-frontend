@@ -99,12 +99,7 @@ const EventAssignes = ({ onClick, checkMembers, mb }: IMoleEventAssignesProps) =
           {members.map((member) => (
             <SwiperSlide key={member.id}>
               <div className="eventAssignes_member" onClick={() => onClick(member)}>
-                <Avatar
-                  imgUrl="https://avatars.githubusercontent.com/u/62169861?v=4"
-                  mb="10px"
-                  width="62px"
-                  height="62px"
-                >
+                <Avatar imgUrl="" mb="10px" width="62px" height="62px">
                   {checkMembers.includes(member.id) && (
                     <div className="check">
                       <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
