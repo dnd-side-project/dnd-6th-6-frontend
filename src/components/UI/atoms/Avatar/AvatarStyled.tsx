@@ -4,7 +4,7 @@ import { IAtomAvatarProps } from './Avatar';
 export const StyledAvatar = styled.div<IAtomAvatarProps>`
   ${(props) => {
     const avatarBackground = props.imgUrl
-      ? `no-repeat center/center url("${props.imgUrl}")`
+      ? `no-repeat center/100% url("${props.imgUrl}")`
       : props.bgColor
       ? props.bgColor
       : props.theme.bgColor;

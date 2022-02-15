@@ -8,6 +8,8 @@ import Request from './components/templates/Request/Request';
 import RequestReceive from './components/templates/RequestReceive/RequestReceive';
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 import JoinPassword from './components/templates/JoinPassword/JoinPassword';
+import ShareHouseWork from './components/templates/ShareHouseWork/ShareHouseWork';
+import EventMaking from './components/templates/EventMaking/EventMaking';
 function App() {
   return (
     <Router>
@@ -23,6 +25,8 @@ function App() {
         <Route path="housemake" element={<HouseMaking />} />
         <Route path="/request" element={<Request />} />
         <Route path="/requestReceive" element={<RequestReceive />} />
+        <Route path="/shareHousework" element={<ShareHouseWork />} />
+        <Route path="/eventmake" element={<EventMaking />} />
       </Routes>
     </Router>
     // <>
