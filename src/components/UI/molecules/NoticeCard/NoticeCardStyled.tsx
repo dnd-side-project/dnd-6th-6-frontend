@@ -21,6 +21,9 @@ export const StledNoticeCard = styled.div`
         color: #9ca3ab;
       }
     }
+    & > svg {
+      cursor: pointer;
+    }
   }
   .noticeCard_content {
     padding: 0 20px 20px;

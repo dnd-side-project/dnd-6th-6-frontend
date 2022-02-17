@@ -38,6 +38,7 @@ export const StyledHeader = styled.header<{ mb: string; itemCount?: number }>`
         align-items: center;
         font-size: 16px;
         color: #9ca3ab;
+        cursor: pointer;
       }
     `;
   }}

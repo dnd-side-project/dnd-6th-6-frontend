@@ -1,23 +1,33 @@
-import { useCallback } from 'react';
+import React, { Dispatch, SetStateAction, useCallback } from 'react';
 import { NoticeModalWrapper, StyledNoticeModal } from './NoticeModalStyled';
 
 export interface IMoleNoticeModalProps {
   noticeId?: number;
+  setShowNoticeModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const NoticeModal = ({ noticeId }: IMoleNoticeModalProps) => {
+const NoticeModal = ({ noticeId, setShowNoticeModal }: IMoleNoticeModalProps) => {
+  const onClick = () => {
+    setShowNoticeModal((prev) => !prev);
+  };
+  const onClickModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
   const onClickNoticeFix = useCallback(() => {
     // 고정하기
-  }, [noticeId]);
+    setShowNoticeModal((prev) => !prev);
+  }, [noticeId, setShowNoticeModal]);
   const onClickNoticeEdit = useCallback(() => {
     // 수정하기
-  }, [noticeId]);
+    setShowNoticeModal((prev) => !prev);
+  }, [noticeId, setShowNoticeModal]);
   const onClickNoticeDelete = useCallback(() => {
     // 삭제하기
-  }, [noticeId]);
+    setShowNoticeModal((prev) => !prev);
+  }, [noticeId, setShowNoticeModal]);
   return (
-    <NoticeModalWrapper>
-      <StyledNoticeModal>
+    <NoticeModalWrapper onClick={onClick}>
+      <StyledNoticeModal onClick={onClickModal}>
         <div onClick={onClickNoticeFix} className="noticeModal_fix">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

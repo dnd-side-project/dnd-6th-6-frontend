@@ -25,6 +25,7 @@ export const StyledNoticeModal = styled.div`
     align-items: center;
     padding: 20px 15px;
     border-bottom: 1px solid #eaf2fe;
+    cursor: pointer;
     svg {
       margin-right: 14px;
     }
