@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import { GlobalStyle } from '../../../styles/global-style';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
@@ -78,10 +79,14 @@ const house = {
 export interface ITempMainPorps {}
 
 const Main = () => {
+  const navigate = useNavigate();
   // 로그인한 user정보 GET
   // 하우스 정보 GET
   // 하우스 맴버 정보 GET
   // Main 공지사항 정보 GET
+  const onClickNotice = () => {
+    navigate('/notice/detail');
+  };
   return (
     <>
       <GlobalStyle />
@@ -90,7 +95,7 @@ const Main = () => {
           <MainHeader mb="40px" />
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
-        <Notice notice_title="금요일에 모여서 다같이 대청소 하는 것은 어떨까요?" />
+        <Notice onClick={onClickNotice} notice_title="금요일에 모여서 다같이 대청소 하는 것은 어떨까요?" />
         <TodayToDoMe mb="6px" />
         <TodayToDoHouse />
       </StyledMain>
