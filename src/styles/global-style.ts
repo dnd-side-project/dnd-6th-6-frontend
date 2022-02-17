@@ -59,6 +59,7 @@ html {
 body {
   font-family: 'Noto Sans KR';
   font-size: 14px;
+  font-weight: 400;
 }
 a {
   text-decoration: none;
