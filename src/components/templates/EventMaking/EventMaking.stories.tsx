@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import EventMaking, { ITempEventMakingProps } from './EventMaking';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempEventMakingProps> = (args) => (
   <>
-    <EventMaking {...args} />
+    <StoriesLayout>
+      <EventMaking {...args} />
+    </StoriesLayout>
   </>
 );
 

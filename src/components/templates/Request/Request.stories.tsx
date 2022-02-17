@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Request, { ITempRequestProps } from './Request';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempRequestProps> = (args) => (
   <>
-    <Request {...args} />
+    <StoriesLayout>
+      <Request {...args} />
+    </StoriesLayout>
   </>
 );
 

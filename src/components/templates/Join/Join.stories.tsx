@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Join, { ITempJoinProps } from './Join';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempJoinProps> = (args) => (
   <>
-    <Join {...args} />
+    <StoriesLayout>
+      <Join {...args} />
+    </StoriesLayout>
   </>
 );
 

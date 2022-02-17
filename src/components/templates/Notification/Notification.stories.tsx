@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Notification, { ITempNotificationProps } from './Notification';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempNotificationProps> = (args) => (
   <>
-    <Notification {...args} />
+    <StoriesLayout>
+      <Notification {...args} />
+    </StoriesLayout>
   </>
 );
 

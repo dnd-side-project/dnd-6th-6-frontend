@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledBottomNavBar = styled.ul`
   position: fixed;
+  left: 0;
   bottom: 0;
   padding: 25px 50px;
   z-index: 10000;

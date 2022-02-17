@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import ShareHouseWork, { ITempShareHouseWorkProps } from './ShareHouseWork';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempShareHouseWorkProps> = (args) => (
   <>
-    <ShareHouseWork {...args} />
+    <StoriesLayout>
+      <ShareHouseWork {...args} />
+    </StoriesLayout>
   </>
 );
 
