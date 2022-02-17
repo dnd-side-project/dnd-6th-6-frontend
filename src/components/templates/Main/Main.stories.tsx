@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Main from './Main';
 
 export default {
@@ -10,9 +11,9 @@ export default {
 
 const Template: Story = (args) => (
   <>
-    <div style={{ position: 'relative' }}>
+    <StoriesLayout>
       <Main {...args} />
-    </div>
+    </StoriesLayout>
   </>
 );
 

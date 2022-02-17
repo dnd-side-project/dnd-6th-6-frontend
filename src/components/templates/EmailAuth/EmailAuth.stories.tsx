@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import EmailAuth from './EmailAuth';
 
 export default {
   title: 'Templates/EmailAuth',
   component: EmailAuth,
-  parameters: {},
   argTypes: {},
 } as Meta;
 

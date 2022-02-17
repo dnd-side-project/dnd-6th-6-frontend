@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import ProfileSetting, { ITempProfileSettingProps } from './ProfileSetting';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempProfileSettingProps> = (args) => (
   <>
-    <ProfileSetting {...args} />
+    <StoriesLayout>
+      <ProfileSetting {...args} />
+    </StoriesLayout>
   </>
 );
 

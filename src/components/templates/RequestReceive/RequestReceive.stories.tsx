@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import RequestReceive, { ITempRequestReceiveProps } from './RequestReceive';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<ITempRequestReceiveProps> = (args) => (
   <>
-    <RequestReceive {...args} />
+    <StoriesLayout>
+      <RequestReceive {...args} />
+    </StoriesLayout>
   </>
 );
 

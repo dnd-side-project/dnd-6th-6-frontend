@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import HouseMaking from './HouseMaking';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story = (args) => (
   <>
-    <HouseMaking {...args} />
+    <StoriesLayout>
+      <HouseMaking {...args} />
+    </StoriesLayout>
   </>
 );
 

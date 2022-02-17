@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import JoinPassword from './JoinPassword';
 
 export default {
@@ -10,7 +11,9 @@ export default {
 
 const Template: Story<any> = (args) => (
   <>
-    <JoinPassword {...args} />
+    <StoriesLayout>
+      <JoinPassword {...args} />
+    </StoriesLayout>
   </>
 );
 
