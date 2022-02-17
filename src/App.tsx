@@ -12,10 +12,12 @@ import ShareHouseWork from './components/templates/ShareHouseWork/ShareHouseWork
 import EventMaking from './components/templates/EventMaking/EventMaking';
 import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
+import StartScreen from './components/templates/StartScreen/StartScreen';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<StartScreen />} />
         <Route path="/join">
           <Route path="email" element={<Join />} />
           <Route path="emailAuth" element={<EmailAuth />} />
