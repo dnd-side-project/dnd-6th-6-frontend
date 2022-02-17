@@ -7,7 +7,7 @@
 build-storybook.log
 # testing
 /coverage
-
+.env
 # production
 /build
 
