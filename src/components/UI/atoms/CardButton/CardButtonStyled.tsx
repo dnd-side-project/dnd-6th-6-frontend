@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledCardButton = styled.div`
+export const StyledCardButton = styled.button`
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,5 +40,14 @@ export const StyledCardButton = styled.div`
     background: #5d9eff;
     color: #ffffff;
     border-radius: 4px;
+  }
+  &.noticeFix {
+    font-size: 12px;
+    width: 40px;
+    height: 18px;
+    color: #ffffff;
+    border: 1px solid #61b3ff;
+    border-radius: 40px;
+    background-color: #55adff;
   }
 `;

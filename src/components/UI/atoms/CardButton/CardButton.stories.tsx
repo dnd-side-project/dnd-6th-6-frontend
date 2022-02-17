@@ -26,6 +26,10 @@ const Template: Story<IAtomCardButtonProps> = (args) => (
       <CardButton {...args} className="houseIncomplete">
         미완료
       </CardButton>
+      <hr />
+      <CardButton {...args} className="noticeFix">
+        고정
+      </CardButton>
     </div>
   </>
 );
