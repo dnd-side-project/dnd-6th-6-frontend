@@ -1,3 +1,4 @@
+import { GlobalStyle } from '../../../styles/global-style';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
 import Notice from '../../UI/molecules/Notice/Notice';
@@ -83,6 +84,7 @@ const Main = () => {
   // Main 공지사항 정보 GET
   return (
     <>
+      <GlobalStyle />
       <StyledMain>
         <header className="main_header">
           <MainHeader mb="40px" />
