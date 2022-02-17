@@ -6,6 +6,7 @@ export const StyledNotice = styled.div`
   width: 100%;
   padding: 10px 20px;
   background-color: #eceef4;
+  cursor: pointer;
   .notice_title {
     padding-right: 16px;
     border-right: 1px solid rgba(107, 113, 123, 0.2);

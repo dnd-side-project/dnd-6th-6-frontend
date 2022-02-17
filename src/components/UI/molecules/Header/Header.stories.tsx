@@ -12,6 +12,8 @@ const Template: Story<IMoleHeaderProps> = (args) => (
   <>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Header {...args}></Header>
+      <hr />
+      <Header {...args} itemCount={3} threeItemContent="글쓰기"></Header>
     </div>
   </>
 );

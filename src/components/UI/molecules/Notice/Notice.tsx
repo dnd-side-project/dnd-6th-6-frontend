@@ -3,11 +3,12 @@ import { StyledNotice } from './NoticeStyled';
 
 export interface IMoleNoticeProps {
   notice_title: string;
+  onClick: () => void;
 }
 
-const Notice = ({ notice_title }: IMoleNoticeProps) => {
+const Notice = ({ notice_title, onClick }: IMoleNoticeProps) => {
   return (
-    <StyledNotice>
+    <StyledNotice onClick={onClick}>
       <div className="notice_title">
         <Title color="#6B717B" fontSize="12px" fontWeight="700">
           공지사항

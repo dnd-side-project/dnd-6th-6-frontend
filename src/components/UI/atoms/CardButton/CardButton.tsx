@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledCardButton } from './CardButtonStyled';
 
-type CardButton = 'meComplete' | 'meIncomplete' | 'houseComplete' | 'houseIncomplete';
+type CardButton = 'meComplete' | 'meIncomplete' | 'houseComplete' | 'houseIncomplete' | 'noticeFix';
 
 export interface IAtomCardButtonProps {
   className: CardButton;

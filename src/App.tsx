@@ -10,6 +10,8 @@ import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import ShareHouseWork from './components/templates/ShareHouseWork/ShareHouseWork';
 import EventMaking from './components/templates/EventMaking/EventMaking';
+import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
+import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 function App() {
   return (
     <Router>
@@ -27,6 +29,10 @@ function App() {
         <Route path="/requestReceive" element={<RequestReceive />} />
         <Route path="/shareHousework" element={<ShareHouseWork />} />
         <Route path="/eventmake" element={<EventMaking />} />
+        <Route path="/notice">
+          <Route path="detail" element={<NoticeDetail />} />
+          <Route path="write" element={<NoticeWrite />} />
+        </Route>
       </Routes>
     </Router>
     // <>

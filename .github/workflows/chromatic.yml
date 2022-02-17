@@ -4,9 +4,9 @@
 name: 'Chromatic Deployment'
 
 # Event for the workflow
-on: push
-    branches:
-      - storybook
+on:
+  pull_request:
+    branches: [develop]
 
 # List of jobs
 jobs:
