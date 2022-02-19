@@ -19,7 +19,7 @@ export const setChoreAPI = ({
   planned_at: Date;
 }) => {
   return axios
-    .post(`${BASE_URL}/houses/${houseId}/chores`, {
+    .post(`/houses/${houseId}/chores`, {
       assignees,
       information: {
         name,
@@ -34,12 +34,12 @@ export const setChoreAPI = ({
 
 // 일회성 집안일 전체 목록
 export const getAllChoresAPI = (houseId: number) => {
-  return axios.get(`${BASE_URL}/houses/${houseId}/chores`).then((response) => response.data);
+  return axios.get(`/houses/${houseId}/chores`).then((response) => response.data);
 };
 
 // 일회성 집안일 상세보기
 export const getDetailChoreAPI = (houseId: number, choreId: number) => {
-  return axios.get(`${BASE_URL}/houses/${houseId}/chores/${choreId}`).then((response) => response.data);
+  return axios.get(`/houses/${houseId}/chores/${choreId}`).then((response) => response.data);
 };
 
 // 일회성 집안일 수정 PATCH houses/:house/chores/:chore
@@ -59,7 +59,7 @@ export const editChoreAPI = ({
   planned_at: Date;
 }) => {
   return axios
-    .patch(`${BASE_URL}/houses/${houseId}/chores/${choreId}`, {
+    .patch(`/houses/${houseId}/chores/${choreId}`, {
       assignees,
       information: {
         name,
@@ -74,15 +74,15 @@ export const editChoreAPI = ({
 
 //일회성 집안일 삭제 DELETE houses/:house/chores/:chore
 export const deleteChoreAPI = (houseId: number, choreId: number) => {
-  return axios.delete(`${BASE_URL}/houses/${houseId}/chores/${choreId}`).then((response) => response.data);
+  return axios.delete(`/houses/${houseId}/chores/${choreId}`).then((response) => response.data);
 };
 
 // 일회성 집안일 댓글 작성
 export const setChoreCommentAPI = (choreId: number, content: string) => {
-  return axios.post(`${BASE_URL}/chores/${choreId}/comments`, { content }).then((response) => response.data);
+  return axios.post(`/chores/${choreId}/comments`, { content }).then((response) => response.data);
 };
 
 // 일회성 집안일 댓글 목록
 export const getChoreCommentAPI = (choreId: number) => {
-  return axios.get(`${BASE_URL}/chores/${choreId}/comments`).then((response) => response.data);
+  return axios.get(`/chores/${choreId}/comments`).then((response) => response.data);
 };

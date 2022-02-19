@@ -19,7 +19,7 @@ export const setRepeatChore = ({
   days: { id: number }[];
 }) => {
   return axios
-    .post(`${BASE_URL}/houses/${houseId}/repeat-chores`, {
+    .post(`/houses/${houseId}/repeat-chores`, {
       assignees,
       information: {
         name,
@@ -34,12 +34,12 @@ export const setRepeatChore = ({
 
 // 반복 집안일 전체 목록
 export const getAllChoresAPI = (houseId: number) => {
-  return axios.get(`${BASE_URL}/houses/${houseId}/repeat-chores`).then((response) => response.data);
+  return axios.get(`/houses/${houseId}/repeat-chores`).then((response) => response.data);
 };
 
 // 반복 집안일 상세보기
 export const getDetailRepeatChoreAPI = (houseId: number, choreId: number) => {
-  return axios.get(`${BASE_URL}/houses/${houseId}/repeat-chores/${choreId}`).then((response) => response.data);
+  return axios.get(`/houses/${houseId}/repeat-chores/${choreId}`).then((response) => response.data);
 };
 
 // 반복 집안일 수정 PATCH
@@ -59,7 +59,7 @@ export const editChoreAPI = ({
   days: { id: number }[];
 }) => {
   return axios
-    .patch(`${BASE_URL}/houses/${houseId}/repeat-chores/${choreId}`, {
+    .patch(`/houses/${houseId}/repeat-chores/${choreId}`, {
       assignees,
       information: {
         name,
@@ -74,15 +74,15 @@ export const editChoreAPI = ({
 
 // 반복 집안일 삭제 DELETE
 export const deleteRepeatChoreAPI = (houseId: number, choreId: number) => {
-  return axios.delete(`${BASE_URL}/houses/${houseId}/repeat-chores/${choreId}`).then((response) => response.data);
+  return axios.delete(`/houses/${houseId}/repeat-chores/${choreId}`).then((response) => response.data);
 };
 
 // 반복 집안일 댓글 작성
 export const setRepeatChoreCommentAPI = (choreId: number, content: string) => {
-  return axios.post(`${BASE_URL}/repeat-chores/${choreId}/comments`, { content }).then((response) => response.data);
+  return axios.post(`/repeat-chores/${choreId}/comments`, { content }).then((response) => response.data);
 };
 
 // 반복 집안일 댓글 목록
 export const getRepeatChoreCommentAPI = (choreId: number) => {
-  return axios.get(`${BASE_URL}/repeat-chores/${choreId}/comments`).then((response) => response.data);
+  return axios.get(`/repeat-chores/${choreId}/comments`).then((response) => response.data);
 };
