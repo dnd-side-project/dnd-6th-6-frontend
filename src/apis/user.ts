@@ -58,3 +58,13 @@ export const kakaoLoginAPI = () => {
 export const naverLoginAPI = () => {
   return axios.get(`${BASE_URL}/users/login/naver`).then((response) => response.data);
 };
+
+// 오늘 내 할일 목록
+export const todayChoresMeAPI = (houseId: number) => {
+  return axios.get(`${BASE_URL}/houses/${houseId}/chores/mine`).then((response) => response.data);
+};
+
+// 오늘 남의 할일 목록
+export const todayChoresOthersAPI = (houseId: number) => {
+  return axios.get(`${BASE_URL}/houses/${houseId}/chores/others`).then((response) => response.data);
+};

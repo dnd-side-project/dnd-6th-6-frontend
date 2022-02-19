@@ -76,3 +76,13 @@ export const editChoreAPI = ({
 export const deleteChoreAPI = (houseId: number, choreId: number) => {
   return axios.delete(`${BASE_URL}/houses/${houseId}/chores/${choreId}`).then((response) => response.data);
 };
+
+// 일회성 집안일 댓글 작성
+export const setChoreCommentAPI = (choreId: number, content: string) => {
+  return axios.post(`${BASE_URL}/chores/${choreId}/comments`, { content }).then((response) => response.data);
+};
+
+// 일회성 집안일 댓글 목록
+export const getChoreCommentAPI = (choreId: number) => {
+  return axios.get(`${BASE_URL}/chores/${choreId}/comments`).then((response) => response.data);
+};
