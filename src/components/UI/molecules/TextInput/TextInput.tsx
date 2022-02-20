@@ -15,13 +15,19 @@ export interface IMolTextInputProps {
   mb?: string;
   labelColor?: string;
   labelFontSize?: string;
+  labelFontWeight?: string;
   message_type?: MessageType;
 }
 
 const TextInput: React.FC<IMolTextInputProps> = (props) => {
   return (
     <StyledTextInput {...props}>
-      <Label mb="16px" color={props.labelColor || '#565A5E'} fontSize={props.labelFontSize}>
+      <Label
+        fontWeight={props.labelFontWeight}
+        mb="16px"
+        color={props.labelColor || '#565A5E'}
+        fontSize={props.labelFontSize}
+      >
         {props.labelText}
       </Label>
       <div className="input_wrapper">
