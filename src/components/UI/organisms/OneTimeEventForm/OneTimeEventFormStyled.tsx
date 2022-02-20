@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledOneTimeEventForm = styled.form`
+  flex: 1;
   padding-bottom: 20px;
-  .event_category {
+  display: flex;
+  flex-direction: column;
+  /* .event_category {
     width: 178px;
     height: 169.04px;
     display: flex;
@@ -18,6 +21,12 @@ export const StyledOneTimeEventForm = styled.form`
     & > span {
       color: #c9cedc;
       font-size: 13px;
+    }
+  } */
+  .oneTimeEvent_info {
+    flex: 1;
+    .oneTimeEvent_calender {
+      margin-bottom: 38px;
     }
   }
 `;
