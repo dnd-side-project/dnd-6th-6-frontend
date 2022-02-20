@@ -33,7 +33,7 @@ const Join = () => {
     <>
       <AppLayout>
         <StyledJoin>
-          <Header mb="35px" title="회원가입" />
+          <Header mb="35px" title="회원가입" onClick={() => navigate(-1)} />
           <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
             로그인에 사용할
             <br />
