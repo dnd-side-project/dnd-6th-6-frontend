@@ -16,6 +16,7 @@ function Calendar() {
       <div className="icon">🗓</div>
     </button>
   ));
+
   const calendar = useRef<any>(null);
 
   const closeDatePicker = () => {
@@ -24,6 +25,7 @@ function Calendar() {
   return (
     <>
       <DatePicker
+        className="datepicker"
         shouldCloseOnSelect={false}
         selected={startDate}
         locale={ko}

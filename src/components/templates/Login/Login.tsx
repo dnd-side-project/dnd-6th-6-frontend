@@ -5,6 +5,7 @@ import Button from '../../UI/atoms/Button/Button';
 import Title from '../../UI/atoms/Title/Title';
 import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
+import { useNavigate } from 'react-router-dom';
 
 export interface ILoginForm {
   email: string;
@@ -12,6 +13,7 @@ export interface ILoginForm {
 }
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,7 +23,7 @@ const Login = () => {
 
   const onMinusPageCount = () => {
     if (pageCount == 0) {
-      return alert('go mainpage'); // redirect main page
+      return navigate('/'); // redirect main page
     }
     setPageCount((prev) => prev - 1);
   };
@@ -36,9 +38,17 @@ const Login = () => {
 
   return (
     <>
-      <Header onClick={onMinusPageCount} title="로그인" />
       <AppLayout>
-        {pageCount == 0 ? <Title>이메일을 입력해주세요.</Title> : <Title>비밀번호를 입력해주세요.</Title>}
+        <Header onClick={onMinusPageCount} title="로그인" mb="35px" />
+        {pageCount == 0 ? (
+          <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
+            이메일을 입력해주세요.
+          </Title>
+        ) : (
+          <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
+            비밀번호를 입력해주세요.
+          </Title>
+        )}
         <form onSubmit={handleSubmit(onValid)}>
           {pageCount === 0 && (
             <>

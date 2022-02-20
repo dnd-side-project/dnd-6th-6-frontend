@@ -14,6 +14,7 @@ import Label from '../../UI/atoms/Label/Label';
 import Input from '../../UI/atoms/Input/Input';
 import { TextInputWrapper } from '../Join/JoinStyled';
 import InputwithButton from '../../UI/atoms/Input/InputwithButton';
+import { useNavigate } from 'react-router-dom';
 
 export interface IHouseMakingForm {
   housename: string;
@@ -21,6 +22,7 @@ export interface IHouseMakingForm {
 }
 
 const HouseMaking = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -42,7 +44,7 @@ const HouseMaking = () => {
 
   const onMinusPageCount = () => {
     if (pageCount == 1) {
-      return;
+      return navigate(-1);
     }
     setPageCount((prev) => prev - 1);
   };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../../atoms/Button/Button';
 import EventAssignes, { IMember } from '../../molecules/EventAssignes/EventAssignes';
@@ -6,6 +6,7 @@ import TextInput from '../../molecules/TextInput/TextInput';
 import { StyledOneTimeEventForm } from './OneTimeEventFormStyled';
 import imgChoose from '../../../../src_assets/imgChoose.svg';
 import ChooseCatagoryModal from '../../molecules/ChooseCatagoryModal.tsx/ChooseCatagoryModal';
+import Calendar from '../Calendar/Calendar';
 
 interface IForm {
   title: string;
@@ -18,6 +19,10 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [chooseCategory, setChooseCategory] = useState<{ src: string; id: number; category: string }>();
   const [checkMembers, setCheckMembers] = useState<number[]>([]);
+  const ref = useRef<{ 시간대: string; 시: number; 분: number }>();
+  useEffect(() => {
+    console.log(ref);
+  });
   const {
     register,
     handleSubmit,
@@ -82,6 +87,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
           message={errors.planned_at?.message}
           mb="46px"
         />
+        <Calendar />
         <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} mb="35px" />
       </div>
       <Button className="basic">완료</Button>
