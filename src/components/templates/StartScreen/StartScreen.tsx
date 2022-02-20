@@ -5,6 +5,8 @@ import NaverIcon from '../../../src_assets/naver.svg';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import { useNavigate } from 'react-router';
+//api
+import { kakaoLoginAPI, naverLoginAPI } from '../../../apis/user';
 
 export interface ITempStartScreenProps {}
 

@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<ITimerProps> = (args) => (
   <>
-    <TimePicker visible={true} />
+    <TimePicker />
   </>
 );
 
