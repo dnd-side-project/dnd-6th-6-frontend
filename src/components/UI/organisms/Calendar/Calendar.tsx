@@ -28,6 +28,7 @@ function Calendar({ startDate, setStartDate, setDateErrorMessage }: IOrgCalendar
       </div>
     </button>
   ));
+
   const calendar = useRef<any>(null);
 
   const closeDatePicker = () => {
@@ -38,6 +39,7 @@ function Calendar({ startDate, setStartDate, setDateErrorMessage }: IOrgCalendar
   return (
     <>
       <DatePicker
+        className="datepicker"
         shouldCloseOnSelect={false}
         selected={startDate}
         locale={ko}

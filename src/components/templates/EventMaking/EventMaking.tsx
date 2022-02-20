@@ -11,7 +11,6 @@ export interface ITempEventMakingProps {}
 
 const EventMaking = (props: ITempEventMakingProps) => {
   const [plan, setPlan] = useState('oneTime');
-
   return (
     <AppLayout>
       <StyledEventMaking>

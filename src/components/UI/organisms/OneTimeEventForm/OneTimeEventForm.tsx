@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../../atoms/Button/Button';
 import EventAssignes, { IMember } from '../../molecules/EventAssignes/EventAssignes';
@@ -21,6 +21,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   // const [showCategoryModal, setShowCategoryModal] = useState(false);
   // const [chooseCategory, setChooseCategory] = useState<{ src: string; id: number; category: string }>();
   const [checkMembers, setCheckMembers] = useState<number[]>([]);
+
   const [startDate, setStartDate] = useState<Date>();
   const [dateErrorMessage, setDateErrorMessage] = useState('');
   const {
