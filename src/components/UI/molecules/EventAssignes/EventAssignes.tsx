@@ -89,7 +89,7 @@ const EventAssignes = ({ onClick, checkMembers, mb }: IMoleEventAssignesProps) =
   return (
     <StyledEventAssignes mb={mb || '0px'}>
       <div className="eventAssignes_header">
-        <Title fontSize="17px" fontWeight="700">
+        <Title fontSize="17px" fontWeight="700" color="#3F4245">
           담당자를 선택해주세요!
         </Title>
         <span>{checkMembers.length}명 선택됨</span>

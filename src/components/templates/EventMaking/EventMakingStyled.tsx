@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledEventMaking = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   .eventMaking_selectBtn {

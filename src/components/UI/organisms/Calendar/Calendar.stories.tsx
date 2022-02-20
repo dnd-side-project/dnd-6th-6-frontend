@@ -1,4 +1,4 @@
-import Calendar from './Calendar';
+import Calendar, { IOrgCalendarProps } from './Calendar';
 import { Meta, Story } from '@storybook/react';
 import { type } from 'os';
 
@@ -7,7 +7,7 @@ export default {
   component: Calendar,
 } as Meta;
 
-const Template: Story = (args) => (
+const Template: Story<IOrgCalendarProps> = (args) => (
   <>
     <Calendar {...args} />
   </>
@@ -15,4 +15,7 @@ const Template: Story = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  // startDate: Date,
+  // setStartDate: Date
+};

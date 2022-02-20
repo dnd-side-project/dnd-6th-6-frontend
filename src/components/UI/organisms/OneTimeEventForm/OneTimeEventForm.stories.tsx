@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<IOrgOneTimeEventFormProps> = (args) => (
   <>
-    <div style={{ width: '375px' }}>
+    <div style={{ padding: '20px' }}>
       <OneTimeEventForm {...args}></OneTimeEventForm>
     </div>
   </>
