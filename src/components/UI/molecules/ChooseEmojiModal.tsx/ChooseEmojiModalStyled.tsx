@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const CategoryModalWrapper = styled.div`
+export const EmojiModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@ export const CategoryModalWrapper = styled.div`
   background: rgba(32, 34, 36, 0.75);
 `;
 
-export const StyledChooseCatagoryModal = styled.div`
+export const StyledChooseEmojiModal = styled.div`
   position: absolute;
   bottom: 0;
   right: 0px;
@@ -20,7 +20,7 @@ export const StyledChooseCatagoryModal = styled.div`
   background-color: #ffffff;
   border: 1px solid #e4ebf5;
   border-radius: 16px 16px 0px 0px;
-  .chooseCategoryModal_header {
+  .chooseEmojiModal_header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 29px;
@@ -29,7 +29,7 @@ export const StyledChooseCatagoryModal = styled.div`
       color: #989ca5;
     }
   }
-  .chooseCategoryModal_swiper {
+  .chooseEmojiModal_swiper {
     margin-bottom: 37px;
     .swiper-slide {
       width: 139px;
@@ -38,7 +38,7 @@ export const StyledChooseCatagoryModal = styled.div`
   }
 `;
 
-export const ChooseCategoryModalImgWrapper = styled.div<{ check: boolean }>`
+export const ChooseEmojiModalImgWrapper = styled.div<{ check: boolean }>`
   ${(props) => {
     const border = props.check ? `2px solid #5badff` : 'none';
     return css`
