@@ -24,11 +24,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   // const [showCategoryModal, setShowCategoryModal] = useState(false);
   // const [chooseCategory, setChooseCategory] = useState<{ src: string; id: number; category: string }>();
   const [checkMembers, setCheckMembers] = useState<number[]>([]);
-  const [visible, setvisible] = useState(false);
   const ref = useRef({ 시간대: '', 시: 0, 분: 0 });
-  const showTimer = () => {
-    setvisible(!visible);
-  };
   const [startDate, setStartDate] = useState<Date>();
   const [dateErrorMessage, setDateErrorMessage] = useState('');
   const {
@@ -93,24 +89,11 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
           </Label>
           <Calendar startDate={startDate} setStartDate={setStartDate} setDateErrorMessage={setDateErrorMessage} />
           {/* 타이머 */}
-          <button className="TimerInput" onClick={showTimer}>
-            {ref.current.시간대 == '' ? (
-              <div className="value">시간을 입력해주세요</div>
-            ) : (
-              <div className="selectValue">
-                {ref.current.시간대} {ref.current.시}시 {ref.current.분}분
-              </div>
-            )}
-            <div className="icon">
-              <TimerIcon />
-            </div>
-          </button>
-          {visible && <TimePicker visible={showTimer} ref={ref} />}
-          {/* */}
+          <TimePicker ref={ref} />
           <Message className="error">{dateErrorMessage}</Message>
         </div>
 
-        <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} mb="35px" />
+        <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} />
       </div>
       <Button className="basic">완료</Button>
       {/* {showCategoryModal && (

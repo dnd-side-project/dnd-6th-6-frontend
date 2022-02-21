@@ -12,6 +12,7 @@ export interface IAtomButtonProps {
   width?: string;
   height?: string;
   borderRedius?: string;
+  disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

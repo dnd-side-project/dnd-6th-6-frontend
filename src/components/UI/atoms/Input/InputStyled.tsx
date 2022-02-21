@@ -4,10 +4,10 @@ import { IAtomInputProps } from './Input';
 export const StyledInput = styled.input<IAtomInputProps>`
   ${(props) => {
     return css`
-      font-size: 15px;
+      font-size: 14px;
       width: ${props.width || '100%'};
-      height: 48px;
-      padding: 16px;
+      height: 52px;
+      padding: 16px 20px;
       border-radius: 8px;
       margin-bottom: ${props.mb || 0};
       border: 1px solid #e4ebf5;
@@ -16,7 +16,7 @@ export const StyledInput = styled.input<IAtomInputProps>`
         outline: none;
       }
       &::placeholder {
-        color: #9ca3ab;
+        color: #a7adbd;
       }
     `;
   }}
@@ -27,7 +27,8 @@ export const StyledButtonInput = styled.div`
   width: 100%;
   .delete {
     position: absolute;
-    top: 15px;
-    right: 10px;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
   }
 `;

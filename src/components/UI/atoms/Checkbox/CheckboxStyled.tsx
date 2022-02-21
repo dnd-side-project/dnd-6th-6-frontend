@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCheckbox = styled.div`
+export const StyledCheckbox = styled.div<{ mb: string }>`
   position: relative;
   width: 100%;
   height: 52px;
@@ -9,6 +9,7 @@ export const StyledCheckbox = styled.div`
   border: 1px solid #e2edfe;
   background-color: #eff5fe;
   border-radius: 8px;
+  margin-bottom: ${(props) => props.mb};
   input[type='radio'] {
     position: absolute;
     visibility: hidden;
