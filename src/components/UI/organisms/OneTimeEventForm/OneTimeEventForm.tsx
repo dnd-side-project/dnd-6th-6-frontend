@@ -4,15 +4,10 @@ import Button from '../../atoms/Button/Button';
 import EventAssignes, { IMember } from '../../molecules/EventAssignes/EventAssignes';
 import TextInput from '../../molecules/TextInput/TextInput';
 import { StyledOneTimeEventForm } from './OneTimeEventFormStyled';
-import imgChoose from '../../../../src_assets/imgChoose.svg';
-import ChooseCatagoryModal from '../../molecules/ChooseCatagoryModal.tsx/ChooseCatagoryModal';
 import Calendar from '../Calendar/Calendar';
-import Title from '../../atoms/Title/Title';
 import Label from '../../atoms/Label/Label';
 import Message from '../../atoms/Message/Message';
 import TimePicker from '../Timer/TimePicker';
-import { Navigate } from 'react-router-dom';
-import { ReactComponent as TimerIcon } from '../../../../src_assets/TimerIcon.svg';
 
 interface IForm {
   title: string;

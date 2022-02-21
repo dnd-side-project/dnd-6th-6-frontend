@@ -13,6 +13,7 @@ import EventMaking from './components/templates/EventMaking/EventMaking';
 import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
+import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/profileSetting" element={<ProfileSetting />} />
         <Route path="housemake" element={<HouseMaking />} />
+        <Route path="/feedbackgive" element={<FeedbackGive />} />
         <Route path="/request" element={<Request />} />
         <Route path="/requestReceive" element={<RequestReceive />} />
         <Route path="/shareHousework" element={<ShareHouseWork />} />

@@ -18,8 +18,8 @@ export const StyledButton = styled.button<IAtomButtonProps>`
     color: #ffffff;
   }
   &:disabled {
-    background-color: #e7eaec;
-    color: #b9c2c7;
-    border: 1px solid #dae0e4;
+    background-color: #c6def5;
+    color: #ffffff;
+    border: 1px solid #cfe7ff;
   }
 `;
