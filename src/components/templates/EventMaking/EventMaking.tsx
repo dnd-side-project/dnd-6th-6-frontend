@@ -5,6 +5,7 @@ import Button from '../../UI/atoms/Button/Button';
 import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
 import OneTimeEventForm from '../../UI/organisms/OneTimeEventForm/OneTimeEventForm';
+import RepeatEventForm from '../../UI/organisms/RepeatEventForm/RepeatEventForm';
 import { StyledEventMaking } from './EventMakingStyled';
 
 export interface ITempEventMakingProps {}
@@ -38,6 +39,7 @@ const EventMaking = (props: ITempEventMakingProps) => {
           </Button>
         </div>
         {plan === 'oneTime' && <OneTimeEventForm />}
+        {plan === 'repeat' && <RepeatEventForm />}
       </StyledEventMaking>
     </AppLayout>
   );
