@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router';
+import { Chore, RepeatChore } from '../../../interfaces/chore';
+import { User } from '../../../interfaces/user';
 import { GlobalStyle } from '../../../styles/global-style';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
@@ -54,7 +56,7 @@ const members = [
   },
 ];
 
-//로그인한 user 정보 Dummy Data
+// 로그인한 user 정보 Dummy Data
 const me = {
   id: 1,
   username: '지수',
@@ -76,7 +78,11 @@ const house = {
   name: '서울하우스',
 };
 
-export interface ITempMainPorps {}
+export interface ITempMainProps {
+  me: User;
+  todayChoresMe: Chore | RepeatChore[];
+  todayChoresOther: Chore | RepeatChore[];
+}
 
 const Main = () => {
   const navigate = useNavigate();
