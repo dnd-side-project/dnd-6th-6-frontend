@@ -1,6 +1,8 @@
+import { House } from './house';
+
 export interface Profile {
   avatar?: string;
-  house?: string;
+  house?: House;
 }
 
 export interface User {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -57,6 +57,12 @@ export const kakaoLoginAPI = () => {
 // 로그인  - 네이버
 export const naverLoginAPI = () => {
   return axios.get(`/users/login/naver`).then((response) => response.data);
+};
+
+// 로그인한 user 정보
+export const getLoginUser = () => {
+  // token 붙이기
+  return axios.get(`/users/mypage/profile`).then((response) => response.data);
 };
 
 // 오늘 내 할일 목록
