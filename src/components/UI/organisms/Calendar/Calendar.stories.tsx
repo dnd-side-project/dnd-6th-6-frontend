@@ -1,6 +1,5 @@
 import Calendar, { IOrgCalendarProps } from './Calendar';
 import { Meta, Story } from '@storybook/react';
-import { type } from 'os';
 
 export default {
   title: 'organisms/Calendar',

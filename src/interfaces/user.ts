@@ -1,6 +1,7 @@
 import { House } from './house';
 
 export interface Profile {
+  id?: number;
   avatar?: string;
   house?: House;
 }
@@ -9,5 +10,5 @@ export interface User {
   id: number;
   first_name: string;
   username: string;
-  profile: Profile;
+  user_profile: Profile;
 }

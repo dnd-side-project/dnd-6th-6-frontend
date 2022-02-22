@@ -2,11 +2,7 @@ import { ChooseCategoryImgWrapper, StyledCategories } from './CategoriesStyled';
 import basket from '../../../../src_assets/basket.svg';
 import pail from '../../../../src_assets/pail.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-const categoryImgURLs = [
-  { src: basket, id: 1, category: '빨래' },
-  { src: pail, id: 2, category: '청소' },
-];
+import { categoryImgURLs } from '../../../../utils/category';
 
 export interface IMoleCategoriesProps {
   onClick: (category: { src: string; id: number; category: string }) => void;

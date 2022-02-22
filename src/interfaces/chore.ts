@@ -21,7 +21,7 @@ export interface ChoreInfomation {
 export interface Chore {
   id: number;
   assignees: User[];
-  infomation: ChoreInfomation;
+  information: ChoreInfomation;
   planned_at: Date;
   completed_at: Date | null;
 }
@@ -31,4 +31,6 @@ export interface RepeatChore {
   assignees: User[];
   information: ChoreInfomation;
   days: Day[];
+  planned_at: Date;
+  completed_at: Date | null;
 }

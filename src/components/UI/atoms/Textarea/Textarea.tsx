@@ -12,9 +12,17 @@ export interface IAtomTextareaProps {
 }
 
 const Textarea = (props: IAtomTextareaProps) => {
+  const autoResize = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    e.currentTarget.style.height = e.currentTarget.scrollHeight + 'px';
+  };
   return (
     <>
-      <StyledTextarea {...props} {...props.register} placeholder={props.placeholder}></StyledTextarea>
+      <StyledTextarea
+        onInput={autoResize}
+        {...props}
+        {...props.register}
+        placeholder={props.placeholder}
+      ></StyledTextarea>
     </>
   );
 };

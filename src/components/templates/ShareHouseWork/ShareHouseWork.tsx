@@ -25,7 +25,7 @@ const ShareHouseWork = () => {
             <span>아직 분담 계획이 없어요</span>
             <span>일정을 만들고 가사분담을 진행해보세요!</span>
           </div>
-          <Link to="/eventmake">
+          <Link to="/event/make">
             <MakeEventBtn className="shareHouseWork_makeEventBtn" />
           </Link>
         </StyledShareHouseWork>

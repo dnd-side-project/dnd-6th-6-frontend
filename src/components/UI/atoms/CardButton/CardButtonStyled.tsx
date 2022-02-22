@@ -5,6 +5,7 @@ export const StyledCardButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
   &.meComplete {
     font-weight: 700;
     width: 40px;
@@ -49,5 +50,14 @@ export const StyledCardButton = styled.button`
     border: 1px solid #61b3ff;
     border-radius: 40px;
     background-color: #55adff;
+  }
+  &.tag {
+    width: 71px;
+    height: 24px;
+    font-weight: 500;
+    font-size: 11px;
+    color: #ffffff;
+    background: #5badff;
+    border-radius: 12.5px;
   }
 `;
