@@ -7,7 +7,7 @@ import { StyledEventDetailHeader } from './EventDetailHeaderStyled';
 export interface IOrgEventDetailHeaderProps {
   name: string;
   planned_at: Date;
-  completed_at?: Date;
+  completed_at: Date | null;
   assignees: User[];
   isRepeatChore: boolean;
 }
