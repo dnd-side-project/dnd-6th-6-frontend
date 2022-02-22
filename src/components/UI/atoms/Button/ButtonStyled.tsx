@@ -17,4 +17,9 @@ export const StyledButton = styled.button<IAtomButtonProps>`
     font-size: 16px;
     color: #ffffff;
   }
+  &:disabled {
+    background-color: #c6def5;
+    color: #ffffff;
+    border: 1px solid #cfe7ff;
+  }
 `;

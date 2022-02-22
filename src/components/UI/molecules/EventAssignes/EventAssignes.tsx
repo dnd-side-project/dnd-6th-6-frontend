@@ -85,7 +85,7 @@ export interface IMoleEventAssignesProps {
   mb?: string;
 }
 
-const EventAssignes = ({ onClick, checkMembers, mb }: IMoleEventAssignesProps) => {
+const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ children, onClick, checkMembers, mb }) => {
   return (
     <StyledEventAssignes mb={mb || '0px'}>
       <div className="eventAssignes_header">
@@ -94,6 +94,7 @@ const EventAssignes = ({ onClick, checkMembers, mb }: IMoleEventAssignesProps) =
         </Title>
         <span>{checkMembers.length}명 선택됨</span>
       </div>
+      {children}
       <div className="members_swiper">
         <Swiper slidesPerView={'auto'} className="mySwiper" spaceBetween={14}>
           {members.map((member) => (

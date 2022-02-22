@@ -4,10 +4,7 @@ import Button from '../../atoms/Button/Button';
 import EventAssignes, { IMember } from '../../molecules/EventAssignes/EventAssignes';
 import TextInput from '../../molecules/TextInput/TextInput';
 import { StyledOneTimeEventForm } from './OneTimeEventFormStyled';
-import imgChoose from '../../../../src_assets/imgChoose.svg';
-import ChooseCatagoryModal from '../../molecules/ChooseCatagoryModal.tsx/ChooseCatagoryModal';
 import Calendar from '../Calendar/Calendar';
-import Title from '../../atoms/Title/Title';
 import Label from '../../atoms/Label/Label';
 import Message from '../../atoms/Message/Message';
 import TimePicker from '../Timer/TimePicker';
@@ -23,11 +20,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   // const [showCategoryModal, setShowCategoryModal] = useState(false);
   // const [chooseCategory, setChooseCategory] = useState<{ src: string; id: number; category: string }>();
   const [checkMembers, setCheckMembers] = useState<number[]>([]);
-  const [visible, setvisible] = useState(false);
   const ref = useRef({ 시간대: '', 시: 0, 분: 0 });
-  const showTimer = () => {
-    setvisible(!visible);
-  };
   const [startDate, setStartDate] = useState<Date>();
   const [dateErrorMessage, setDateErrorMessage] = useState('');
   const {
@@ -57,7 +50,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
   // };
 
   const onVaild = (data: IForm) => {
-    if (dateErrorMessage === '') {
+    if (!startDate) {
       setDateErrorMessage('날짜를 선택해주세요.');
       console.log(dateErrorMessage);
       return;
@@ -93,24 +86,11 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
           </Label>
           <Calendar startDate={startDate} setStartDate={setStartDate} setDateErrorMessage={setDateErrorMessage} />
           {/* 타이머 */}
-          <button className="TimerInput" onClick={showTimer}>
-            {ref.current.시간대 == '' ? (
-              <div className="value">시간을 입력해주세요</div>
-            ) : (
-              <div className="selectValue">
-                {ref.current.시간대} {ref.current.시}시 {ref.current.분}분
-              </div>
-            )}
-            <div className="icon">
-              <TimerIcon />
-            </div>
-          </button>
-          {visible && <TimePicker visible={showTimer} ref={ref} />}
-          {/* */}
+          <TimePicker ref={ref} />
           <Message className="error">{dateErrorMessage}</Message>
         </div>
 
-        <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} mb="35px" />
+        <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} />
       </div>
       <Button className="basic">완료</Button>
       {/* {showCategoryModal && (
