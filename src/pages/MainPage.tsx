@@ -30,7 +30,8 @@ const MainPage = () => {
   // 고정된 공지사항 값
   // 알림 여부
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken') || '');
+    setToken(localStorage.getItem('token') || '');
+    //token없을경우 login page로 redirect
   }, [token]);
 
   if (!me || !todayChoresMe || !todayChoresOther) {
