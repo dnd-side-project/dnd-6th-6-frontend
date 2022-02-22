@@ -53,13 +53,13 @@
 
 .react-datepicker__day.react-datepicker__day--disabled {
   color: #9ca3ab;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
 }
 
 .react-datepicker__day {
   color: #3f4245;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
 }
 
@@ -128,7 +128,7 @@
 }
 .CustomInput > .selectValue {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: #5b6574;
 }
 .CustomInput > .icon {

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router';
+import { sendCodeAPI, sendJoinEmailAPI } from '../../../apis/user';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import Title from '../../UI/atoms/Title/Title';
@@ -25,6 +26,7 @@ const EmailAuth = () => {
 
   const onResendClick = () => {
     //이메일 재발송 API
+    sendJoinEmailAPI(state);
     //나중에 여러번 클릭 막기
     console.log('이메일 재발숭');
   };
@@ -32,8 +34,9 @@ const EmailAuth = () => {
   const onVaild = (data: IEmailAuthForm) => {
     console.log(data);
     //해당 code가 맞는지 check API
-    //setError('code', { message: '인증코드가 일치하지 않습니다.' }, { shouldFocus: true });
-    navigate('/join/password', { state });
+    sendCodeAPI(data.code)
+      .then((response) => navigate('/join/password', { state }))
+      .catch((e) => setError('code', { message: '인증코드가 일치하지 않습니다.' }, { shouldFocus: true }));
   };
   if (!state) {
     navigate('/join/email');

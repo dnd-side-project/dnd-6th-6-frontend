@@ -11,17 +11,18 @@ import { ProgressiveBar } from './HouseMakingStyled';
 import { StyledForm } from './HouseMakingStyled';
 import { ReactComponent as HouseIcon } from '../../../src_assets/HouseMaking.svg';
 import Label from '../../UI/atoms/Label/Label';
-import Input from '../../UI/atoms/Input/Input';
 import { TextInputWrapper } from '../Join/JoinStyled';
 import InputwithButton from '../../UI/atoms/Input/InputwithButton';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export interface IHouseMakingForm {
   housename: string;
-  invited: { email: any }[];
+  invited: { email: string }[];
 }
 
 const HouseMaking = () => {
+  const [submitdata, setsubmitdata] = useState({ housename: '', invited: [{ email: '' }] });
   const navigate = useNavigate();
   const {
     register,
@@ -46,19 +47,30 @@ const HouseMaking = () => {
     if (pageCount == 1) {
       return navigate(-1);
     }
+    setsubmitdata({ housename: '', invited: [{ email: '' }] });
     setPageCount((prev) => prev - 1);
   };
 
-  useEffect(() => {
-    console.log(fields);
-  });
   const onValid = (data: IHouseMakingForm) => {
     if (!errors.housename && pageCount == 1) {
       return setPageCount((prev) => prev + 1);
     }
-    if (!errors.invited && pageCount == 2 && fields.length != 0) {
+    if (!errors.invited && pageCount == 2) {
+      setsubmitdata({ housename: data.housename, invited: [...submitdata.invited, ...data.invited] });
       console.log('데이터', data);
       return setPageCount((prev) => prev + 1);
+    }
+  };
+
+  const ValidEmail = async (event: any) => {
+    const checkvalue = event.target.previousSibling.childNodes[0].value;
+    try {
+      const data = await axios.post('http://localhost:8000/users/login/email', {
+        login_email: checkvalue,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
     }
   };
   return (
@@ -117,18 +129,24 @@ const HouseMaking = () => {
                 </div>
                 {fields.map((field, index) => {
                   return (
-                    <InputwithButton
-                      key={field.id}
-                      mb="5px"
-                      onClick={() => {
-                        remove(index);
-                      }}
-                      placeholder="email"
-                      type="email"
-                      register={{
-                        ...register(`invited.${index}.email` as const, { required: true }),
-                      }}
-                    />
+                    <div className="InviteInputWrapper">
+                      <InputwithButton
+                        key={field.id}
+                        mb="5px"
+                        onClick={() => {
+                          remove(index);
+                        }}
+                        placeholder="example@domain.com"
+                        type="email"
+                        register={{
+                          ...register(`invited.${index}.email` as const, { required: '초대 이메일을 입력주세요' }),
+                        }}
+                        message={errors?.['invited']?.[index]?.['email']?.message || ''}
+                      />
+                      <button type="button" onClick={ValidEmail} className="InvitedCheckButton">
+                        확인
+                      </button>
+                    </div>
                   );
                 })}
               </TextInputWrapper>
@@ -162,7 +180,7 @@ const HouseMaking = () => {
                   </div>
                   <div className="BoardInner">
                     <div className="BoardHeader">구성원</div>
-                    <div className="BoardValue">{fields.length + 1}</div>
+                    <div className="BoardValue">{submitdata?.invited.length}</div>
                   </div>
                 </div>
                 <Button bgColor="#5d9eff" color="white">

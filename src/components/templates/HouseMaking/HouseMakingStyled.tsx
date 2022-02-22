@@ -5,6 +5,17 @@ export const StyledHouseMaking = styled.div`
   height: 100%;
   width: 100%;
   flex-direction: column;
+  .InviteInputWrapper {
+    display: flex;
+    .InvitedCheckButton {
+      width: 67px;
+      height: 48px;
+      background-color: #eff5fe;
+      border: solid 1px #e4ebf5;
+      margin-left: 4px;
+      border-radius: 8px;
+    }
+  }
   .Result {
     margin-top: 30px;
     align-items: center;

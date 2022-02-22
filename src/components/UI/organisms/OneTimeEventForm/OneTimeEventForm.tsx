@@ -8,6 +8,7 @@ import Calendar from '../Calendar/Calendar';
 import Label from '../../atoms/Label/Label';
 import Message from '../../atoms/Message/Message';
 import TimePicker from '../Timer/TimePicker';
+import { ReactComponent as TimerIcon } from '../../../../src_assets/TimerIcon.svg';
 
 interface IForm {
   title: string;
@@ -57,6 +58,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
     if (checkMembers.length === 0) return;
     console.log({ ...data, checkMembers, plan_at: startDate });
   };
+
   return (
     <StyledOneTimeEventForm onSubmit={handleSubmit(onVaild)}>
       <div className="oneTimeEvent_info">
