@@ -11,7 +11,6 @@ import Title from '../../atoms/Title/Title';
 import Label from '../../atoms/Label/Label';
 import Message from '../../atoms/Message/Message';
 import TimePicker from '../Timer/TimePicker';
-import { Navigate } from 'react-router-dom';
 import { ReactComponent as TimerIcon } from '../../../../src_assets/TimerIcon.svg';
 
 interface IForm {
@@ -66,6 +65,7 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
     if (checkMembers.length === 0) return;
     console.log({ ...data, checkMembers, plan_at: startDate });
   };
+
   return (
     <StyledOneTimeEventForm onSubmit={handleSubmit(onVaild)}>
       <div className="oneTimeEvent_info">

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://미정';
+const BASE_URL = 'http://localhost:8000';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -15,8 +15,8 @@ export const getUserAPI = (userId: number) => {
 };
 
 // 회원가입 - 이메일 입력, 인증 코드 전송
-export const sendJoinEmailAPI = (signup_email: string) => {
-  return axios.post(`/users/email`, { signup_email }).then((response) => response.data);
+export const sendJoinEmailAPI = (signup_email: any) => {
+  return axios.post(`/users/email`, { signup_email });
 };
 
 // 회원가입 - 인증 코드 입력
@@ -25,7 +25,7 @@ export const sendCodeAPI = (code: string) => {
 };
 
 // 회원가입 - 비번 입력
-export const sendJoinPassword = (data: { signup_email: string; password: string; ck_password: string }) => {
+export const sendJoinPassword = (data: { signup_email: any; password: string; ck_password: string }) => {
   return axios.post(`/users/password`, data).then((response) => response.data);
 };
 
@@ -36,12 +36,12 @@ export const setProfileAPI = (data: { signup_email: string; name: string; gender
 
 // 로그인  - 이메일 입력
 export const sendLoginEmailAPI = (login_email: string) => {
-  return axios.post(`/users/login/email`, { login_email }).then((response) => response.data);
+  return axios.post(`/users/login/email`, { login_email });
 };
 
 // 로그인  - 비번 입력
 export const sendLoginPasswordAPI = (data: { login_email: string; password: string }) => {
-  return axios.post(`/users/login/password`, data).then((response) => response.data);
+  return axios.post(`/users/login/password`, data);
 };
 
 // 로그아웃

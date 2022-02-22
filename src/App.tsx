@@ -13,6 +13,7 @@ import EventMaking from './components/templates/EventMaking/EventMaking';
 import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
+import Profile from './components/templates/Profile/Profile';
 function App() {
   return (
     <Router>
@@ -35,6 +36,7 @@ function App() {
           <Route path="detail" element={<NoticeDetail />} />
           <Route path="write" element={<NoticeWrite />} />
         </Route>
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
     // <>

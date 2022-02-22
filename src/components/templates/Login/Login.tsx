@@ -6,9 +6,10 @@ import Title from '../../UI/atoms/Title/Title';
 import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { useNavigate } from 'react-router-dom';
+import { sendLoginEmailAPI, sendLoginPasswordAPI } from '../../../apis/user';
 
 export interface ILoginForm {
-  email: string;
+  login_email: string;
   password: string;
 }
 
@@ -18,6 +19,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<ILoginForm>();
   const [pageCount, setPageCount] = useState(0);
 
@@ -29,11 +31,19 @@ const Login = () => {
   };
 
   const onValid = (data: ILoginForm) => {
-    if (!errors.email && pageCount == 0) {
-      return setPageCount((prev) => prev + 1);
+    if (!errors.login_email && pageCount == 0) {
+      sendLoginEmailAPI(data.login_email)
+        .then(() => setPageCount((prev) => prev + 1))
+        .catch((e) => setError('login_email', { message: '존재하지 않는 이메일입니다' }, { shouldFocus: true }));
+      return;
     }
     //axios요청
-    console.log(data);
+    sendLoginPasswordAPI(data)
+      .then((response) => {
+        console.log(response.data);
+        //유저정보 담고 메인으로navigate('/main')
+      })
+      .catch((e) => setError('password', { message: '비밀번호가 일치하지 않습니다' }, { shouldFocus: true }));
   };
 
   return (
@@ -54,13 +64,13 @@ const Login = () => {
             <>
               <TextInput
                 register={{
-                  ...register('email', {
+                  ...register('login_email', {
                     required: '이메일을 입력하세요',
                   }),
                 }}
                 labelText="이메일"
                 type="email"
-                message={errors.email?.message || ''}
+                message={errors.login_email?.message || ''}
               />
               <Button>다음</Button>
             </>
