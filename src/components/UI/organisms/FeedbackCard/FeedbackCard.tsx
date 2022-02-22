@@ -1,19 +1,7 @@
 import { StyledFeedbackCard } from './FeedbackCardStyled';
-import basket from '../../../../src_assets/basket.svg';
-import pail from '../../../../src_assets/pail.svg';
-import heart from '../../../../src_assets/heart.svg';
 import Avatar from '../../atoms/Avatar/Avatar';
-
-const emojiImgURLs = [
-  { src: heart, id: 1, emoji: '하트' },
-  { src: basket, id: 2, emoji: '빨래' },
-  { src: pail, id: 3, emoji: '청소' },
-];
-
-const categoryImgURLs = [
-  { src: basket, id: 1, category: '빨래' },
-  { src: pail, id: 2, category: '청소' },
-];
+import { categoryImgURLs } from '../../../../utils/category';
+import { emojiImgURLs } from '../../../../utils/emoji';
 
 export interface IOrgFeedbackCardProps {
   from_emojiIndex: number;

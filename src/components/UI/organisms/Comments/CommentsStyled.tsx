@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledComments = styled.div`
+  background-color: #ffffff;
   .comments_length {
     padding: 16px 20px 0;
     display: flex;
