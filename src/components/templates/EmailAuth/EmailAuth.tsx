@@ -13,6 +13,9 @@ import { StyledEmailAuth, StyledForm, TextInputWrapper } from './EmailAuthStyled
 interface IEmailAuthForm {
   code: string;
 }
+interface ILocation {
+  state: string;
+}
 
 const EmailAuth = () => {
   const navigate = useNavigate();
@@ -26,7 +29,7 @@ const EmailAuth = () => {
 
   const onResendClick = () => {
     //이메일 재발송 API
-    sendJoinEmailAPI(state);
+    sendJoinEmailAPI(state as string);
     //나중에 여러번 클릭 막기
     console.log('이메일 재발숭');
   };

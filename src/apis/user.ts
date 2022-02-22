@@ -15,7 +15,7 @@ export const getUserAPI = (userId: number) => {
 };
 
 // 회원가입 - 이메일 입력, 인증 코드 전송
-export const sendJoinEmailAPI = (signup_email: any) => {
+export const sendJoinEmailAPI = (signup_email: string) => {
   return axios.post(`/users/email`, { signup_email });
 };
 

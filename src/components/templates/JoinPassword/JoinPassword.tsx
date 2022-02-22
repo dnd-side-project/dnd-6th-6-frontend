@@ -31,9 +31,11 @@ const JoinPassword = () => {
   const onVaild = (data: IPasswordForm) => {
     console.log(data, state);
     // 비밀번호 등록 API
-    sendJoinPassword({ signup_email: state, password: data.password, ck_password: data.passwordConfirm }).then(
-      (response) => navigate('/profileSetting'),
-    );
+    sendJoinPassword({
+      signup_email: state as string,
+      password: data.password,
+      ck_password: data.passwordConfirm,
+    }).then((response) => navigate('/profileSetting'));
   };
 
   const onBack = () => {
