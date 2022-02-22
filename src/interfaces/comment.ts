@@ -12,7 +12,7 @@ export interface ChoreComment {
 export interface RepeatChoreComment {
   id: number;
   writer: User;
-  reapeat_chore: RepeatChore;
+  repeat_chore: RepeatChore;
   content: string;
   writed_at: Date;
 }

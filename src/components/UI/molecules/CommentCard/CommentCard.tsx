@@ -3,7 +3,7 @@ import { StyledCommentCard } from './CommentCardStyled';
 
 export interface IMoleCommentCardProps {
   first_name: string;
-  avatar: string;
+  avatar?: string;
   content: string;
   writed_at: string; //Date
 }
