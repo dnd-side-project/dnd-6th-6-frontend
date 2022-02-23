@@ -5,6 +5,7 @@ import NaverIcon from '../../../src_assets/naver.svg';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import { useNavigate } from 'react-router';
+import { kakaoLoginAPI } from '../../../apis/user';
 
 export interface ITempStartScreenProps {}
 
@@ -23,9 +24,9 @@ const StartScreen = (props: ITempStartScreenProps) => {
           <a href="http://localhost:8000/users/login/naver">
             <img src={NaverIcon} alt="naver" />
           </a>
-          <a href="http://localhost:8000/users/login/kakao">
-            <img src={KakaoIcon} alt="kakao" />
-          </a>
+          {/* <a href="http://localhost:8000/users/login/kakao"> */}
+          <img src={KakaoIcon} alt="kakao" onClick={kakaoLoginAPI} />
+          {/* </a> */}
         </div>
         <Button onClick={onClickEmailBtn} type="button" className="basic">
           이메일로 시작하기

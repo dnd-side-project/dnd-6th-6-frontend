@@ -4,6 +4,7 @@ import Join from './components/templates/Join/Join';
 import ProfileSetting from './components/templates/ProfileSetting/ProfileSetting';
 import Main from './components/templates/Main/Main';
 import HouseMaking from './components/templates/HouseMaking/HouseMaking';
+import HouseNone from './components/templates/HouseNone/HouseNone';
 import Request from './components/templates/Request/Request';
 import RequestReceive from './components/templates/RequestReceive/RequestReceive';
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
@@ -29,7 +30,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
         <Route path="/profileSetting" element={<ProfileSetting />} />
-        <Route path="housemake" element={<HouseMaking />} />
+        <Route path="/houseNone" element={<HouseNone />} />
+        <Route path="/housemake" element={<HouseMaking />} />
         <Route path="/feedback">
           <Route path=":feedbackId/accept" element={<FeedbackAccept />} />
           <Route path="give" element={<FeedbackGive />} />

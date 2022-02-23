@@ -9,5 +9,5 @@ export interface User {
   id: number;
   first_name: string;
   username: string;
-  profile: Profile;
+  profile?: Profile;
 }

@@ -23,12 +23,14 @@ export const StyledInput = styled.input<IAtomInputProps>`
 `;
 
 export const StyledButtonInput = styled.div`
-  position: relative;
   width: 100%;
   .delete {
     position: absolute;
     top: 50%;
-    right: 24px;
+    right: 16px;
     transform: translateY(-50%);
+  }
+  .block {
+    position: relative;
   }
 `;

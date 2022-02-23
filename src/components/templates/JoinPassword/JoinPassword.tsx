@@ -35,7 +35,7 @@ const JoinPassword = () => {
       signup_email: state as string,
       password: data.password,
       ck_password: data.passwordConfirm,
-    }).then((response) => navigate('/profileSetting'));
+    }).then((response) => navigate('/profileSetting', { state }));
   };
 
   const onBack = () => {

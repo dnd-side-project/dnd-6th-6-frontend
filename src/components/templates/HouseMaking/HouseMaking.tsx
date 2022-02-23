@@ -15,6 +15,8 @@ import { TextInputWrapper } from '../Join/JoinStyled';
 import InputwithButton from '../../UI/atoms/Input/InputwithButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { sendLoginEmailAPI } from '../../../apis/user';
+import { inviteHouseAPI, makeHouseAPI } from '../../../apis/house';
 
 export interface IHouseMakingForm {
   housename: string;
@@ -31,6 +33,7 @@ const HouseMaking = () => {
     setError,
     control,
     watch,
+    clearErrors,
   } = useForm<IHouseMakingForm>({
     defaultValues: {
       invited: [{ email: '' }],
@@ -60,18 +63,16 @@ const HouseMaking = () => {
       console.log('데이터', data);
       return setPageCount((prev) => prev + 1);
     }
+    makeHouseAPI(submitdata.housename);
+    // inviteHouseAPI(submitdata.invited);
   };
 
   const ValidEmail = async (event: any) => {
-    const checkvalue = event.target.previousSibling.childNodes[0].value;
-    try {
-      const data = await axios.post('http://localhost:8000/users/login/email', {
-        login_email: checkvalue,
-      });
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+    const checkvalue = event.target.previousSibling.childNodes[0].childNodes[0].value;
+    console.log(checkvalue);
+    sendLoginEmailAPI(checkvalue).catch((e) => {
+      setError(`invited.${event.target.id}.email`, { message: '존재하지 않는 유저입니다' }, { shouldFocus: true });
+    });
   };
   return (
     <AppLayout>
@@ -143,7 +144,7 @@ const HouseMaking = () => {
                         }}
                         message={errors?.['invited']?.[index]?.['email']?.message || ''}
                       />
-                      <button type="button" onClick={ValidEmail} className="InvitedCheckButton">
+                      <button type="button" onClick={ValidEmail} id={index.toString()} className="InvitedCheckButton">
                         확인
                       </button>
                     </div>

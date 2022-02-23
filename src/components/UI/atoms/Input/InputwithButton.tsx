@@ -2,7 +2,6 @@ import { StyledButtonInput, StyledInput } from './InputStyled';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { ReactComponent as CloseIcon } from '../../../../src_assets/closeButton.svg';
 import Message, { MessageType } from '../Message/Message';
-import React from 'react';
 
 export type InputType = 'email' | 'password' | 'text';
 
@@ -12,19 +11,20 @@ export interface IAtomInputProps {
   placeholder?: string;
   register?: UseFormRegisterReturn;
   mb?: string;
-  value?: string;
   onClick: () => void;
-  message?: string;
+  message: string;
   message_type?: MessageType;
 }
 
-const InputwithButton: React.FC<IAtomInputProps> = (props) => {
+const InputwithButton = (props: IAtomInputProps) => {
   const { onClick, ...restProps } = props;
   return (
     <StyledButtonInput>
-      <StyledInput {...restProps} {...restProps.register} value={props.value} />
-      <div className="delete" onClick={onClick}>
-        <CloseIcon />
+      <div className="block">
+        <StyledInput {...restProps} {...restProps.register} />
+        <div className="delete" onClick={onClick}>
+          <CloseIcon />
+        </div>
       </div>
       <Message className={props.message_type ? props.message_type : 'error'}>{props.message}</Message>
     </StyledButtonInput>

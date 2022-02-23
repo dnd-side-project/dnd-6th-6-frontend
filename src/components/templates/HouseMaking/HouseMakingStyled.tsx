@@ -9,7 +9,7 @@ export const StyledHouseMaking = styled.div`
     display: flex;
     .InvitedCheckButton {
       width: 67px;
-      height: 48px;
+      height: 52px;
       background-color: #eff5fe;
       border: solid 1px #e4ebf5;
       margin-left: 4px;

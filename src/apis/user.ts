@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { User } from '../interfaces/user';
 
 const BASE_URL = 'http://127.0.0.1:8000';
 
@@ -10,8 +11,8 @@ export const getAllUserAPI = () => {
 };
 
 // 유저 정보 반환
-export const getUserAPI = (userId: number) => {
-  return axios.get(`/users/${userId}`).then((response) => response.data);
+export const getUserAPI = async (userId: number) => {
+  return await axios.get(`/users/${userId}`).then((response) => response.data);
 };
 
 // 회원가입 - 이메일 입력, 인증 코드 전송
@@ -30,7 +31,7 @@ export const sendJoinPassword = (data: { signup_email: any; password: string; ck
 };
 
 // 회원가입 - 프로필 입력
-export const setProfileAPI = (data: { signup_email: string; name: string; gender: string }) => {
+export const setProfileAPI = (data: { signup_email: string; name: string }) => {
   return axios.post(`/users/profile`, data).then((response) => response.data);
 };
 
@@ -40,8 +41,8 @@ export const sendLoginEmailAPI = (login_email: string) => {
 };
 
 // 로그인  - 비번 입력
-export const sendLoginPasswordAPI = (data: { login_email: string; password: string }) => {
-  return axios.post(`/users/login/password`, data);
+export const sendLoginPasswordAPI = async (data: { login_email: string; password: string }) => {
+  return await axios.post<User>(`/users/login/password`, data);
 };
 
 // 로그아웃
@@ -51,7 +52,7 @@ export const logoutAPI = () => {
 
 // 로그인  - 카카오톡
 export const kakaoLoginAPI = () => {
-  return axios.get(`/users/login/kakao`).then((response) => response.data);
+  return axios.get(`/users/login/kakao/`).then((response) => response.data);
 };
 
 // 로그인  - 네이버

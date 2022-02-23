@@ -7,6 +7,7 @@ import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { useNavigate } from 'react-router-dom';
 import { sendLoginEmailAPI, sendLoginPasswordAPI } from '../../../apis/user';
+import { useQueryClient, useMutation } from 'react-query';
 
 export interface ILoginForm {
   login_email: string;
@@ -15,6 +16,20 @@ export interface ILoginForm {
 
 const Login = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation<any, Error, ILoginForm>(sendLoginPasswordAPI, {
+    onSuccess: (res) => {
+      queryClient.setQueryData('userInfo', res.data.user);
+      window.localStorage.setItem('Token', res.data.token);
+      if (res.data.user.house != null) {
+        navigate('/main');
+      } else {
+        navigate('/houseNone');
+      }
+    },
+    onError: (error) => setError('password', { message: '비밀번호가 일치하지 않습니다' }, { shouldFocus: true }),
+  });
+
   const {
     register,
     handleSubmit,
@@ -38,12 +53,7 @@ const Login = () => {
       return;
     }
     //axios요청
-    sendLoginPasswordAPI(data)
-      .then((response) => {
-        console.log(response.data);
-        //유저정보 담고 메인으로navigate('/main')
-      })
-      .catch((e) => setError('password', { message: '비밀번호가 일치하지 않습니다' }, { shouldFocus: true }));
+    mutation.mutate(data);
   };
 
   return (
