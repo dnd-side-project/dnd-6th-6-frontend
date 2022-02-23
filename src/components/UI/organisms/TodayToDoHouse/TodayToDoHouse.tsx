@@ -1,116 +1,14 @@
+import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
 import { Chore, RepeatChore } from '../../../../interfaces/chore';
 import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
 import HouseCard from '../../molecules/HouseCard/HouseCard';
 import { StyledTodayToDoHouse } from './TodayToDoHouseStyled';
 
-const todayToDoOthers: (Chore | RepeatChore)[] = [
-  {
-    id: 1,
-    planned_at: new Date(),
-    completed_at: new Date(),
-    information: {
-      id: 1,
-      name: '분리수거',
-      house: {
-        id: 1,
-        name: '서울하우스',
-      },
-      category: {
-        id: 2,
-        name: '분리수거',
-      },
-    },
-    days: [
-      {
-        id: 1,
-        name: '',
-      },
-    ],
-    assignees: [
-      {
-        id: 1,
-        first_name: '지현',
-        username: '지현',
-        user_profile: {
-          id: 1,
-          avatar: '',
-          house: {
-            id: 1,
-            name: '서울하우스',
-          },
-        },
-      },
-    ],
-  },
-  {
-    id: 2,
-    planned_at: new Date(),
-    completed_at: null,
-    information: {
-      id: 1,
-      name: '분리수거',
-      house: {
-        id: 1,
-        name: '서울하우스',
-      },
-      category: {
-        id: 2,
-        name: '분리수거',
-      },
-    },
-    days: [
-      {
-        id: 1,
-        name: '',
-      },
-    ],
-    assignees: [
-      {
-        id: 1,
-        first_name: '지현',
-        username: '지현',
-        user_profile: {
-          id: 1,
-          avatar: '',
-          house: {
-            id: 1,
-            name: '서울하우스',
-          },
-        },
-      },
-      {
-        id: 2,
-        first_name: '재현',
-        username: '재현',
-        user_profile: {
-          id: 1,
-          avatar: '',
-          house: {
-            id: 1,
-            name: '서울하우스',
-          },
-        },
-      },
-      {
-        id: 3,
-        first_name: '재훈',
-        username: '재훈',
-        user_profile: {
-          id: 1,
-          avatar: '',
-          house: {
-            id: 1,
-            name: '서울하우스',
-          },
-        },
-      },
-    ],
-  },
-];
+const todayToDoOthers: Chore[] = [chore1, chore2, chore3];
 
 export interface IOrgTodayToDoHouseProps {
-  // todayToDoOthers: (Chore | RepeatChore)[];
+  // todayToDoOthers: Chore[];
 }
 
 const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
