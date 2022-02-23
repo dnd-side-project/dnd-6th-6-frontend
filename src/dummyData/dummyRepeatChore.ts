@@ -7,23 +7,28 @@ export const repeatChore1: RepeatChore = {
   completed_at: new Date(),
   information: {
     id: 1,
-    name: '분리수거',
+    name: '빨래',
     house: {
       id: 1,
       name: '서울하우스',
     },
     category: {
-      id: 2,
-      name: '분리수거',
+      id: 1,
+      name: '빨래',
     },
   },
   days: [
     {
       id: 1,
-      name: '월요일',
+      name: '월',
+    },
+    {
+      id: 2,
+      name: '화',
     },
   ],
   assignees: [user2, user3],
+  comments: [],
 };
 
 export const repeatChore2: RepeatChore = {
@@ -32,10 +37,10 @@ export const repeatChore2: RepeatChore = {
   completed_at: null,
   information: {
     id: 1,
-    name: '세탁하기 및 널기',
+    name: '청소하기 및 널기',
     category: {
-      id: 1,
-      name: '세탁',
+      id: 2,
+      name: '청소',
     },
     house: {
       id: 1,
@@ -49,4 +54,5 @@ export const repeatChore2: RepeatChore = {
     },
   ],
   assignees: [user1],
+  comments: [],
 };
