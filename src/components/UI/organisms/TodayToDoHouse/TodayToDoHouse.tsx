@@ -121,7 +121,7 @@ const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
         <Title fontWeight="700" fontSize="17px" color="#222222">
           하우스 할 일 현황
         </Title>
-        <Time createdAt={new Date()} />
+        <Time className="chore" createdAt={new Date()} />
       </div>
       <div className="TodayToDoHouse_info">
         {/* 하우스 할 일 현황 없을떄 */}

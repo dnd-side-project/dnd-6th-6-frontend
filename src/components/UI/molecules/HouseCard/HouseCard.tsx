@@ -24,12 +24,12 @@ const HouseCard = ({ completed_at, event_title, assignees, planned_at }: IMoleHo
           {completed_at ? (
             <>
               <CardButton className="houseComplete">완료</CardButton>
-              <Time createdAt={completed_at} />
+              <Time className="chore" createdAt={completed_at} />
             </>
           ) : (
             <>
               <CardButton className="houseIncomplete">미완료</CardButton>
-              <Time createdAt={planned_at} />
+              <Time className="chore" createdAt={planned_at} />
             </>
           )}
         </div>
