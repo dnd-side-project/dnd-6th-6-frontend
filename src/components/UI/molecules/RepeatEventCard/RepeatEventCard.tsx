@@ -34,6 +34,7 @@ const RepeatEventCard = ({ repeatChore }: IMoleRepeatEventCardProps) => {
         <div className="repeatChore_avatar">
           {repeatChore.assignees.map((assignee, index) => (
             <Avatar
+              key={assignee.id}
               width="25.27px"
               height="25.27px"
               position="absolute"

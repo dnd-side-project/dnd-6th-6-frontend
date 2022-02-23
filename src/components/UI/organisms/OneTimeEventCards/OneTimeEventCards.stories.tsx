@@ -1,5 +1,6 @@
 import OneTimeEventCards, { IOrgOneTimeEventCardsProps } from './OneTimeEventCards';
 import { Meta, Story } from '@storybook/react';
+import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
 
 export default {
   title: 'organisms/OneTimeEventCards',
@@ -14,4 +15,6 @@ const Template: Story<IOrgOneTimeEventCardsProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  oneTimeChores: [chore1, chore2, chore3],
+};

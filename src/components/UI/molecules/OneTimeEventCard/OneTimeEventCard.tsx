@@ -21,6 +21,7 @@ const OneTimeEventCard = ({ chore }: IMoleOneTimeEventCardProps) => {
         <div className="oneTimeChore_avatar">
           {chore.assignees.map((assignee, index) => (
             <Avatar
+              key={assignee.id}
               width="25.27px"
               height="25.27px"
               position="absolute"

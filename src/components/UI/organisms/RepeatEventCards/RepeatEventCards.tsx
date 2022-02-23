@@ -3,12 +3,14 @@ import { StyledRepeatEventCards } from './RepeatEventCardsStyled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import RepeatEventCard from '../../molecules/RepeatEventCard/RepeatEventCard';
 import { repeatChore1, repeatChore2 } from '../../../../dummyData/dummyRepeatChore';
+import { Link } from 'react-router-dom';
+import { RepeatChore } from '../../../../interfaces/chore';
 
-const repeatChores = [repeatChore1, repeatChore2];
+export interface IOrgRepeatEventCardsProps {
+  repeatChores: RepeatChore[];
+}
 
-export interface IOrgRepeatEventCardsProps {}
-
-const RepeatEventCards = (props: IOrgRepeatEventCardsProps) => {
+const RepeatEventCards = ({ repeatChores }: IOrgRepeatEventCardsProps) => {
   return (
     <StyledRepeatEventCards>
       <Title color="#3F4245" fontSize="17px" mb="16px">
@@ -18,7 +20,9 @@ const RepeatEventCards = (props: IOrgRepeatEventCardsProps) => {
         {repeatChores.length > 0 ? (
           repeatChores.map((repeatChore) => (
             <SwiperSlide key={repeatChore.id}>
-              <RepeatEventCard repeatChore={repeatChore} />
+              <Link to={`/event/${repeatChore.id}`}>
+                <RepeatEventCard repeatChore={repeatChore} />
+              </Link>
             </SwiperSlide>
           ))
         ) : (

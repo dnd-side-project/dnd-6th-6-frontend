@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import { repeatChore1, repeatChore2 } from '../../../../dummyData/dummyRepeatChore';
 import RepeatEventCards, { IOrgRepeatEventCardsProps } from './RepeatEventCards';
 
 export default {
@@ -18,4 +19,6 @@ const Template: Story<IOrgRepeatEventCardsProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  repeatChores: [repeatChore1, repeatChore2],
+};

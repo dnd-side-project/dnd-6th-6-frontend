@@ -1,13 +1,17 @@
+import { Link } from 'react-router-dom';
 import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
+import { Chore } from '../../../../interfaces/chore';
 import Title from '../../atoms/Title/Title';
 import OneTimeEventCard from '../../molecules/OneTimeEventCard/OneTimeEventCard';
 import { StyledOneTimeEventCards } from './OneTimeEventCardsStyled';
 
-const oneTimeChores = [chore1, chore2, chore3];
+// const oneTimeChores = [chore1, chore2, chore3];
 
-export interface IOrgOneTimeEventCardsProps {}
+export interface IOrgOneTimeEventCardsProps {
+  oneTimeChores: Chore[];
+}
 
-const OneTimeEventCards = (props: IOrgOneTimeEventCardsProps) => {
+const OneTimeEventCards = ({ oneTimeChores }: IOrgOneTimeEventCardsProps) => {
   return (
     <StyledOneTimeEventCards>
       <Title color="#3F4245" fontSize="17px" mb="16px">
@@ -15,7 +19,9 @@ const OneTimeEventCards = (props: IOrgOneTimeEventCardsProps) => {
       </Title>
       <div className="oneTimeEventCards">
         {oneTimeChores.map((oneTimeChore) => (
-          <OneTimeEventCard chore={oneTimeChore} />
+          <Link to={`/event/${oneTimeChore.id}`} key={oneTimeChore.id}>
+            <OneTimeEventCard chore={oneTimeChore} />
+          </Link>
         ))}
       </div>
     </StyledOneTimeEventCards>
