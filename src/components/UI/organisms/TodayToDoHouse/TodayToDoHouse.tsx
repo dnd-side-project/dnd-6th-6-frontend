@@ -1,4 +1,5 @@
 import { Chore, RepeatChore } from '../../../../interfaces/chore';
+import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
 import HouseCard from '../../molecules/HouseCard/HouseCard';
 import { StyledTodayToDoHouse } from './TodayToDoHouseStyled';
@@ -120,7 +121,7 @@ const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
         <Title fontWeight="700" fontSize="17px" color="#222222">
           하우스 할 일 현황
         </Title>
-        <span>2월 5일 토요일</span>
+        <Time createdAt={new Date()} />
       </div>
       <div className="TodayToDoHouse_info">
         {/* 하우스 할 일 현황 없을떄 */}
