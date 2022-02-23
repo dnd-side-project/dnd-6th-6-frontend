@@ -9,7 +9,6 @@ import RequestReceive from './components/templates/RequestReceive/RequestReceive
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import EventMaking from './components/templates/EventMaking/EventMaking';
-import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
 import Profile from './components/templates/Profile/Profile';
@@ -17,6 +16,7 @@ import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
 import FeedbackAccept from './components/templates/FeedbackAccept/FeedbackAccept';
 import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
+import NoticeDetailPage from './pages/NoticeDatailPage';
 function App() {
   return (
     <Router>
@@ -44,7 +44,7 @@ function App() {
         </Route>
 
         <Route path="/notice">
-          <Route path="detail" element={<NoticeDetail />} />
+          <Route path="detail" element={<NoticeDetailPage />} />
           <Route path="write" element={<NoticeWrite />} />
         </Route>
         <Route path="/profile" element={<Profile />} />

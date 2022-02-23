@@ -12,13 +12,17 @@ const MainPage = () => {
     enabled: !!token,
   });
   // 오늘 내 할일 목록
-  const { data: todayChoresMe } = useQuery<Chore[]>(['todayChores', 'me'], () => todayChoresMeAPI(me?.id as number), {
-    enabled: !!me,
-  });
+  const { data: todayChoresMe } = useQuery<Chore[]>(
+    ['todayChores', 'me'],
+    () => todayChoresMeAPI(me?.user_profile.house?.id as number),
+    {
+      enabled: !!me,
+    },
+  );
   //오늘 남의 할일 목록
   const { data: todayChoresOther } = useQuery<Chore[]>(
     ['todayChores', 'other'],
-    () => todayChoresOthersAPI(me?.id as number),
+    () => todayChoresOthersAPI(me?.user_profile.house?.id as number),
     {
       enabled: !!me,
     },

@@ -19,10 +19,10 @@ const ShareHouseWorkPage = () => {
   // const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
   //   enabled: !!token,
   // });
-  // const { data: repeatChores } = useQuery<RepeatChore[]>('repeatChores', () => getAllChoresAPI(me?.id as number), {
+  // const { data: repeatChores } = useQuery<RepeatChore[]>('repeatChores', () => getAllChoresAPI(me?.user_profile.house?.id as number), {
   //   enabled: !!me,
   // });
-  // const { data: oneTimeChores } = useQuery<Chore[]>('oneTimeChores', () => getAllRepeatChoresAPI(me?.id as number), {
+  // const { data: oneTimeChores } = useQuery<Chore[]>('oneTimeChores', () => getAllRepeatChoresAPI(me?.user_profile.house?.id as number), {
   //   enabled: !!me,
   // });
 
