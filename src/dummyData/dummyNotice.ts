@@ -1,7 +1,7 @@
-import { Notice } from '../interfaces/notice';
+import { INotice } from '../interfaces/notice';
 import { user1, user2, user3 } from './dummyUser';
 
-export const notice1: Notice = {
+export const notice1: INotice = {
   id: 1,
   writed_at: new Date(),
   updated_at: new Date(),
@@ -9,7 +9,7 @@ export const notice1: Notice = {
   writer: user1,
 };
 
-export const notice2: Notice = {
+export const notice2: INotice = {
   id: 2,
   writed_at: new Date(),
   updated_at: new Date(),
@@ -18,7 +18,7 @@ export const notice2: Notice = {
   writer: user2,
 };
 
-export const notice3: Notice = {
+export const notice3: INotice = {
   id: 3,
   writed_at: new Date(),
   updated_at: new Date(),
@@ -26,7 +26,7 @@ export const notice3: Notice = {
   writer: user3,
 };
 
-export const notice4: Notice = {
+export const notice4: INotice = {
   id: 4,
   writed_at: new Date(),
   updated_at: new Date(),
@@ -34,7 +34,7 @@ export const notice4: Notice = {
   writer: user3,
 };
 
-export const notice5: Notice = {
+export const notice5: INotice = {
   id: 5,
   writed_at: new Date(),
   updated_at: new Date(),
@@ -42,7 +42,7 @@ export const notice5: Notice = {
   writer: user3,
 };
 
-export const notice6: Notice = {
+export const notice6: INotice = {
   id: 6,
   writed_at: new Date(),
   updated_at: new Date(),

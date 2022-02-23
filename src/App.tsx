@@ -17,6 +17,7 @@ import FeedbackAccept from './components/templates/FeedbackAccept/FeedbackAccept
 import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
 import NoticeDetailPage from './pages/NoticeDatailPage';
+import NotificationPage from './pages/NotificationPage';
 function App() {
   return (
     <Router>
@@ -42,7 +43,7 @@ function App() {
           <Route path="make" element={<EventMaking />} />
           <Route path=":eventId" element={<EventDetail />} />
         </Route>
-
+        <Route path="/notification" element={<NotificationPage />} />
         <Route path="/notice">
           <Route path="detail" element={<NoticeDetailPage />} />
           <Route path="write" element={<NoticeWrite />} />

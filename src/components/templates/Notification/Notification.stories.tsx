@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import { notification, notification2 } from '../../../dummyData/dummyNotification';
 import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Notification, { ITempNotificationProps } from './Notification';
 
@@ -19,4 +20,6 @@ const Template: Story<ITempNotificationProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  notifications: [notification, notification2],
+};

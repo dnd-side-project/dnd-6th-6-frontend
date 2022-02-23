@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Notice } from '../../../interfaces/notice';
+import { INotice } from '../../../interfaces/notice';
 import Header from '../../UI/molecules/Header/Header';
 import NoticeCard from '../../UI/molecules/NoticeCard/NoticeCard';
 import NoticeModal from '../../UI/molecules/NoticeModal/NoticeModal';
 import { StyledNoticeDetail } from './NoticeDetailStyled';
 
 export interface ITempNoticeDetailProps {
-  notices: Notice[];
+  notices: INotice[];
 }
 
 const NoticeDetail = ({ notices }: ITempNoticeDetailProps) => {

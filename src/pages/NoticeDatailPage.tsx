@@ -4,7 +4,7 @@ import { getNoticeAPI } from '../apis/notice';
 import { getLoginUser } from '../apis/user';
 import NoticeDetail from '../components/templates/NoticeDetail/NoticeDetail';
 import { notice1, notice2, notice3, notice4, notice5, notice6 } from '../dummyData/dummyNotice';
-import { Notice } from '../interfaces/notice';
+import { INotice } from '../interfaces/notice';
 import { User } from '../interfaces/user';
 
 const notices = [notice1, notice2, notice3, notice4, notice5, notice6];
