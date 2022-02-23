@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import Header from '../../UI/molecules/Header/Header';
@@ -11,11 +12,15 @@ import { StyledEventMaking } from './EventMakingStyled';
 export interface ITempEventMakingProps {}
 
 const EventMaking = (props: ITempEventMakingProps) => {
+  const navigate = useNavigate();
   const [plan, setPlan] = useState('oneTime');
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <AppLayout>
       <StyledEventMaking>
-        <Header title="일정 만들기" mb="40px" />
+        <Header onClick={goBack} title="일정 만들기" mb="40px" />
         <div className="eventMaking_selectBtn">
           <Button
             onClick={() => setPlan('oneTime')}

@@ -12,6 +12,7 @@ export const StyledTextarea = styled.textarea<IAtomTextareaProps>`
   background-color: ${(props) => props.bgColor || 'white'};
   font-size: 14px;
   padding: 20px;
+  overflow-y: hidden;
   &::placeholder {
     color: #9ca3ab;
   }

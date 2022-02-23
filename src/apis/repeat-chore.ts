@@ -33,7 +33,7 @@ export const setRepeatChore = ({
 };
 
 // 반복 집안일 전체 목록
-export const getAllChoresAPI = (houseId: number) => {
+export const getAllRepeatChoresAPI = (houseId: number) => {
   return axios.get(`/houses/${houseId}/repeat-chores`).then((response) => response.data);
 };
 

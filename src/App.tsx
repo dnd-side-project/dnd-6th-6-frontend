@@ -17,6 +17,7 @@ import StartScreen from './components/templates/StartScreen/StartScreen';
 import Profile from './components/templates/Profile/Profile';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
 import FeedbackAccept from './components/templates/FeedbackAccept/FeedbackAccept';
+import EventDetail from './components/templates/EventDetail/EventDetail';
 function App() {
   return (
     <Router>
@@ -39,7 +40,11 @@ function App() {
         <Route path="/request" element={<Request />} />
         <Route path="/requestReceive" element={<RequestReceive />} />
         <Route path="/shareHousework" element={<ShareHouseWork />} />
-        <Route path="/eventmake" element={<EventMaking />} />
+        <Route path="/event">
+          <Route path="make" element={<EventMaking />} />
+          <Route path=":eventId" element={<EventDetail />} />
+        </Route>
+
         <Route path="/notice">
           <Route path="detail" element={<NoticeDetail />} />
           <Route path="write" element={<NoticeWrite />} />

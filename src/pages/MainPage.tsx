@@ -12,7 +12,7 @@ const MainPage = () => {
     enabled: !!token,
   });
   // 오늘 내 할일 목록
-  const { data: todayChoresMe } = useQuery<Chore | RepeatChore[]>(
+  const { data: todayChoresMe } = useQuery<(Chore | RepeatChore)[]>(
     ['todayChores', 'me'],
     () => todayChoresMeAPI(me?.id as number),
     {
@@ -20,7 +20,7 @@ const MainPage = () => {
     },
   );
   //오늘 남의 할일 목록
-  const { data: todayChoresOther } = useQuery<Chore | RepeatChore[]>(
+  const { data: todayChoresOther } = useQuery<(Chore | RepeatChore)[]>(
     ['todayChores', 'other'],
     () => todayChoresOthersAPI(me?.id as number),
     {
@@ -30,7 +30,8 @@ const MainPage = () => {
   // 고정된 공지사항 값
   // 알림 여부
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken') || '');
+    setToken(localStorage.getItem('token') || '');
+    //token없을경우 login page로 redirect
   }, [token]);
 
   if (!me || !todayChoresMe || !todayChoresOther) {
