@@ -13,7 +13,13 @@ const Template: Story<IMoleMyToDoCardProps> = (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#F8F9FD' }}>
       <MyToDoCard {...args}></MyToDoCard>
       <hr />
-      <MyToDoCard {...args} title="다용도실 청소하기" completed_at="date" days="금요일" category="청소"></MyToDoCard>
+      <MyToDoCard
+        {...args}
+        title="다용도실 청소하기"
+        completed_at={new Date()}
+        days="금요일"
+        category="청소"
+      ></MyToDoCard>
     </div>
   </>
 );

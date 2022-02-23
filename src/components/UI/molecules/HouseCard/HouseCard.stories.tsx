@@ -21,7 +21,47 @@ const Template: Story<IMoleHouseCardProps> = (args) => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  completed_at: '2월 5일 토요일 13:30',
+  completed_at: new Date(),
   event_title: '분리수거',
-  first_name: '지현',
+  assignees: [
+    {
+      id: 1,
+      first_name: '지현',
+      username: '지현',
+      user_profile: {
+        id: 1,
+        avatar: '',
+        house: {
+          id: 1,
+          name: '서울하우스',
+        },
+      },
+    },
+    {
+      id: 2,
+      first_name: '재현',
+      username: '재현',
+      user_profile: {
+        id: 1,
+        avatar: '',
+        house: {
+          id: 1,
+          name: '서울하우스',
+        },
+      },
+    },
+    {
+      id: 3,
+      first_name: '재훈',
+      username: '재훈',
+      user_profile: {
+        id: 1,
+        avatar: '',
+        house: {
+          id: 1,
+          name: '서울하우스',
+        },
+      },
+    },
+  ],
 };
