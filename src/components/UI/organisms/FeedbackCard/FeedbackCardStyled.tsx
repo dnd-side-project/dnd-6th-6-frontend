@@ -7,6 +7,7 @@ export const StyledFeedbackCard = styled.div`
   border-radius: 6px;
   .feedbackCard_header {
     display: flex;
+    align-items: center;
     padding: 23px 0;
     border-bottom: 1px solid #f5f5f5;
     .feedbackCard_category {
@@ -26,6 +27,10 @@ export const StyledFeedbackCard = styled.div`
     .feedbackCard_completeTime {
       font-size: 12px;
       color: #80878e;
+      & > div {
+        font-size: 12px;
+        color: #80878e;
+      }
     }
   }
   .feedbackCard_emoji {

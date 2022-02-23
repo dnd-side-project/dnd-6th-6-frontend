@@ -13,11 +13,11 @@ import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
 import Profile from './components/templates/Profile/Profile';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
-import FeedbackAccept from './components/templates/FeedbackAccept/FeedbackAccept';
 import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
 import NoticeDetailPage from './pages/NoticeDatailPage';
 import NotificationPage from './pages/NotificationPage';
+import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
 function App() {
   return (
     <Router>
@@ -33,7 +33,7 @@ function App() {
         <Route path="/profileSetting" element={<ProfileSetting />} />
         <Route path="housemake" element={<HouseMaking />} />
         <Route path="/feedback">
-          <Route path=":feedbackId/accept" element={<FeedbackAccept />} />
+          <Route path=":feedbackId/chore/:choreId" element={<FeedbackAcceptPage />} />
           <Route path="give" element={<FeedbackGive />} />
         </Route>
         <Route path="/request" element={<Request />} />
