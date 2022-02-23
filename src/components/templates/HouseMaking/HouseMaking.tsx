@@ -60,16 +60,16 @@ const HouseMaking = () => {
     }
     if (!errors.invited && pageCount == 2) {
       setsubmitdata({ housename: data.housename, invited: [...submitdata.invited, ...data.invited] });
-      console.log('데이터', data);
+
       return setPageCount((prev) => prev + 1);
     }
+    console.log(submitdata.invited);
     makeHouseAPI(submitdata.housename);
-    // inviteHouseAPI(submitdata.invited);
+    inviteHouseAPI(submitdata.invited);
   };
 
   const ValidEmail = async (event: any) => {
     const checkvalue = event.target.previousSibling.childNodes[0].childNodes[0].value;
-    console.log(checkvalue);
     sendLoginEmailAPI(checkvalue).catch((e) => {
       setError(`invited.${event.target.id}.email`, { message: '존재하지 않는 유저입니다' }, { shouldFocus: true });
     });

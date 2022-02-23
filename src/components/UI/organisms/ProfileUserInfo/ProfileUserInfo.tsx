@@ -4,7 +4,7 @@ import { StyledProfileUserInfo } from './ProfileUserInfoStyled';
 const ProfileUserInfo = () => {
   return (
     <StyledProfileUserInfo>
-      <Avatar width="80px" height="80px" />
+      <Avatar width="80px" height="80px" imgUrl="../../../../src_assets/profile.svg" />
       <div className="UserInfo">
         <div className="UserName">유저네임</div>
         <div className="UserEmail">유저이메일</div>

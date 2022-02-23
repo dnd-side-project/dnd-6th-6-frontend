@@ -3,7 +3,6 @@ import { StyledBottomNavBar, StyledSpan } from './BottomNavBarStyled';
 
 const BottomNavBar = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <>
       <StyledBottomNavBar>

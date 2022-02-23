@@ -2,7 +2,7 @@ import Title from '../../atoms/Title/Title';
 import { StyledHouseMainTitle } from './HouseMainTitleStyled';
 
 export interface IMoleHouseMainTitleProps {
-  first_name?: string;
+  first_name?: string | unknown;
   house_name?: string;
 }
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledProfileUserInfo = styled.div`
   display: flex;
-
+  margin-bottom: 40px;
   .UserInfo {
     display: flex;
     flex-direction: column;

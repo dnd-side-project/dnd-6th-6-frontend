@@ -9,6 +9,9 @@ import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { StyledForm, TextInputWrapper } from '../Join/JoinStyled';
 import { StyledProfileSetting } from './ProfileSettingStyled';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { setProfileAPI } from '../../../apis/user';
+import { useMutation, useQueryClient } from 'react-query';
 
 export interface ITempProfileSettingProps {}
 
@@ -19,6 +22,20 @@ interface IForm {
 const ProfileSetting = (props: ITempProfileSettingProps) => {
   // const [gender, setGender] = useState('');
   // const [genderErrorMessage, setGenderErrorMessage] = useState('');
+  const queryClient = useQueryClient();
+  const mutation = useMutation<any, Error, { signup_email: any; name: string }>(setProfileAPI, {
+    onSuccess: (res) => {
+      queryClient.setQueryData('userInfo', res.data.user);
+      window.localStorage.setItem('Token', res.data.token);
+      if (res.data.user.house != null) {
+        navigate('/main');
+      } else {
+        navigate('/houseNone');
+      }
+    },
+  });
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -38,7 +55,8 @@ const ProfileSetting = (props: ITempProfileSettingProps) => {
     // } else {
     //   setGenderErrorMessage('');
     // }
-    console.log(data);
+    // setProfileAPI(data,state)
+    mutation.mutate({ signup_email: state, name: data['first_name'] });
   };
   return (
     <AppLayout>
