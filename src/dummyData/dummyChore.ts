@@ -18,6 +18,7 @@ export const chore1: Chore = {
     },
   },
   assignees: [user1],
+  comments: [],
 };
 
 export const chore2: Chore = {
@@ -37,6 +38,7 @@ export const chore2: Chore = {
     },
   },
   assignees: [user1, user2, user3],
+  comments: [],
 };
 
 export const chore3: Chore = {
@@ -56,4 +58,5 @@ export const chore3: Chore = {
     },
   },
   assignees: [user1, user2],
+  comments: [],
 };
