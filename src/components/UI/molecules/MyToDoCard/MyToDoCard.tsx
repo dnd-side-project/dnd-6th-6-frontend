@@ -5,6 +5,7 @@ import { CardCategoryImg, CardCategoryImgWrapper, StyledMyToDoCard } from './MyT
 import basket from '../../../../src_assets/basket.svg';
 import pail from '../../../../src_assets/pail.svg';
 import React from 'react';
+import Time from '../../atoms/Time/Time';
 
 export interface IMoleMyToDoCardProps {
   title: string;
@@ -31,10 +32,14 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
         <Title fontWeight="700" fontSize="16px" color="#3F4245">
           {props.title}
         </Title>
-        {props.days && <h6 className="subTitle">매주 {props.days}요일</h6>}
+        {props.category !== '일회성' && (
+          <h6 className="subTitle">
+            매주 <Time createdAt={new Date()} className="day" />
+          </h6>
+        )}
       </div>
       <CardCategoryImgWrapper>
-        {props.category === '세탁' && <CardCategoryImg src={basket} />}
+        {props.category === '빨래' && <CardCategoryImg src={basket} />}
         {props.category === '청소' && <CardCategoryImg src={pail} />}
       </CardCategoryImgWrapper>
       {props.completed_at ? (
