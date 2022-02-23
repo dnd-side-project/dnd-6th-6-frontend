@@ -7,9 +7,8 @@ import Label from '../../UI/atoms/Label/Label';
 import Title from '../../UI/atoms/Title/Title';
 import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
-import { StyledForm } from '../Join/JoinStyled';
-import { StyledBtnWrapper, StyledProfileSetting } from './ProfileSettingStyled';
-import Message from '../../UI/atoms/Message/Message';
+import { StyledForm, TextInputWrapper } from '../Join/JoinStyled';
+import { StyledProfileSetting } from './ProfileSettingStyled';
 
 export interface ITempProfileSettingProps {}
 
@@ -18,47 +17,50 @@ interface IForm {
 }
 
 const ProfileSetting = (props: ITempProfileSettingProps) => {
-  const [gender, setGender] = useState('');
-  const [genderErrorMessage, setGenderErrorMessage] = useState('');
+  // const [gender, setGender] = useState('');
+  // const [genderErrorMessage, setGenderErrorMessage] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IForm>();
-  const onClickBtn = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      setGender(e.currentTarget.innerText);
-      setGenderErrorMessage('');
-    },
-    [gender, genderErrorMessage],
-  );
+  // const onClickBtn = useCallback(
+  //   (e: React.MouseEvent<HTMLButtonElement>) => {
+  //     setGender(e.currentTarget.innerText);
+  //     setGenderErrorMessage('');
+  //   },
+  //   [gender, genderErrorMessage],
+  // );
 
   const onValid = (data: IForm) => {
-    if (gender === '') {
-      return setGenderErrorMessage('성별을 선택해 주세요.');
-    } else {
-      setGenderErrorMessage('');
-    }
-    console.log(data, gender);
+    // if (gender === '') {
+    //   return setGenderErrorMessage('성별을 선택해 주세요.');
+    // } else {
+    //   setGenderErrorMessage('');
+    // }
+    console.log(data);
   };
   return (
-    <StyledProfileSetting>
-      <Header title="프로필 설정" />
-      <AppLayout>
-        <Title mb="30px">본인의 정보를 입력해 주세요.</Title>
+    <AppLayout>
+      <StyledProfileSetting>
+        <Header title="프로필 설정" mb="42px" />
+        <Title color="#3F4245" fontSize="23px" mb="24px">
+          본인의 정보를 입력해 주세요.
+        </Title>
         <StyledForm onSubmit={handleSubmit(onValid)}>
-          <div>
+          <TextInputWrapper>
             <TextInput
               register={{
                 ...register('first_name', {
-                  required: '이름을 적어주세요.',
+                  required: '이름을 적어주세요',
                 }),
               }}
               mb="20px"
               labelText="이름"
               message={errors.first_name?.message}
             />
-            <div>
+          </TextInputWrapper>
+          {/* <div>
               <Label>성별</Label>
               <StyledBtnWrapper>
                 <Button onClick={onClickBtn} type="button">
@@ -69,12 +71,12 @@ const ProfileSetting = (props: ITempProfileSettingProps) => {
                 </Button>
               </StyledBtnWrapper>
               <Message className="error">{genderErrorMessage}</Message>
-            </div>
-          </div>
-          <Button>다음</Button>
+            </div> */}
+
+          <Button className="basic">다음</Button>
         </StyledForm>
-      </AppLayout>
-    </StyledProfileSetting>
+      </StyledProfileSetting>
+    </AppLayout>
   );
 };
 
