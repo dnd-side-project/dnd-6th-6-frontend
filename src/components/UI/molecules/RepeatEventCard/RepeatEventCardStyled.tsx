@@ -2,10 +2,14 @@ import styled from 'styled-components';
 
 export const StyledRepeatEventCard = styled.div`
   width: 207px;
+  height: 240px;
   padding: 18px 16px 16px;
   background: #ffffff;
   box-shadow: 0px 0.8px 4px 1.6px rgba(194, 201, 209, 0.2);
   border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
   .repeatChore_time {
     color: #9ca3ab;
     display: block;
@@ -13,7 +17,7 @@ export const StyledRepeatEventCard = styled.div`
     margin-bottom: 24px;
   }
   .repeatChore_category {
-    width: 100%;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
