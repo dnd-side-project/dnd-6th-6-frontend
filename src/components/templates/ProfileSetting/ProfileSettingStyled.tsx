@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-export const StyledProfileSetting = styled.div``;
-
-export const StyledForm = styled.form`
+export const StyledProfileSetting = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 75vh;
-  justify-content: space-between;
 `;
 
-export const StyledBtnWrapper = styled.div`
+export const StyledForm = styled.form`
+  flex: 1;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+`;
+
+export const TextInputWrapper = styled.div`
+  flex: 1;
 `;
