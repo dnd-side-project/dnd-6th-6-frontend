@@ -1,4 +1,5 @@
 import CardButton from '../../atoms/CardButton/CardButton';
+import Time from '../../atoms/Time/Time';
 import { StledNoticeCard } from './NoticeCardStyled';
 
 export interface IMoleNoticeCardProps {
@@ -17,7 +18,7 @@ const NoticeCard = ({ first_name, createdAt, content, fix, onClick, noticeId }: 
         <div className="noticeCard_header_Info">
           <h3>{first_name}</h3>
           {fix && <CardButton className="noticeFix">고정</CardButton>}
-          <span className="noticeCard_time">2월 16일 오후 3시</span>
+          <Time className="chore" createdAt={createdAt} />
         </div>
         <svg
           onClick={() => onClick(noticeId)}

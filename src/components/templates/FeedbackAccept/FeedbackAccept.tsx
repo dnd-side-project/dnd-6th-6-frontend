@@ -1,16 +1,18 @@
-import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router';
+import { Feedback } from '../../../interfaces/feedback';
 import Button from '../../UI/atoms/Button/Button';
 import Title from '../../UI/atoms/Title/Title';
 import Header from '../../UI/molecules/Header/Header';
 import FeedbackCard from '../../UI/organisms/FeedbackCard/FeedbackCard';
 import { StyledFeedbackAccept } from './FeedbackAcceptStyled';
 
+// const feedback = feedback1;
+
 export interface ITempFeedbackAcceptProps {
-  // chore: Chore
+  feedback: Feedback;
 }
 
-const FeedbackAccept = (props: ITempFeedbackAcceptProps) => {
+const FeedbackAccept = ({ feedback }: ITempFeedbackAcceptProps) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -30,12 +32,12 @@ const FeedbackAccept = (props: ITempFeedbackAcceptProps) => {
         <div className="feedbackAccept_card">
           <FeedbackCard
             from_emojiIndex={1}
-            from_firstName="유진"
-            from_avatar=""
-            from_content="오늘 하루도 고마워!! 깔끔하게 잘 했던데? 다음에 내 차례가 되면 나도 이만큼 해야할듯ㅠㅠ"
-            chore_completed_at="2월 23일 13:30"
-            information_categoryId={1}
-            information_name="분리수거 하기"
+            from_firstName={feedback._from.first_name}
+            from_avatar={feedback._from.user_profile.avatar}
+            from_content={feedback.content}
+            chore_completed_at={feedback.chore.completed_at as Date}
+            information_categoryId={feedback.chore.information.category.id}
+            information_name={feedback.chore.information.name}
           />
         </div>
         <Button type="submit" className="basic">

@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import { feedback1 } from '../../../dummyData/dummyFeedback';
 import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import FeedbackAccept, { ITempFeedbackAcceptProps } from './FeedbackAccept';
 
@@ -19,4 +20,6 @@ const Template: Story<ITempFeedbackAcceptProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  feedback: feedback1,
+};

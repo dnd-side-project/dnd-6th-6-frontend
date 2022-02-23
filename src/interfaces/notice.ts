@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface Notice {
+export interface INotice {
   id: number;
   content: string;
   writer: User;
