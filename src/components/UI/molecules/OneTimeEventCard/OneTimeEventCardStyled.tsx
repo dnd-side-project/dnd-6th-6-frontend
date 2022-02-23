@@ -13,6 +13,11 @@ export const StyledOneTimeEventCard = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .oneTimeChore_avatar {
+      position: relative;
+      left: -18px;
+      height: 25.27px;
+    }
     span {
       color: #565960;
     }

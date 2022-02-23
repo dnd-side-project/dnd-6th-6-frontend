@@ -1,32 +1,35 @@
-import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
 import { Chore } from '../../../../interfaces/chore';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
 import { StyledOneTimeEventCard } from './OneTimeEventCardStyled';
 
-const oneTimeChore = chore1;
-
 export interface IMoleOneTimeEventCardProps {
   chore: Chore;
 }
 
-const OneTimeEventCard = (props: IMoleOneTimeEventCardProps) => {
+const OneTimeEventCard = ({ chore }: IMoleOneTimeEventCardProps) => {
   return (
     <StyledOneTimeEventCard>
       <Title color="#3F4245" fontSize="18px" mb="7px">
-        {oneTimeChore.information.name}
+        {chore.information.name}
       </Title>
       <div className="oneTimeChore_time">
-        <Time className="chore" createdAt={oneTimeChore.planned_at} />
+        <Time className="chore" createdAt={chore.planned_at} />
       </div>
       <div className="oneTimeChore_info">
         <div className="oneTimeChore_avatar">
-          {oneTimeChore.assignees.map((assignee) => (
-            <Avatar imgUrl={assignee.user_profile.avatar} />
+          {chore.assignees.map((assignee, index) => (
+            <Avatar
+              width="25.27px"
+              height="25.27px"
+              position="absolute"
+              imgUrl={assignee.user_profile.avatar}
+              number={index + 1}
+            />
           ))}
         </div>
-        <span>댓글 {oneTimeChore.comments?.length}</span>
+        <span>댓글 {chore.comments?.length}</span>
       </div>
     </StyledOneTimeEventCard>
   );

@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import { chore1 } from '../../../../dummyData/dummyChore';
 import OneTimeEventCard, { IMoleOneTimeEventCardProps } from './OneTimeEventCard';
 
 export default {
@@ -18,4 +19,6 @@ const Template: Story<IMoleOneTimeEventCardProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  chore: chore1,
+};
