@@ -1,31 +1,42 @@
+import { useEffect, useState } from 'react';
+import { User } from '../../../../interfaces/user';
 import CardButton from '../../atoms/CardButton/CardButton';
+import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
 import { StyledHouseCard } from './HouseCardStyled';
 
 export interface IMoleHouseCardProps {
-  completed_at: string | null; //completed_at: Date | null;
+  completed_at: Date | null; //completed_at: Date | null;
   event_title: string;
-  first_name: string;
+  assignees: User[];
+  planned_at: Date;
 }
 
-const HouseCard = (props: IMoleHouseCardProps) => {
+const HouseCard = ({ completed_at, event_title, assignees, planned_at }: IMoleHouseCardProps) => {
+  const [firstNameArray, setFirstNameArray] = useState<string[]>([]);
+  useEffect(() => {
+    setFirstNameArray((prev) => [...assignees.map((assignee) => assignee.first_name)]);
+  }, [assignees]);
   return (
     <StyledHouseCard>
       <div className="houseCard_info">
         <div className="complete_or_not">
-          {props.completed_at ? (
+          {completed_at ? (
             <>
               <CardButton className="houseComplete">완료</CardButton>
-              <span>{props.completed_at}</span>
+              <Time createdAt={completed_at} />
             </>
           ) : (
-            <CardButton className="houseIncomplete">미완료</CardButton>
+            <>
+              <CardButton className="houseIncomplete">미완료</CardButton>
+              <Time createdAt={planned_at} />
+            </>
           )}
         </div>
         <Title fontWeight="400" fontSize="13px" color="#3F4245">
-          {props.completed_at
-            ? `${props.first_name}님이 ${props.event_title} 하기를 완료했어요.`
-            : `${props.first_name}님이 ${props.event_title} 하기가 미완료 상태에요.`}
+          {completed_at
+            ? `${firstNameArray.join('님, ')}님이 ${event_title} 하기를 완료했어요.`
+            : `${firstNameArray.join('님, ')}님이 ${event_title} 하기가 미완료 상태에요.`}
         </Title>
       </div>
       <div>
