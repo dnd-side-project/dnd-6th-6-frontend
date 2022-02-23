@@ -24,6 +24,7 @@ export interface Chore {
   information: ChoreInfomation;
   planned_at: Date;
   completed_at: Date | null;
+  comments?: Comment[];
 }
 
 export interface RepeatChore {
@@ -33,4 +34,5 @@ export interface RepeatChore {
   days: Day[];
   planned_at: Date;
   completed_at: Date | null;
+  comments?: Comment[];
 }

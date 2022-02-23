@@ -1,65 +1,15 @@
+import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
+import { Chore, RepeatChore } from '../../../../interfaces/chore';
+import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
 import HouseCard from '../../molecules/HouseCard/HouseCard';
 import { StyledTodayToDoHouse } from './TodayToDoHouseStyled';
 
-const todayToDoOthers = [
-  {
-    id: 1,
-    planned_at: '2022년 02월 28일',
-    completed_at: '2월 5일 금요알 13:30',
-    information: {
-      name: '분리수거',
-      description: '6시까지 분리수거',
-      category: '분리수거',
-      repeat_chore: {
-        days: ['금요일'],
-      },
-    },
-    assignee: {
-      id: 2,
-      username: '지현',
-      first_name: '지현',
-      profile: {
-        house: '서울하우스',
-        gender: '여자',
-        avatar: '',
-        life_pattern: '',
-        disposition: '',
-        mbti: '',
-        messsage: '',
-      },
-    },
-  },
-  {
-    id: 2,
-    planned_at: '2022년 02월 26일',
-    completed_at: null,
-    information: {
-      name: '다용도실',
-      description: '6시까지 다용도실 청소하기',
-      category: '청소',
-      repeat_chore: {
-        days: ['금요일'],
-      },
-    },
-    assignee: {
-      id: 2,
-      username: '지현',
-      first_name: '지현',
-      profile: {
-        house: '서울하우스',
-        gender: '여자',
-        avatar: '',
-        life_pattern: '',
-        disposition: '',
-        mbti: '',
-        messsage: '',
-      },
-    },
-  },
-];
+const todayToDoOthers: Chore[] = [chore1, chore2, chore3];
 
-export interface IOrgTodayToDoHouseProps {}
+export interface IOrgTodayToDoHouseProps {
+  // todayToDoOthers: Chore[];
+}
 
 const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
   // 오늘 남의 할 일 목록 GET
@@ -69,9 +19,17 @@ const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
         <Title fontWeight="700" fontSize="17px" color="#222222">
           하우스 할 일 현황
         </Title>
-        <span>2월 5일 토요일</span>
+        <Time className="chore" createdAt={new Date()} />
       </div>
       <div className="TodayToDoHouse_info">
+        {/* 하우스 할 일 현황 없을떄 */}
+        {todayToDoOthers.length === 0 && (
+          <div className="TodayToDoHouse_noToDo">
+            하우스의 휴일인가요?
+            <br />
+            오늘은 할 일이 없어요!
+          </div>
+        )}
         {/* 완료한 목록 위로 오게  */}
         {todayToDoOthers
           .filter((todayToDoOther) => todayToDoOther.completed_at)
@@ -79,8 +37,9 @@ const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
             <HouseCard
               key={todayToDoOther.id}
               completed_at={todayToDoOther.completed_at}
+              planned_at={todayToDoOther.planned_at}
               event_title={todayToDoOther.information.name}
-              first_name={todayToDoOther.assignee.first_name}
+              assignees={todayToDoOther.assignees}
             />
           ))}
         {/* 완료하지 않은 목록 밑으로 가게  */}
@@ -90,8 +49,9 @@ const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
             <HouseCard
               key={todayToDoOther.id}
               completed_at={todayToDoOther.completed_at}
+              planned_at={todayToDoOther.planned_at}
               event_title={todayToDoOther.information.name}
-              first_name={todayToDoOther.assignee.first_name}
+              assignees={todayToDoOther.assignees}
             />
           ))}
       </div>
