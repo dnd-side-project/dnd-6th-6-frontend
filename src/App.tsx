@@ -12,7 +12,6 @@ import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
 import Profile from './components/templates/Profile/Profile';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
-import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
 import NoticeDetailPage from './pages/NoticeDatailPage';
 import NotificationPage from './pages/NotificationPage';
@@ -20,6 +19,8 @@ import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
 import RequestReceivePage from './pages/RequestReceivePage';
 import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
+import RepeatEventDetailPage from './pages/RepeatEventDetail';
+import OneTimeEventDetail from './pages/OneTimeEventDetail';
 function App() {
   return (
     <Router>
@@ -46,7 +47,8 @@ function App() {
         <Route path="/shareHousework" element={<ShareHouseWorkPage />} />
         <Route path="/event">
           <Route path="make" element={<EventMaking />} />
-          <Route path=":eventId" element={<EventDetail />} />
+          <Route path="repeat/:choreId" element={<RepeatEventDetailPage />} />
+          <Route path="onetime/:choreId" element={<OneTimeEventDetail />} />
           <Route path=":choreId/today" element={<TodayToDoMeDetailPage />} />
         </Route>
         <Route path="/notification" element={<NotificationPage />} />

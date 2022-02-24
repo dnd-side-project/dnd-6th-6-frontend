@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { user1 } from '../../../dummyData/dummyUser';
 import AppLayout from '../../Layouts/Applayout';
 import Button from '../../UI/atoms/Button/Button';
 import Header from '../../UI/molecules/Header/Header';
@@ -8,6 +9,8 @@ import TextInput from '../../UI/molecules/TextInput/TextInput';
 import OneTimeEventForm from '../../UI/organisms/OneTimeEventForm/OneTimeEventForm';
 import RepeatEventForm from '../../UI/organisms/RepeatEventForm/RepeatEventForm';
 import { StyledEventMaking } from './EventMakingStyled';
+
+const me = user1;
 
 export interface ITempEventMakingProps {}
 
@@ -43,7 +46,7 @@ const EventMaking = (props: ITempEventMakingProps) => {
             반복 일정
           </Button>
         </div>
-        {plan === 'oneTime' && <OneTimeEventForm />}
+        {plan === 'oneTime' && <OneTimeEventForm me={me} />}
         {plan === 'repeat' && <RepeatEventForm />}
       </StyledEventMaking>
     </AppLayout>

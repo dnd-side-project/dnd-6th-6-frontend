@@ -3,7 +3,7 @@ import { User } from './user';
 
 export interface Feedback {
   id: number;
-  chore: Chore | RepeatChore;
+  chore: Chore;
   _from: User;
   content: string;
   sended_at: Date;

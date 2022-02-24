@@ -10,27 +10,20 @@ export const setChoreAPI = ({
   houseId,
   assignees,
   name,
-  categoryId,
   planned_at,
 }: {
   houseId: number;
-  assignees: { id: number }[];
+  assignees: User[];
   name: string;
-  categoryId: number;
   planned_at: Date;
 }) => {
-  return axios
-    .post(`/houses/${houseId}/chores`, {
-      assignees,
-      information: {
-        name,
-        category: {
-          id: categoryId,
-        },
-      },
-      planned_at,
-    })
-    .then((response) => response.data);
+  return axios.post(`/houses/${houseId}/chores`, {
+    assignees,
+    information: {
+      name,
+    },
+    planned_at,
+  });
 };
 
 // 일회성 집안일 전체 목록

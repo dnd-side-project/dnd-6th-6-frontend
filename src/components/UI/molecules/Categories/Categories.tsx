@@ -6,7 +6,7 @@ import { categoryImgURLs } from '../../../../utils/category';
 
 export interface IMoleCategoriesProps {
   onClick: (category: { src: string; id: number; category: string }) => void;
-  checkCategory?: string;
+  checkCategory?: { id: number };
 }
 
 const Categories = ({ onClick, checkCategory }: IMoleCategoriesProps) => {
@@ -16,7 +16,7 @@ const Categories = ({ onClick, checkCategory }: IMoleCategoriesProps) => {
         {categoryImgURLs.map((categoryImgURL) => (
           <SwiperSlide key={categoryImgURL.id}>
             <ChooseCategoryImgWrapper
-              check={checkCategory === categoryImgURL.category}
+              check={checkCategory?.id === categoryImgURL.id}
               onClick={() => onClick(categoryImgURL)}
             >
               <img src={categoryImgURL.src} />

@@ -17,5 +17,8 @@ const Template: Story<IMoleChooseDayProps> = (args) => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  chooseDays: [1, 2],
+  chooseDays: [
+    { id: 1, name: '월' },
+    { id: 2, name: '화' },
+  ],
 };

@@ -1,5 +1,6 @@
 import EventDetailHeader, { IOrgEventDetailHeaderProps } from './EventDetailHeader';
 import { Meta, Story } from '@storybook/react';
+import { chore1 } from '../../../../dummyData/dummyChore';
 
 export default {
   title: 'organisms/EventDetailHeader',
@@ -18,27 +19,5 @@ export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
   isRepeatChore: true,
-  name: '같이 장보러 갈사람!',
-  planned_at: new Date(),
-  completed_at: new Date(),
-  assignees: [
-    {
-      id: 1,
-      first_name: '김지수',
-      username: '',
-      user_profile: {
-        id: 1,
-        avatar: '',
-      },
-    },
-    {
-      id: 2,
-      first_name: '박민기',
-      username: '',
-      user_profile: {
-        id: 2,
-        avatar: '',
-      },
-    },
-  ],
+  chore: chore1,
 };
