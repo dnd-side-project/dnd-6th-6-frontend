@@ -10,7 +10,7 @@ export const makeHouseAPI = async (name: string) => {
 };
 
 // 하우스 구성원 목록
-export const getMembersAPI = (houseId: string) => {
+export const getMembersAPI = (houseId: number) => {
   return axios.get(`/houses/${houseId}/members`).then((response) => response.data);
 };
 

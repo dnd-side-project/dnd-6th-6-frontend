@@ -11,10 +11,19 @@ export interface IMoleAvatarName {
   onClick?: () => void;
 }
 
-const AvatarName = ({ imgUrl, first_name, onClick, avatarWidth, avatarHeight }: IMoleAvatarName) => {
+const AvatarName: React.FC<IMoleAvatarName> = ({
+  children,
+  imgUrl,
+  first_name,
+  onClick,
+  avatarWidth,
+  avatarHeight,
+}) => {
   return (
     <StyledAvatarName onClick={onClick}>
-      <Avatar mb="12px" width={avatarWidth || '88px'} height={avatarHeight || '88px'} />
+      <Avatar imgUrl={imgUrl} mb="12px" width={avatarWidth || '88px'} height={avatarHeight || '88px'}>
+        {children}
+      </Avatar>
       <Label fontSize="14px" color="#3f4245">
         {first_name}
       </Label>
