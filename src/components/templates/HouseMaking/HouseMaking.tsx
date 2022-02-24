@@ -63,9 +63,8 @@ const HouseMaking = () => {
       setsubmitdata({ housename: data.housename, invited: [...data.invited, { email: userInfo?.username }] });
       return setPageCount((prev) => prev + 1);
     }
-    console.log(submitdata);
     makeHouseAPI(submitdata.housename)
-      .then((res) => inviteHouseAPI(submitdata.invited).then((res) => navigate('/main')))
+      .then((res) => inviteHouseAPI(data.invited).then((res) => navigate('/main')))
       .catch((e) => console.log(e));
   };
 

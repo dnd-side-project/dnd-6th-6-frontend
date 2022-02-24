@@ -11,9 +11,7 @@ export default {
 
 const Template: Story = (args) => (
   <>
-    <StoriesLayout>
-      <Main {...args} />
-    </StoriesLayout>
+    <StoriesLayout>{/* <Main {...args} /> */}</StoriesLayout>
   </>
 );
 

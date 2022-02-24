@@ -19,6 +19,8 @@ import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
 import NoticeDetailPage from './pages/NoticeDatailPage';
 import NotificationPage from './pages/NotificationPage';
 import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
+import MainPage from './pages/MainPage';
+import UserList from './components/templates/UserList/UserList';
 function App() {
   return (
     <Router>
@@ -30,7 +32,8 @@ function App() {
           <Route path="password" element={<JoinPassword />} />
         </Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/main" element={<Main />} />
+        {/* <Route path="/main" element={<Main />} /> */}
+        <Route path="/main" element={<MainPage />} />
         <Route path="/profileSetting" element={<ProfileSetting />} />
         <Route path="/houseNone" element={<HouseNone />} />
         <Route path="/housemake" element={<HouseMaking />} />
@@ -51,6 +54,7 @@ function App() {
           <Route path="write" element={<NoticeWrite />} />
         </Route>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/userlist" element={<UserList />} />
       </Routes>
     </Router>
     // <>

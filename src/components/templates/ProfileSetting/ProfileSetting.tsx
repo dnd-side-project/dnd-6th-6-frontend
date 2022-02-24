@@ -25,7 +25,7 @@ const ProfileSetting = (props: ITempProfileSettingProps) => {
   const queryClient = useQueryClient();
   const mutation = useMutation<any, Error, { signup_email: any; name: string }>(setProfileAPI, {
     onSuccess: (res) => {
-      queryClient.setQueryData('userInfo', res.data.user);
+      queryClient.setQueryData('me', res.data.user);
       window.localStorage.setItem('Token', res.data.token);
       if (res.data.user.house != null) {
         navigate('/main');

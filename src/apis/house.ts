@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8000';
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -10,8 +11,8 @@ export const makeHouseAPI = async (name: string) => {
 };
 
 // 하우스 구성원 목록
-export const getMembersAPI = (houseId: string) => {
-  return axios.get(`/houses/${houseId}/members`).then((response) => response.data);
+export const getMembersAPI = () => {
+  return axios.get(`/houses/members`).then((response) => response.data);
 };
 
 // 하우스 구성원 초대
