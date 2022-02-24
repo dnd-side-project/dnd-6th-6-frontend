@@ -9,86 +9,38 @@ import Button from '../../UI/atoms/Button/Button';
 import { useCallback, useState } from 'react';
 import SpeechBubble from '../../UI/molecules/SpeechBubble/SpeechBubble';
 import { useForm } from 'react-hook-form';
+import { User } from '../../../interfaces/user';
+import { Chore } from '../../../interfaces/chore';
+import { useNavigate } from 'react-router';
+import { sendFavor } from '../../../apis/favor';
 
 //하우스 구성원 목록 Dummy Data
-const members = [
-  {
-    id: 1,
-    username: '유진',
-    first_name: '유진',
-    profile: {
-      house: '서울하우스',
-      gender: '남자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 2,
-    username: '유리',
-    first_name: '유리',
-    profile: {
-      house: '서울하우스',
-      gender: '남자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 3,
-    username: '수정',
-    first_name: '수정',
-    profile: {
-      house: '서울하우스',
-      gender: '여자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 4,
-    username: '유진',
-    first_name: '유진',
-    profile: {
-      house: '서울하우스',
-      gender: '여자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-];
 
 interface IForm {
   message: string;
 }
 
-export interface ITempRequestProps {}
+export interface ITempRequestProps {
+  members: User[];
+  chore: Chore;
+}
 
-const Request = (props: ITempRequestProps) => {
+const Request = ({ members, chore }: ITempRequestProps) => {
+  const navigate = useNavigate();
   const [pageCount, setPageCount] = useState(0);
-  const [choice, setChoice] = useState('');
+  const [choice, setChoice] = useState<User>();
   const { register, handleSubmit } = useForm<IForm>();
+
   const onMinusPageCount = () => {
     if (pageCount === 0) {
+      navigate(-1);
       return;
     }
     setPageCount((prev) => prev - 1);
   };
 
-  const onClickAvatar = (first_name: string) => {
-    setChoice(first_name);
+  const onClickAvatar = (choice: User) => {
+    setChoice(choice);
   };
 
   const onRequestChoiceButton = useCallback(() => {
@@ -99,9 +51,13 @@ const Request = (props: ITempRequestProps) => {
     setPageCount((prev) => prev + 1);
   }, [pageCount, choice]);
 
-  const onVaild = (data: IForm) => {
-    console.log(data);
-    //Axios요청
+  const onVaild = ({ message }: IForm) => {
+    console.log(message, choice);
+    //부탁보내기
+    if (!choice) return;
+    sendFavor({ choreId: chore.id, toId: choice.id, content: message })
+      .then(() => navigate('/main'))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -112,26 +68,34 @@ const Request = (props: ITempRequestProps) => {
           <>
             <Title mb="150px" fontWeight="700" fontSize="23px" lineHeight="33.25px">
               <>
-                다용도실 청소를
+                {chore.information.name}를
                 <br />
                 누구에게 부탁할까요?
               </>
             </Title>
             <div className="request_main">
-              <Swiper
-                slidesPerView={3}
-                className="mySwiper"
-                spaceBetween={12}
-                breakpoints={{
-                  370: {
-                    slidesPerView: 3.5,
-                    spaceBetween: 12,
-                  },
-                }}
-              >
+              <Swiper slidesPerView={'auto'} className="mySwiper" spaceBetween={12}>
                 {members.map((member) => (
                   <SwiperSlide key={member.id}>
-                    <AvatarName onClick={() => onClickAvatar(member.first_name)} first_name={member.first_name} />
+                    <AvatarName onClick={() => onClickAvatar(member)} first_name={member.first_name}>
+                      {choice?.first_name === member.first_name && (
+                        <svg
+                          width="100"
+                          height="100"
+                          viewBox="0 0 100 100"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="50" cy="50" r="50" fill="#5BADFF" fillOpacity="0.7" />
+                          <path
+                            d="M32.2578 46.7741L46.7739 61.2903L67.7417 40.3225"
+                            stroke="white"
+                            strokeWidth="4"
+                            strokeLinecap="square"
+                          />
+                        </svg>
+                      )}
+                    </AvatarName>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -150,7 +114,7 @@ const Request = (props: ITempRequestProps) => {
         {pageCount === 1 && (
           <>
             <Title mb="40px" fontWeight="700" fontSize="23px" lineHeight="33.25px">
-              {choice}님에게 남길 메세지를
+              {choice?.first_name}님에게 남길 메세지를
               <br />
               입력해주세요
               <br />

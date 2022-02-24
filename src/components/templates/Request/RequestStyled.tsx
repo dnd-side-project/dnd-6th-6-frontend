@@ -6,6 +6,8 @@ export const StyledRequest = styled.div`
   height: 100%;
   .swiper-slide {
     display: flex;
+    width: fit-content;
+    cursor: pointer;
     button {
       align-self: center;
     }

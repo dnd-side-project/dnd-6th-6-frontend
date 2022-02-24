@@ -6,14 +6,12 @@ axios.defaults.baseURL = BASE_URL;
 
 // 부탁 보내기
 export const sendFavor = ({ choreId, toId, content }: { choreId: number; toId: number; content: string }) => {
-  return axios
-    .post(`/chores/${choreId}/favor`, {
-      to: {
-        id: toId,
-      },
-      content,
-    })
-    .then((response) => response.data);
+  return axios.post(`/chores/${choreId}/favor`, {
+    to: {
+      id: toId,
+    },
+    content,
+  });
 };
 
 // 부탁 목록 GET
@@ -23,5 +21,10 @@ export const getFavors = (choreId: number) => {
 
 // 부탁 수락 PATCH
 export const receiveFavor = (choreId: number, favorId: number) => {
-  return axios.patch(`/chores/${choreId}/favor/${favorId}/accept`).then((response) => response.data);
+  return axios.patch(`/chores/${choreId}/favor/${favorId}/accept`);
+};
+
+// 부탁 상세보기 GET
+export const favoreDetailAPI = (choreId: number, favorId: number) => {
+  return axios.get(`/chores/${choreId}/favor/${favorId}/accept`).then((response) => response.data);
 };
