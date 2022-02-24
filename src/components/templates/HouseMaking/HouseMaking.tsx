@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { sendLoginEmailAPI } from '../../../apis/user';
 import { inviteHouseAPI, makeHouseAPI } from '../../../apis/house';
+import { useQueryClient } from 'react-query';
 
 export interface IHouseMakingForm {
   housename: string;
@@ -24,7 +25,9 @@ export interface IHouseMakingForm {
 }
 
 const HouseMaking = () => {
-  const [submitdata, setsubmitdata] = useState({ housename: '', invited: [{ email: '' }] });
+  const queryClient = useQueryClient();
+  const userInfo = queryClient.getQueryData<any>(['me']);
+  const [submitdata, setsubmitdata] = useState<{ housename: string; invited: Array<{ email: string }> } | any>();
   const navigate = useNavigate();
   const {
     register,
@@ -33,7 +36,6 @@ const HouseMaking = () => {
     setError,
     control,
     watch,
-    clearErrors,
   } = useForm<IHouseMakingForm>({
     defaultValues: {
       invited: [{ email: '' }],
@@ -50,7 +52,6 @@ const HouseMaking = () => {
     if (pageCount == 1) {
       return navigate(-1);
     }
-    setsubmitdata({ housename: '', invited: [{ email: '' }] });
     setPageCount((prev) => prev - 1);
   };
 
@@ -59,20 +60,24 @@ const HouseMaking = () => {
       return setPageCount((prev) => prev + 1);
     }
     if (!errors.invited && pageCount == 2) {
-      setsubmitdata({ housename: data.housename, invited: [...submitdata.invited, ...data.invited] });
-
+      setsubmitdata({ housename: data.housename, invited: [...data.invited, { email: userInfo?.username }] });
       return setPageCount((prev) => prev + 1);
     }
-    console.log(submitdata.invited);
-    makeHouseAPI(submitdata.housename);
-    inviteHouseAPI(submitdata.invited);
+    console.log(submitdata);
+    makeHouseAPI(submitdata.housename)
+      .then((res) => inviteHouseAPI(submitdata.invited).then((res) => navigate('/main')))
+      .catch((e) => console.log(e));
   };
 
   const ValidEmail = async (event: any) => {
     const checkvalue = event.target.previousSibling.childNodes[0].childNodes[0].value;
-    sendLoginEmailAPI(checkvalue).catch((e) => {
-      setError(`invited.${event.target.id}.email`, { message: '존재하지 않는 유저입니다' }, { shouldFocus: true });
-    });
+    sendLoginEmailAPI(checkvalue)
+      .then((response) => {
+        setError(`invited.${event.target.id}.email`, { message: '초대 할 수 있는 유저입니다' }, { shouldFocus: true });
+      })
+      .catch((e) => {
+        setError(`invited.${event.target.id}.email`, { message: '존재하지 않는 유저입니다' }, { shouldFocus: true });
+      });
   };
   return (
     <AppLayout>
@@ -140,9 +145,14 @@ const HouseMaking = () => {
                         placeholder="example@domain.com"
                         type="email"
                         register={{
-                          ...register(`invited.${index}.email` as const, { required: '초대 이메일을 입력주세요' }),
+                          ...register(`invited.${index}.email` as const, { required: '초대 이메일을 입력 해 주세요' }),
                         }}
-                        message={errors?.['invited']?.[index]?.['email']?.message || ''}
+                        message={errors?.['invited']?.[index]?.['email']?.message}
+                        message_type={
+                          errors?.['invited']?.[index]?.['email']?.message == '초대 할 수 있는 유저입니다'
+                            ? 'success'
+                            : 'error'
+                        }
                       />
                       <button type="button" onClick={ValidEmail} id={index.toString()} className="InvitedCheckButton">
                         확인

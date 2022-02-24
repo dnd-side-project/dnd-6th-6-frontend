@@ -12,7 +12,7 @@ export interface IAtomInputProps {
   register?: UseFormRegisterReturn;
   mb?: string;
   onClick: () => void;
-  message: string;
+  message?: string;
   message_type?: MessageType;
 }
 

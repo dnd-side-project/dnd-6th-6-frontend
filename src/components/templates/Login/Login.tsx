@@ -19,9 +19,9 @@ const Login = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation<any, Error, ILoginForm>(sendLoginPasswordAPI, {
     onSuccess: (res) => {
-      queryClient.setQueryData('userInfo', res.data.user);
+      queryClient.setQueryData('me', res.data.user);
       window.localStorage.setItem('Token', res.data.token);
-      if (res.data.user.house != null) {
+      if (res.data.user.user_profile.house != null) {
         navigate('/main');
       } else {
         navigate('/houseNone');
