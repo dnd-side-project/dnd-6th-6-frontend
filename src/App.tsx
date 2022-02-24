@@ -19,6 +19,7 @@ import NotificationPage from './pages/NotificationPage';
 import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
 import RequestReceivePage from './pages/RequestReceivePage';
 import RequestPage from './pages/RequestPage';
+import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 function App() {
   return (
     <Router>
@@ -46,6 +47,7 @@ function App() {
         <Route path="/event">
           <Route path="make" element={<EventMaking />} />
           <Route path=":eventId" element={<EventDetail />} />
+          <Route path=":choreId/today" element={<TodayToDoMeDetailPage />} />
         </Route>
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/notice">

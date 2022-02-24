@@ -4,6 +4,17 @@
   justify-content: center;
   align-items: center;
 }
+
+.isToDayEdit {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.isToDayEdit > div {
+  color: #61676d;
+  font-weight: 500;
+}
 .month-day {
   color: #3f4245;
   font-weight: 700;

@@ -4,13 +4,18 @@ import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { theme } from '../src/styles/theme';
 import { GlobalStyle } from '../src/styles/global-style';
 import { MemoryRouter } from 'react-router';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 export const decorators = [
   (Story) => (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <MemoryRouter initialEntries={['/']}>{Story()}</MemoryRouter>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <MemoryRouter initialEntries={['/']}>{Story()}</MemoryRouter>
+        </ThemeProvider>
+      </QueryClientProvider>
     </>
   ),
 ];

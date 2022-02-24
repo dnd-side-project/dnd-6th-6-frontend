@@ -13,6 +13,15 @@
   margin-bottom: 10px;
 }
 
+.todayEditTime {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.todayEditTime > span {
+  color: #61676d;
+  font-weight: 500;
+}
 .TimerInput .value {
   font-size: 14px;
   color: #abafbb;

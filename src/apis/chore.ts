@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { User } from '../interfaces/user';
 
 const BASE_URL = 'https://미정';
 
@@ -53,10 +54,39 @@ export const editChoreAPI = ({
 }: {
   houseId: number;
   choreId: number;
-  assignees: { id: number }[];
+  assignees: User[];
   name: string;
   categoryId: number;
   planned_at: Date;
+}) => {
+  return axios.patch(`/houses/${houseId}/chores/${choreId}`, {
+    assignees,
+    information: {
+      name,
+      category: {
+        id: categoryId,
+      },
+    },
+    planned_at,
+  });
+};
+
+export const returnEditChoreAPI = ({
+  houseId,
+  choreId,
+  assignees,
+  name,
+  categoryId,
+  planned_at,
+  completed_at,
+}: {
+  houseId: number;
+  choreId: number;
+  assignees: User[];
+  name: string;
+  categoryId: number;
+  planned_at: Date;
+  completed_at?: Date;
 }) => {
   return axios
     .patch(`/houses/${houseId}/chores/${choreId}`, {
@@ -68,6 +98,7 @@ export const editChoreAPI = ({
         },
       },
       planned_at,
+      completed_at: completed_at || null,
     })
     .then((response) => response.data);
 };
