@@ -1,12 +1,12 @@
 import { Favor } from './favor';
-import { Notice } from './notice';
+import { INotice } from './notice';
 import { User } from './user';
 
-export interface Notification {
+export interface INotification {
   id: number;
-  notice?: Notice;
+  notice?: INotice;
   favor?: Favor;
-  to: User;
+  to?: User;
   created_at: Date;
   is_checked: boolean;
 }

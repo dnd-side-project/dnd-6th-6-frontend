@@ -33,7 +33,7 @@ export const chore2: Chore = {
       name: '서울하우스',
     },
     category: {
-      id: 3,
+      id: 2,
       name: '청소',
     },
   },

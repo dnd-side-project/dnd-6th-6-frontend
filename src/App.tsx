@@ -10,14 +10,15 @@ import RequestReceive from './components/templates/RequestReceive/RequestReceive
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import EventMaking from './components/templates/EventMaking/EventMaking';
-import NoticeDetail from './components/templates/NoticeDetail/NoticeDetail';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
 import Profile from './components/templates/Profile/Profile';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
-import FeedbackAccept from './components/templates/FeedbackAccept/FeedbackAccept';
 import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
+import NoticeDetailPage from './pages/NoticeDatailPage';
+import NotificationPage from './pages/NotificationPage';
+import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
 function App() {
   return (
     <Router>
@@ -34,7 +35,7 @@ function App() {
         <Route path="/houseNone" element={<HouseNone />} />
         <Route path="/housemake" element={<HouseMaking />} />
         <Route path="/feedback">
-          <Route path=":feedbackId/accept" element={<FeedbackAccept />} />
+          <Route path=":feedbackId/chore/:choreId" element={<FeedbackAcceptPage />} />
           <Route path="give" element={<FeedbackGive />} />
         </Route>
         <Route path="/request" element={<Request />} />
@@ -44,9 +45,9 @@ function App() {
           <Route path="make" element={<EventMaking />} />
           <Route path=":eventId" element={<EventDetail />} />
         </Route>
-
+        <Route path="/notification" element={<NotificationPage />} />
         <Route path="/notice">
-          <Route path="detail" element={<NoticeDetail />} />
+          <Route path="detail" element={<NoticeDetailPage />} />
           <Route path="write" element={<NoticeWrite />} />
         </Route>
         <Route path="/profile" element={<Profile />} />
