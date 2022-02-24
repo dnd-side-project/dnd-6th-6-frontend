@@ -19,7 +19,7 @@ const OneTimeEventCards = ({ oneTimeChores }: IOrgOneTimeEventCardsProps) => {
       </Title>
       <div className="oneTimeEventCards">
         {oneTimeChores.map((oneTimeChore) => (
-          <Link to={`/event/${oneTimeChore.id}`} key={oneTimeChore.id}>
+          <Link to={`/event/onetime/${oneTimeChore.id}`} key={oneTimeChore.id}>
             <OneTimeEventCard chore={oneTimeChore} />
           </Link>
         ))}

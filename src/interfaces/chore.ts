@@ -32,7 +32,6 @@ export interface RepeatChore {
   assignees: User[];
   information: ChoreInfomation;
   days: Day[];
-  planned_at: Date;
-  completed_at: Date | null;
+  allotcaion_method: number;
   comments?: Comment[];
 }
