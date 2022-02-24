@@ -1,87 +1,17 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { user1, user2, user3 } from '../../../../dummyData/dummyUser';
+import { User } from '../../../../interfaces/user';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Label from '../../atoms/Label/Label';
 import Title from '../../atoms/Title/Title';
 import { StyledEventAssignes } from './EventAssignesStyled';
 
 //하우스 구성원 목록 Dummy Data
-const members = [
-  {
-    id: 1,
-    username: '유진',
-    first_name: '유진',
-    profile: {
-      house: '서울하우스',
-      gender: '남자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 2,
-    username: '유리',
-    first_name: '유리',
-    profile: {
-      house: '서울하우스',
-      gender: '남자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 3,
-    username: '수정',
-    first_name: '수정',
-    profile: {
-      house: '서울하우스',
-      gender: '여자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-  {
-    id: 4,
-    username: '유진',
-    first_name: '유진',
-    profile: {
-      house: '서울하우스',
-      gender: '여자',
-      avatar: '',
-      life_pattern: '',
-      disposition: '',
-      mbti: '',
-      messsage: '',
-    },
-  },
-];
-
-export interface IMember {
-  id: number;
-  username: string;
-  first_name: string;
-  profile: {
-    house: string;
-    gender: string;
-    avatar: string;
-    life_pattern: string;
-    disposition: string;
-    mbti: string;
-    messsage: string;
-  };
-}
+const members = [user1, user2, user3];
 
 export interface IMoleEventAssignesProps {
-  onClick: (member: IMember) => void;
-  checkMembers: number[];
+  onClick: (member: User) => void;
+  checkMembers: User[];
   mb?: string;
 }
 
@@ -101,7 +31,7 @@ const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ children, onClick, c
             <SwiperSlide key={member.id}>
               <div className="eventAssignes_member" onClick={() => onClick(member)}>
                 <Avatar imgUrl="" mb="10px" width="62px" height="62px">
-                  {checkMembers.includes(member.id) && (
+                  {checkMembers.includes(member) && (
                     <div className="check">
                       <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 6L11 15L24 2" stroke="white" strokeWidth="3" strokeLinecap="round" />

@@ -5,31 +5,30 @@ const BASE_URL = 'https://미정';
 axios.defaults.baseURL = BASE_URL;
 
 // 반복 집안일 생성
-export const setRepeatChore = ({
+export const setRepeatChoreAPI = ({
   houseId,
   assignees,
   name,
-  categoryId,
+  category,
   days,
+  allotcaion_method,
 }: {
   houseId: number;
   assignees: { id: number }[];
   name: string;
-  categoryId: number;
+  category: { id: number };
   days: { id: number }[];
+  allotcaion_method: number;
 }) => {
-  return axios
-    .post(`/houses/${houseId}/repeat-chores`, {
-      assignees,
-      information: {
-        name,
-        category: {
-          id: categoryId,
-        },
-      },
-      days,
-    })
-    .then((response) => response.data);
+  return axios.post(`/houses/${houseId}/repeat-chores`, {
+    assignees,
+    information: {
+      name,
+      category,
+    },
+    days,
+    allotcaion_method,
+  });
 };
 
 // 반복 집안일 전체 목록

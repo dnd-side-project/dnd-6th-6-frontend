@@ -1,25 +1,29 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../../atoms/Button/Button';
-import EventAssignes, { IMember } from '../../molecules/EventAssignes/EventAssignes';
+import EventAssignes from '../../molecules/EventAssignes/EventAssignes';
 import TextInput from '../../molecules/TextInput/TextInput';
 import { StyledOneTimeEventForm } from './OneTimeEventFormStyled';
 import Calendar from '../Calendar/Calendar';
 import Label from '../../atoms/Label/Label';
 import Message from '../../atoms/Message/Message';
 import TimePicker from '../Timer/TimePicker';
-import { ReactComponent as TimerIcon } from '../../../../src_assets/TimerIcon.svg';
+import { User } from '../../../../interfaces/user';
+import { setChoreAPI } from '../../../../apis/chore';
+import moment from 'moment';
+import { useNavigate } from 'react-router';
 
 interface IForm {
   title: string;
 }
 
-export interface IOrgOneTimeEventFormProps {}
+export interface IOrgOneTimeEventFormProps {
+  me: User;
+}
 
-const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
-  // const [showCategoryModal, setShowCategoryModal] = useState(false);
-  // const [chooseCategory, setChooseCategory] = useState<{ src: string; id: number; category: string }>();
-  const [checkMembers, setCheckMembers] = useState<number[]>([]);
+const OneTimeEventForm = ({ me }: IOrgOneTimeEventFormProps) => {
+  const navigate = useNavigate();
+  const [checkMembers, setCheckMembers] = useState<User[]>([]);
   const ref = useRef({ 시간대: '', 시: 0, 분: 0 });
   const [startDate, setStartDate] = useState<Date>();
   const [dateErrorMessage, setDateErrorMessage] = useState('');
@@ -29,25 +33,16 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
     formState: { errors },
   } = useForm<IForm>();
 
-  const onClickAvatar = (member: IMember) => {
+  const onClickAvatar = (member: User) => {
     console.log(member);
-    if (checkMembers.includes(member.id)) {
+    if (checkMembers.includes(member)) {
       setCheckMembers((clickMembers) => {
-        return clickMembers.filter((clickMember) => clickMember !== member.id);
+        return clickMembers.filter((clickMember) => clickMember !== member);
       });
       return;
     }
-    setCheckMembers((prev) => [...prev, member.id]);
+    setCheckMembers((prev) => [...prev, member]);
   };
-
-  // const onClickImgChoose = (category: { src: string; id: number; category: string }) => {
-  //   console.log(category);
-  //   setChooseCategory(category);
-  // };
-
-  // const onShowImgChoose = () => {
-  //   setShowCategoryModal((prev) => !prev);
-  // };
 
   const onVaild = (data: IForm) => {
     if (!startDate) {
@@ -57,15 +52,30 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
     }
     if (checkMembers.length === 0) return;
     console.log({ ...data, checkMembers, plan_at: startDate });
+    const currentday = moment(startDate).format('YYYY/MM/DD');
+    const currentTime =
+      ref.current.시간대 === '오전'
+        ? `0${ref.current.시}:${ref.current.분}`
+        : `${ref.current.시 + 12}:${ref.current.분}`;
+    const planned_at = moment(`${currentday} ${currentTime}`, 'YYYY/MM/DD HH:mm').toDate();
+    console.log(planned_at);
+    setChoreAPI({
+      houseId: me.user_profile.house?.id as number,
+      assignees: checkMembers,
+      name: data.title,
+      planned_at,
+    })
+      .then(() => {
+        navigate('/shareHousework');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <StyledOneTimeEventForm onSubmit={handleSubmit(onVaild)}>
       <div className="oneTimeEvent_info">
-        {/* <div className="event_category" onClick={onShowImgChoose}>
-          <img src={!chooseCategory ? imgChoose : chooseCategory.src} />
-          <span>{!chooseCategory ? '이미지 선택' : chooseCategory.category}</span>
-        </div> */}
         <TextInput
           register={{
             ...register('title', {
@@ -93,13 +103,6 @@ const OneTimeEventForm = (props: IOrgOneTimeEventFormProps) => {
         <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} />
       </div>
       <Button className="basic">완료</Button>
-      {/* {showCategoryModal && (
-        <ChooseCatagoryModal
-          setShowCategoryModal={setShowCategoryModal}
-          onClick={onClickImgChoose}
-          checkCategory={chooseCategory?.category}
-        />
-      )} */}
     </StyledOneTimeEventForm>
   );
 };

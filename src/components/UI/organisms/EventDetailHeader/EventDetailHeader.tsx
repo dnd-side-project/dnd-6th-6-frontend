@@ -1,5 +1,4 @@
-import { Chore, Day, RepeatChore } from '../../../../interfaces/chore';
-import { User } from '../../../../interfaces/user';
+import { Chore, RepeatChore } from '../../../../interfaces/chore';
 import CardButton from '../../atoms/CardButton/CardButton';
 import Time from '../../atoms/Time/Time';
 import Title from '../../atoms/Title/Title';
