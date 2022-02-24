@@ -1,4 +1,6 @@
 import { Meta, Story } from '@storybook/react';
+import { chore1 } from '../../../dummyData/dummyChore';
+import { user1, user2, user3 } from '../../../dummyData/dummyUser';
 import StoriesLayout from '../../Layouts/Stories/StoriesLayout';
 import Request, { ITempRequestProps } from './Request';
 
@@ -19,4 +21,7 @@ const Template: Story<ITempRequestProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.parameters = {};
-Default.args = {};
+Default.args = {
+  chore: chore1,
+  members: [user1, user2, user3],
+};

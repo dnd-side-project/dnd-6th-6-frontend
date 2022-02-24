@@ -5,8 +5,6 @@ import ProfileSetting from './components/templates/ProfileSetting/ProfileSetting
 import Main from './components/templates/Main/Main';
 import HouseMaking from './components/templates/HouseMaking/HouseMaking';
 import HouseNone from './components/templates/HouseNone/HouseNone';
-import Request from './components/templates/Request/Request';
-import RequestReceive from './components/templates/RequestReceive/RequestReceive';
 import EmailAuth from './components/templates/EmailAuth/EmailAuth';
 import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import EventMaking from './components/templates/EventMaking/EventMaking';
@@ -21,6 +19,8 @@ import NotificationPage from './pages/NotificationPage';
 import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
 import MainPage from './pages/MainPage';
 import UserList from './components/templates/UserList/UserList';
+import RequestReceivePage from './pages/RequestReceivePage';
+import RequestPage from './pages/RequestPage';
 function App() {
   return (
     <Router>
@@ -41,8 +41,10 @@ function App() {
           <Route path=":feedbackId/chore/:choreId" element={<FeedbackAcceptPage />} />
           <Route path="give" element={<FeedbackGive />} />
         </Route>
-        <Route path="/request" element={<Request />} />
-        <Route path="/requestReceive" element={<RequestReceive />} />
+        <Route path="/request">
+          <Route path=":choreId" element={<RequestPage />} />
+          <Route path=":choreId/favor/:favorId" element={<RequestReceivePage />} />
+        </Route>
         <Route path="/shareHousework" element={<ShareHouseWorkPage />} />
         <Route path="/event">
           <Route path="make" element={<EventMaking />} />

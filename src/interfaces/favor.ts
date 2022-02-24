@@ -3,7 +3,7 @@ import { User } from './user';
 
 export interface Favor {
   id: number;
-  chore: RepeatChore | Chore;
+  chore: Chore;
   _from: User;
   to: User;
   content: string;
