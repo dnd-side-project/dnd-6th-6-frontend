@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
 // 일회성 집안일 생성
 export const setChoreAPI = ({

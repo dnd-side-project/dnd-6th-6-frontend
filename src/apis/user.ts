@@ -3,7 +3,7 @@ import { User } from '../interfaces/user';
 const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
 // 모든 유저 목록
 export const getAllUserAPI = () => {

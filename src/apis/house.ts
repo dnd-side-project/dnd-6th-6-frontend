@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8000';
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
 axios.defaults.baseURL = BASE_URL;
 

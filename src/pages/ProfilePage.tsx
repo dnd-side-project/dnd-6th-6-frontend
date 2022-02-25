@@ -5,11 +5,15 @@ import { Member } from '../interfaces/house';
 import { getLoginUser } from '../apis/user';
 import { getMembersAPI } from '../apis/house';
 import Profile from '../components/templates/Profile/Profile';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState('');
   const { data: me } = useQuery<User>('me', getLoginUser, {
-    enabled: !!token,
+    onError: () => {
+      navigate('/');
+    },
   });
   const { data: houseMemberInfo } = useQuery<Member[]>('housemember', getMembersAPI, {
     enabled: !!me,
