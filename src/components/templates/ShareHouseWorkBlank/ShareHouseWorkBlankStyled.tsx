@@ -14,6 +14,8 @@ export const StyledShareHouseWorkBlank = styled.div`
     width: 100%;
     height: 275px;
     margin-bottom: 14px;
+    display: flex;
+    justify-content: center;
   }
   .ShareHouseWorkBlank_message {
     width: 100%;

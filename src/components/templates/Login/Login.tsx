@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { sendLoginEmailAPI, sendLoginPasswordAPI } from '../../../apis/user';
 import { useQueryClient, useMutation } from 'react-query';
 import { StyledLogin } from './LoginStyled';
+import axios from 'axios';
 
 export interface ILoginForm {
   login_email: string;
@@ -22,6 +23,7 @@ const Login = () => {
     onSuccess: (res) => {
       queryClient.setQueryData('me', res.data.user);
       window.localStorage.setItem('Token', res.data.token);
+      axios.defaults.headers.common['Authorization'] = `Token ${res.data.token}`;
       if (res.data.user.user_profile.house != null) {
         navigate('/main');
       } else {

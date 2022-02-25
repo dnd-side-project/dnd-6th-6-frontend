@@ -24,6 +24,7 @@ import ComplimentPage from './pages/ComplimentPage';
 import NoticeWritePage from './pages/NoticeWritePage';
 import FeedbackGivePage from './pages/FeedbackGivePage';
 import AllFeed from './components/templates/AllFeed/AllFeed';
+import axios from 'axios';
 function App() {
   return (
     <Router>

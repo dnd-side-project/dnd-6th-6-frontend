@@ -4,6 +4,7 @@ import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import { StyledShareHouseWorkBlank } from './ShareHouseWorkBlankStyled';
 import { ReactComponent as MakeEventBtn } from '../../../src_assets/makeEventBtn.svg';
 import { Link } from 'react-router-dom';
+import blackFeedEvent from '../../../src_assets/blackFeedEvent.svg';
 
 export interface ITempShareHouseWorkBlankProps {}
 
@@ -20,7 +21,9 @@ const ShareHouseWorkBlank = () => {
               일정을 확인해 보세요!
             </Title>
           </div>
-          <div className="ShareHouseWorkBlank_img"></div>
+          <div className="ShareHouseWorkBlank_img">
+            <img src={blackFeedEvent} alt="" />
+          </div>
           <div className="ShareHouseWorkBlank_message">
             <span>아직 분담 계획이 없어요</span>
             <span>일정을 만들고 가사분담을 진행해보세요!</span>
