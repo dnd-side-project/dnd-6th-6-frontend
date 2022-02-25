@@ -10,18 +10,19 @@ import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import EventMaking from './components/templates/EventMaking/EventMaking';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
-import Profile from './components/templates/Profile/Profile';
+import ProfilePage from './pages/ProfilePage';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
 import NoticeDetailPage from './pages/NoticeDatailPage';
 import NotificationPage from './pages/NotificationPage';
 import FeedbackAcceptPage from './pages/FeedbackAcceptPage';
+import MainPage from './pages/MainPage';
+import UserList from './components/templates/UserList/UserList';
 import RequestReceivePage from './pages/RequestReceivePage';
 import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 import RepeatEventDetailPage from './pages/RepeatEventDetail';
 import OneTimeEventDetail from './pages/OneTimeEventDetail';
-import MainPage from './pages/MainPage';
 function App() {
   return (
     <Router>
@@ -57,7 +58,8 @@ function App() {
           <Route path="detail" element={<NoticeDetailPage />} />
           <Route path="write" element={<NoticeWrite />} />
         </Route>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/userlist" element={<UserList />} />
       </Routes>
     </Router>
     // <>

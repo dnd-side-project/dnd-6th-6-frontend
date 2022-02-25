@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router';
 import { user1, user2, user3 } from '../../../dummyData/dummyUser';
 import { Chore, RepeatChore } from '../../../interfaces/chore';
+import { INotice } from '../../../interfaces/notice';
 import { User } from '../../../interfaces/user';
+import { Member } from '../../../interfaces/house';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
 import Notice from '../../UI/molecules/Notice/Notice';
@@ -14,7 +16,7 @@ import { StyledMain } from './MainStyled';
 const members = [user1, user2, user3];
 
 // 로그인한 user 정보 Dummy Data
-const me = user1;
+// const me = user1;
 
 //하우스 정보 Dummy Data
 const house = {
@@ -26,9 +28,11 @@ export interface ITempMainProps {
   me: User;
   todayChoresMe: Chore[];
   todayChoresOther: Chore[];
+  notice: INotice[];
+  houseMemberInfo: Member[];
 }
 
-const Main = ({ me, todayChoresMe, todayChoresOther }: ITempMainProps) => {
+const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: ITempMainProps) => {
   const navigate = useNavigate();
   // 로그인한 user정보 GET
   // 하우스 정보 GET
@@ -41,10 +45,10 @@ const Main = ({ me, todayChoresMe, todayChoresOther }: ITempMainProps) => {
     <>
       <StyledMain>
         <header className="main_header">
-          <MainHeader mb="40px" />
+          <MainHeader mb="40px" houseMemberInfo={houseMemberInfo} />
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
-        <Notice onClick={onClickNotice} notice_title="금요일에 모여서 다같이 대청소 하는 것은 어떨까요?" />
+        <Notice onClick={onClickNotice} notice_title={notice[0]?.content || ''} />
         <TodayToDoMe todayToDos={todayChoresMe} mb="6px" />
         <TodayToDoHouse todayToDoOthers={todayChoresOther} />
       </StyledMain>

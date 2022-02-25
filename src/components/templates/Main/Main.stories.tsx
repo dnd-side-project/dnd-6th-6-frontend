@@ -13,9 +13,7 @@ export default {
 
 const Template: Story<ITempMainProps> = (args) => (
   <>
-    <StoriesLayout>
-      <Main {...args} />
-    </StoriesLayout>
+    <StoriesLayout>{/* <Main {...args} /> */}</StoriesLayout>
   </>
 );
 

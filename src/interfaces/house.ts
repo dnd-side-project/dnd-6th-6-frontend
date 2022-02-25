@@ -5,3 +5,7 @@ export interface House {
   name: string;
   members?: User[];
 }
+
+export interface Member {
+  member: User;
+}

@@ -24,9 +24,9 @@ const StartScreen = (props: ITempStartScreenProps) => {
           <a href="http://localhost:8000/users/login/naver">
             <img src={NaverIcon} alt="naver" />
           </a>
-          {/* <a href="http://localhost:8000/users/login/kakao"> */}
-          <img src={KakaoIcon} alt="kakao" onClick={kakaoLoginAPI} />
-          {/* </a> */}
+          <a href="http://localhost:8000/users/login/kakao">
+            <img src={KakaoIcon} alt="kakao" />
+          </a>
         </div>
         <Button onClick={onClickEmailBtn} type="button" className="basic">
           이메일로 시작하기

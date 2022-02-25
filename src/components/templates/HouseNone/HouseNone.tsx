@@ -11,20 +11,28 @@ import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import { useQuery } from 'react-query';
 import { getLoginUser } from '../../../apis/user';
 import { User } from '../../../interfaces/user';
+import { Member } from '../../../interfaces/house';
+import { getMembersAPI } from '../../../apis/house';
 
 const HouseNone = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
-  const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
+  const { data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+  });
+  const { data: houseMemberInfo } = useQuery<Member[]>('housemember', getMembersAPI, {
+    enabled: !!me,
   });
   useEffect(() => {
     setToken(localStorage.getItem('Token') || '');
   }, [token]);
+  if (!me || !houseMemberInfo) {
+    return <div>로딩중</div>;
+  }
   return (
     <AppLayout>
       <StyledHouseNone>
-        <MainHeader mb="28px" />
+        <MainHeader mb="28px" houseMemberInfo={houseMemberInfo} />
         <HouseMainTitle first_name={me?.first_name} />
         <div className="LabelWrapper">
           <Label color="#565A5E">하우스를 만들거나 초대받아 입장할 수 있어요.</Label>

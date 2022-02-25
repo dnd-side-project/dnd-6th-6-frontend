@@ -3,7 +3,8 @@ import axios from 'axios';
 const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
+
 // 공지사항 만들기
 export const setNoticeAPI = ({ houseId, title, content }: { houseId: number; title: string; content: string }) => {
   return axios.post(`/houses/${houseId}/notices`, { title, content }).then((response) => response.data);

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://127.0.0.1:8000';
-
+const BASE_URL = 'http://localhost:8000';
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
+
 // 하우스 만들기
 export const makeHouseAPI = async (name: string) => {
   return await axios.post(`/houses/`, { name });

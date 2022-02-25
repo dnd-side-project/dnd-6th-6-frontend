@@ -8,11 +8,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story = (args) => (
-  <>
-    <MainHeader />
-  </>
-);
+const Template: Story = (args) => <>{/* <MainHeader /> */}</>;
 
 export const Default = Template.bind({});
 Default.parameters = {};
