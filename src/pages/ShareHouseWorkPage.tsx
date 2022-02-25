@@ -21,14 +21,14 @@ const ShareHouseWorkPage = () => {
   });
   const { data: repeatChores } = useQuery<RepeatChore[]>(
     'repeatChores',
-    () => getAllChoresAPI(me?.user_profile.house?.id as number),
+    () => getAllRepeatChoresAPI(me?.user_profile.house?.id as number),
     {
       enabled: !!me,
     },
   );
   const { data: oneTimeChores } = useQuery<Chore[]>(
     'oneTimeChores',
-    () => getAllRepeatChoresAPI(me?.user_profile.house?.id as number),
+    () => getAllChoresAPI(me?.user_profile.house?.id as number),
     {
       enabled: !!me,
     },

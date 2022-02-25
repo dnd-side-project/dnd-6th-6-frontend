@@ -22,9 +22,9 @@ export const setChoreAPI = ({
     assignees,
     information: {
       name,
-    },
-    category: {
-      id: 2,
+      category: {
+        id: 6,
+      },
     },
     planned_at,
   });
@@ -56,7 +56,7 @@ export const editChoreAPI = ({
   categoryId: number;
   planned_at: Date;
 }) => {
-  return axios.patch(`/houses/${houseId}/chores/${choreId}`, {
+  return axios.patch(`/houses/${houseId}/chores/${choreId}/`, {
     assignees,
     information: {
       name,
@@ -86,7 +86,7 @@ export const returnEditChoreAPI = ({
   completed_at?: Date;
 }) => {
   return axios
-    .patch(`/houses/${houseId}/chores/${choreId}`, {
+    .patch(`/houses/${houseId}/chores/${choreId}/`, {
       assignees,
       information: {
         name,
@@ -107,7 +107,7 @@ export const deleteChoreAPI = (houseId: number, choreId: number) => {
 
 // 일회성 집안일 댓글 작성
 export const setChoreCommentAPI = (choreId: number, content: string) => {
-  return axios.post(`/chores/${choreId}/comments`, { content }).then((response) => response.data);
+  return axios.post(`/chores/${choreId}/comments/`, { content });
 };
 
 // 일회성 집안일 댓글 목록

@@ -68,7 +68,11 @@ const TimePicker = forwardRef(({ isToDayEdit, chore }: ITimerProps, ref: any) =>
       ) : (
         <div className="todayEditTime" onClick={showTimer}>
           {ref.current.시간대 == '' ? (
-            <span>{moment(chore?.planned_at).format('HH시 시작 예정')}</span>
+            <span>
+              {chore?.completed_at
+                ? `${moment(chore?.completed_at).format('HH:MM 완료')}`
+                : `${moment(chore?.planned_at).format('HH시 시작 예정')}`}
+            </span>
           ) : (
             <span>
               {ref.current.시간대} {ref.current.시}시 시작 예정

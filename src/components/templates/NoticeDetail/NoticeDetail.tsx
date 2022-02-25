@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { INotice } from '../../../interfaces/notice';
+import { User } from '../../../interfaces/user';
 import Header from '../../UI/molecules/Header/Header';
 import NoticeCard from '../../UI/molecules/NoticeCard/NoticeCard';
 import NoticeModal from '../../UI/molecules/NoticeModal/NoticeModal';
@@ -8,9 +9,10 @@ import { StyledNoticeDetail } from './NoticeDetailStyled';
 
 export interface ITempNoticeDetailProps {
   notices: INotice[];
+  me: User;
 }
 
-const NoticeDetail = ({ notices }: ITempNoticeDetailProps) => {
+const NoticeDetail = ({ me, notices }: ITempNoticeDetailProps) => {
   const naveigate = useNavigate();
   const [showNoticeModal, setShowNoticeModal] = useState(false);
   const [noticeId, setNoticeId] = useState<number>();
@@ -22,7 +24,7 @@ const NoticeDetail = ({ notices }: ITempNoticeDetailProps) => {
     [showNoticeModal, noticeId],
   );
   const goBack = () => {
-    naveigate(-1);
+    naveigate('/main');
   };
   const onClickWrite = () => {
     naveigate('/notice/write');
@@ -47,7 +49,7 @@ const NoticeDetail = ({ notices }: ITempNoticeDetailProps) => {
           onClick={onClickNoticeCard}
         />
       ))}
-      {showNoticeModal && <NoticeModal noticeId={noticeId} setShowNoticeModal={setShowNoticeModal} />}
+      {showNoticeModal && <NoticeModal me={me} noticeId={noticeId} setShowNoticeModal={setShowNoticeModal} />}
     </StyledNoticeDetail>
   );
 };

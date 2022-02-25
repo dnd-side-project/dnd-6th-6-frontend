@@ -14,7 +14,7 @@ export const StyledTodayToDoHouse = styled.div`
     }
   }
   .TodayToDoHouse_info {
-    & > div {
+    & > a > div {
       margin-bottom: 7px;
     }
     .TodayToDoHouse_noToDo {

@@ -1,12 +1,17 @@
 import React, { Dispatch, SetStateAction, useCallback } from 'react';
+import { useQueryClient } from 'react-query';
+import { deleteNoticeAPI } from '../../../../apis/notice';
+import { User } from '../../../../interfaces/user';
 import { NoticeModalWrapper, StyledNoticeModal } from './NoticeModalStyled';
 
 export interface IMoleNoticeModalProps {
   noticeId?: number;
   setShowNoticeModal: Dispatch<SetStateAction<boolean>>;
+  me: User;
 }
 
-const NoticeModal = ({ noticeId, setShowNoticeModal }: IMoleNoticeModalProps) => {
+const NoticeModal = ({ noticeId, setShowNoticeModal, me }: IMoleNoticeModalProps) => {
+  const queryClient = useQueryClient();
   const onClick = () => {
     setShowNoticeModal((prev) => !prev);
   };
@@ -19,10 +24,14 @@ const NoticeModal = ({ noticeId, setShowNoticeModal }: IMoleNoticeModalProps) =>
   }, [noticeId, setShowNoticeModal]);
   const onClickNoticeEdit = useCallback(() => {
     // 수정하기
+
     setShowNoticeModal((prev) => !prev);
   }, [noticeId, setShowNoticeModal]);
   const onClickNoticeDelete = useCallback(() => {
     // 삭제하기
+    deleteNoticeAPI(me.user_profile.house?.id as number, noticeId as number).then(() => {
+      queryClient.refetchQueries('notice');
+    });
     setShowNoticeModal((prev) => !prev);
   }, [noticeId, setShowNoticeModal]);
   return (

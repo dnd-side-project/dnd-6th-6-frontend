@@ -14,9 +14,10 @@ export interface ITempEventDetailProps {
   chore: RepeatChore | Chore;
   comments: RepeatChoreComment[] | ChoreComment[];
   me: User;
+  isOneTime: boolean;
 }
 
-const EventDetail = ({ chore, comments, me }: ITempEventDetailProps) => {
+const EventDetail = ({ isOneTime, chore, comments, me }: ITempEventDetailProps) => {
   const navigate = useNavigate();
   // chore type guard
   function isRepeatChoreType(object: any): object is RepeatChore {
@@ -43,19 +44,28 @@ const EventDetail = ({ chore, comments, me }: ITempEventDetailProps) => {
         ) : (
           <Header onClick={goBack} title="일정 상세보기" />
         )}
-        {isRepeatChoreType(chore) ? (
+        {!isOneTime ? (
           <>
             <div className="eventDetail_category">
-              <img src={categoryImgURLs.filter((categoryImgURL) => categoryImgURL.id === 1)[0].src} />
+              <img
+                src={
+                  categoryImgURLs.filter((categoryImgURL) => categoryImgURL.id === chore.information.category.id)[0].src
+                }
+              />
             </div>
             <EventDetailHeader chore={chore} isRepeatChore={true} />
           </>
         ) : (
-          <EventDetailHeader chore={chore} isRepeatChore={false} />
+          <>
+            <div className="eventDetail_category">
+              <img src={categoryImgURLs[5].src} />
+            </div>
+            <EventDetailHeader chore={chore} isRepeatChore={false} />
+          </>
         )}
       </div>
       <Comments comments={comments} />
-      <CommentForm avatar={me.user_profile.avatar || ''} />
+      <CommentForm isOneTime={isOneTime} choreId={chore.id} avatar={me.user_profile.avatar || ''} />
     </StyledEventDetail>
   );
 };

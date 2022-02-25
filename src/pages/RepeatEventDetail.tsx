@@ -12,7 +12,7 @@ import { RepeatChoreComment } from '../interfaces/comment';
 import { User } from '../interfaces/user';
 
 const chore = repeatChore1;
-const comments = [repeatComment1, repeatComment2, repeatComment3, repeatComment4];
+// const comments = [repeatComment1, repeatComment2, repeatComment3, repeatComment4];
 const me = user1;
 
 type ParamTypes = {
@@ -22,35 +22,28 @@ type ParamTypes = {
 const RepeatEventDetailPage = () => {
   const { choreId } = useParams() as ParamTypes;
   console.log(choreId);
-  // const [token, setToken] = useState('');
-  // // 로그인한 user 정보
-  // const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
-  //   enabled: !!token,
-  // });
-  // const { data: chore } = useQuery<Chore>(
-  //   ['repeatChore', choreId],
-  //   () => getDetailRepeatChoreAPI(me?.user_profile.house?.id as number, +choreId as number),
-  //   {
-  //     enabled: !!me,
-  //   },
-  // );
-  // const { data: comments } = useQuery<RepeatChoreComment[]>(
-  //   ['chore', choreId],
-  //   () => getRepeatChoreCommentAPI(+choreId as number),
-  //   {
-  //     enabled: !!me,
-  //   },
-  // );
+  const [token, setToken] = useState('');
+  // 로그인한 user 정보
+  const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
+    enabled: !!token,
+  });
+  const { data: chore } = useQuery<Chore>(
+    ['repeatChore', choreId],
+    () => getDetailRepeatChoreAPI(me?.user_profile.house?.id as number, +choreId as number),
+    {
+      enabled: !!me,
+    },
+  );
 
-  // useEffect(() => {
-  //   setToken(localStorage.getItem('token') || '');
-  //   //token없을경우 login page로 redirect
-  // }, [token]);
+  useEffect(() => {
+    setToken(localStorage.getItem('Token') || '');
+    //token없을경우 login page로 redirect
+  }, [token]);
 
-  // if (!me || !chore || !comments) {
-  //   return <div>로딩중...</div>;
-  // }
-  return <EventDetail chore={chore} comments={comments} me={me} />;
+  if (!me || !chore) {
+    return <div>로딩중...</div>;
+  }
+  return <EventDetail isOneTime={false} chore={chore} comments={chore.comments} me={me} />;
 };
 
 export default RepeatEventDetailPage;

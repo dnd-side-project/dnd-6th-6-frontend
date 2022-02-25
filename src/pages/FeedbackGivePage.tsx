@@ -2,21 +2,18 @@ import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router';
 import { getDetailChoreAPI } from '../apis/chore';
+import { getDetailRepeatChoreAPI } from '../apis/repeat-chore';
 import { getLoginUser } from '../apis/user';
-import TodayToDoMeDetail from '../components/templates/TodayToDoMeDetail/TodayToDoMeDetail';
-import { chore3 } from '../dummyData/dummyChore';
+import FeedbackGive from '../components/templates/FeedbackGive/FeedbackGive';
 import { Chore } from '../interfaces/chore';
 import { User } from '../interfaces/user';
-
-const chore = chore3;
 
 type ParamTypes = {
   choreId: string;
 };
 
-const TodayToDoMeDetailPage = () => {
+const FeedbackGivePage = () => {
   const { choreId } = useParams() as ParamTypes;
-  console.log(choreId);
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
@@ -37,7 +34,7 @@ const TodayToDoMeDetailPage = () => {
   if (!me || !chore) {
     return <div>로딩중...</div>;
   }
-  return <TodayToDoMeDetail chore={chore} />;
+  return <FeedbackGive chore={chore} />;
 };
 
-export default TodayToDoMeDetailPage;
+export default FeedbackGivePage;

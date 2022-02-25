@@ -24,9 +24,7 @@ const RepeatEventCard = ({ repeatChore }: IMoleRepeatEventCardProps) => {
       <div className="repeatChore_category">
         <img
           src={
-            categoryImgURLs.filter(
-              (categoryImgURL) => categoryImgURL.category === repeatChore.information.category.name,
-            )[0].src
+            categoryImgURLs.filter((categoryImgURL) => categoryImgURL.id === repeatChore.information.category.id)[0].src
           }
         />
       </div>

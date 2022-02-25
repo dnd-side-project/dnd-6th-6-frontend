@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
 import { Chore, RepeatChore } from '../../../../interfaces/chore';
 import Time from '../../atoms/Time/Time';
@@ -34,25 +35,28 @@ const TodayToDoHouse = ({ todayToDoOthers }: IOrgTodayToDoHouseProps) => {
         {todayToDoOthers
           .filter((todayToDoOther) => todayToDoOther.completed_at)
           .map((todayToDoOther) => (
-            <HouseCard
-              key={todayToDoOther.id}
-              completed_at={todayToDoOther.completed_at}
-              planned_at={todayToDoOther.planned_at}
-              event_title={todayToDoOther.information.name}
-              assignees={todayToDoOther.assignees}
-            />
+            <Link to={`/feedback/${todayToDoOther.id}/give`} key={todayToDoOther.id}>
+              <HouseCard
+                completed_at={todayToDoOther.completed_at}
+                planned_at={todayToDoOther.planned_at}
+                event_title={todayToDoOther.information.name}
+                assignees={todayToDoOther.assignees}
+              />
+            </Link>
           ))}
         {/* 완료하지 않은 목록 밑으로 가게  */}
         {todayToDoOthers
           .filter((todayToDoOther) => !todayToDoOther.completed_at)
           .map((todayToDoOther) => (
-            <HouseCard
-              key={todayToDoOther.id}
-              completed_at={todayToDoOther.completed_at}
-              planned_at={todayToDoOther.planned_at}
-              event_title={todayToDoOther.information.name}
-              assignees={todayToDoOther.assignees}
-            />
+            <Link to={`/event/onetime/${todayToDoOther.id}`} key={todayToDoOther.id}>
+              <HouseCard
+                key={todayToDoOther.id}
+                completed_at={todayToDoOther.completed_at}
+                planned_at={todayToDoOther.planned_at}
+                event_title={todayToDoOther.information.name}
+                assignees={todayToDoOther.assignees}
+              />
+            </Link>
           ))}
       </div>
     </StyledTodayToDoHouse>

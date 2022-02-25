@@ -7,7 +7,7 @@ axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('
 
 // 부탁 보내기
 export const sendFavor = ({ choreId, toId, content }: { choreId: number; toId: number; content: string }) => {
-  return axios.post(`/chores/${choreId}/favor`, {
+  return axios.post(`/chores/${choreId}/favor/`, {
     to: {
       id: toId,
     },
