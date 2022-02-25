@@ -31,8 +31,8 @@ export const setChoreAPI = ({
 };
 
 // 일회성 집안일 전체 목록
-export const getAllChoresAPI = (houseId: number) => {
-  return axios.get(`/houses/${houseId}/chores`).then((response) => response.data);
+export const getAllChoresAPI = (houseId: number, start: string, end: string) => {
+  return axios.get(`/houses/${houseId}/chores?start_dt=${start}&end_dt=${end}`).then((response) => response.data);
 };
 
 // 일회성 집안일 상세보기
