@@ -46,7 +46,7 @@ const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: 
       <StyledMain>
         <header className="main_header">
           <MainHeader mb="40px" houseMemberInfo={houseMemberInfo} />
-          <HouseMainTitle first_name={me.first_name} house_name={house.name} />
+          <HouseMainTitle first_name={me.first_name} house_name={me.user_profile.house?.name} />
         </header>
         <Notice onClick={onClickNotice} notice_title={notice[0]?.content || ''} />
         <TodayToDoMe todayToDos={todayChoresMe} mb="6px" />

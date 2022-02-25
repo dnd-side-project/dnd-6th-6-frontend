@@ -1,3 +1,4 @@
+import { ChoreComment, RepeatChoreComment } from './comment';
 import { House } from './house';
 import { User } from './user';
 
@@ -24,7 +25,7 @@ export interface Chore {
   information: ChoreInfomation;
   planned_at: Date;
   completed_at: Date | null;
-  comments?: Comment[];
+  comments: ChoreComment[];
 }
 
 export interface RepeatChore {
@@ -33,5 +34,5 @@ export interface RepeatChore {
   information: ChoreInfomation;
   days: Day[];
   allotcaion_method: number;
-  comments?: Comment[];
+  comments: RepeatChoreComment[];
 }
