@@ -6,6 +6,7 @@ import basket from '../../../../src_assets/basket.svg';
 import pail from '../../../../src_assets/pail.svg';
 import React from 'react';
 import Time from '../../atoms/Time/Time';
+import { categoryImgURLs } from '../../../../utils/category';
 
 export interface IMoleMyToDoCardProps {
   title: string;
@@ -41,6 +42,11 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
       <CardCategoryImgWrapper>
         {props.category === '빨래' && <CardCategoryImg src={basket} />}
         {props.category === '청소' && <CardCategoryImg src={pail} />}
+        {categoryImgURLs.map((categoryImgURL) => {
+          if (categoryImgURL.category === props.category) {
+            return <CardCategoryImg src={categoryImgURL.src} />;
+          }
+        })}
       </CardCategoryImgWrapper>
       {props.completed_at ? (
         <Button onClick={onClick} type="button" bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">

@@ -13,6 +13,7 @@ export const setRepeatChoreAPI = ({
   category,
   days,
   allotcaion_method,
+  planned_at,
 }: {
   houseId: number;
   assignees: { id: number }[];
@@ -20,6 +21,7 @@ export const setRepeatChoreAPI = ({
   category: { id: number };
   days: { id: number }[];
   allotcaion_method: number;
+  planned_at: string;
 }) => {
   return axios.post(`/houses/${houseId}/repeat-chores/`, {
     assignees,
@@ -28,7 +30,8 @@ export const setRepeatChoreAPI = ({
       category,
     },
     days,
-    allotcaion_method,
+    allocation_method: allotcaion_method,
+    planned_at,
   });
 };
 

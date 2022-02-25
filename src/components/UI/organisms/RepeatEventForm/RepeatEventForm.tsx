@@ -80,6 +80,7 @@ const RepeatEventForm = ({ me }: IOrgRepeatEventFormProps) => {
       category: checkCategory as { id: number },
       days: chooseDays,
       allotcaion_method: chooseRole.id,
+      planned_at,
     }).then(() => {
       navigate('/shareHousework');
     });

@@ -21,9 +21,9 @@ export const setChoreAPI = ({
     assignees,
     information: {
       name,
-    },
-    category: {
-      id: 2,
+      category: {
+        id: 6,
+      },
     },
     planned_at,
   });
