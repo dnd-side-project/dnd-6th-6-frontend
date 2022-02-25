@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { getDetailChoreAPI } from '../apis/chore';
 import { getDetailRepeatChoreAPI } from '../apis/repeat-chore';
 import { getLoginUser } from '../apis/user';
@@ -13,11 +13,15 @@ type ParamTypes = {
 };
 
 const FeedbackGivePage = () => {
+  const navigate = useNavigate();
   const { choreId } = useParams() as ParamTypes;
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+    onError: () => {
+      navigate('/login');
+    },
   });
   const { data: chore } = useQuery<Chore>(
     ['chore', choreId],

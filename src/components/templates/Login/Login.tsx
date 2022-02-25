@@ -8,6 +8,7 @@ import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { useNavigate } from 'react-router-dom';
 import { sendLoginEmailAPI, sendLoginPasswordAPI } from '../../../apis/user';
 import { useQueryClient, useMutation } from 'react-query';
+import { StyledLogin } from './LoginStyled';
 
 export interface ILoginForm {
   login_email: string;
@@ -59,48 +60,54 @@ const Login = () => {
   return (
     <>
       <AppLayout>
-        <Header onClick={onMinusPageCount} title="로그인" mb="35px" />
-        {pageCount == 0 ? (
-          <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
-            이메일을 입력해주세요.
-          </Title>
-        ) : (
-          <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
-            비밀번호를 입력해주세요.
-          </Title>
-        )}
-        <form onSubmit={handleSubmit(onValid)}>
-          {pageCount === 0 && (
-            <>
-              <TextInput
-                register={{
-                  ...register('login_email', {
-                    required: '이메일을 입력하세요',
-                  }),
-                }}
-                labelText="이메일"
-                type="email"
-                message={errors.login_email?.message || ''}
-              />
-              <Button>다음</Button>
-            </>
+        <StyledLogin>
+          <Header onClick={onMinusPageCount} title="로그인" mb="35px" />
+          {pageCount == 0 ? (
+            <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
+              이메일을 입력해주세요.
+            </Title>
+          ) : (
+            <Title mb="24px" color="#3F4245" fontSize="23px" fontWeight="700" lineHeight="33.35px">
+              비밀번호를 입력해주세요.
+            </Title>
           )}
-          {pageCount === 1 && (
-            <>
-              <TextInput
-                register={{
-                  ...register('password', {
-                    required: '패스워드를 입력하세요',
-                  }),
-                }}
-                labelText="패스워드"
-                type="password"
-                message={errors.password?.message || ''}
-              />
-              <Button>로그인</Button>
-            </>
-          )}
-        </form>
+          <form onSubmit={handleSubmit(onValid)}>
+            {pageCount === 0 && (
+              <>
+                <div className="login_input">
+                  <TextInput
+                    register={{
+                      ...register('login_email', {
+                        required: '이메일을 입력하세요',
+                      }),
+                    }}
+                    labelText="이메일"
+                    type="email"
+                    message={errors.login_email?.message || ''}
+                  />
+                </div>
+                <Button className="basic">다음</Button>
+              </>
+            )}
+            {pageCount === 1 && (
+              <>
+                <div className="login_input">
+                  <TextInput
+                    register={{
+                      ...register('password', {
+                        required: '패스워드를 입력하세요',
+                      }),
+                    }}
+                    labelText="패스워드"
+                    type="password"
+                    message={errors.password?.message || ''}
+                  />
+                </div>
+                <Button className="basic">로그인</Button>
+              </>
+            )}
+          </form>
+        </StyledLogin>
       </AppLayout>
     </>
   );

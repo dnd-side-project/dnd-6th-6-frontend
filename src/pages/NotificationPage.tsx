@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router';
 import { getNotificationAPI } from '../apis/notification';
 import { getLoginUser } from '../apis/user';
 import Notification from '../components/templates/Notification/Notification';
@@ -10,10 +11,14 @@ import { User } from '../interfaces/user';
 const notifications = [notification, notification2];
 
 const NotificationPage = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+    onError: () => {
+      navigate('/login');
+    },
   });
   const { data: notifications } = useQuery<INotification[]>('notifications', getNotificationAPI, {
     enabled: !!token,

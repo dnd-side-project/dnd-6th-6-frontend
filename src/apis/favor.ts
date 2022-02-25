@@ -22,10 +22,10 @@ export const getFavors = (choreId: number) => {
 
 // 부탁 수락 PATCH
 export const receiveFavor = (choreId: number, favorId: number) => {
-  return axios.patch(`/chores/${choreId}/favor/${favorId}/accept`);
+  return axios.patch(`/chores/${choreId}/favor/${favorId}/accept/`);
 };
 
 // 부탁 상세보기 GET
 export const favoreDetailAPI = (choreId: number, favorId: number) => {
-  return axios.get(`/chores/${choreId}/favor/${favorId}/accept`).then((response) => response.data);
+  return axios.get(`/chores/${choreId}/favor/${favorId}`).then((response) => response.data);
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { getDetailRepeatChoreAPI, getRepeatChoreCommentAPI } from '../apis/repeat-chore';
 import { getLoginUser } from '../apis/user';
 import EventDetail from '../components/templates/EventDetail/EventDetail';
@@ -20,12 +20,16 @@ type ParamTypes = {
 };
 
 const RepeatEventDetailPage = () => {
+  const navigate = useNavigate();
   const { choreId } = useParams() as ParamTypes;
   console.log(choreId);
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+    onError: () => {
+      navigate('/login');
+    },
   });
   const { data: chore } = useQuery<Chore>(
     ['repeatChore', choreId],

@@ -11,7 +11,7 @@ const NoticeWritePage = () => {
   const [token, setToken] = useState('');
   const { data: me } = useQuery<User>('me', getLoginUser, {
     onError: () => {
-      navigate('/');
+      navigate('/login');
     },
   });
   useEffect(() => {
