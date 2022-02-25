@@ -3,8 +3,7 @@ import { user1, user2, user3 } from './dummyUser';
 
 export const repeatChore1: RepeatChore = {
   id: 1,
-  planned_at: new Date(),
-  completed_at: new Date(),
+  allotcaion_method: 2,
   information: {
     id: 1,
     name: '빨래',
@@ -33,8 +32,7 @@ export const repeatChore1: RepeatChore = {
 
 export const repeatChore2: RepeatChore = {
   id: 2,
-  planned_at: new Date(),
-  completed_at: null,
+  allotcaion_method: 2,
   information: {
     id: 1,
     name: '청소하기 및 널기',

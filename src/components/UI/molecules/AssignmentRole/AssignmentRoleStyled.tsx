@@ -13,7 +13,7 @@ export const StyledAssignmentRole = styled.div<{ mb: string; chooseRole: string 
   border: 1px solid #e2edfe;
   border-radius: 8px;
   & > span {
-    color: ${(props) => (props.chooseRole === '' ? '#a7adbd' : '#5B6574')};
+    color: ${(props) => (props.chooseRole !== '' ? '#a7adbd' : '#5B6574')};
     font-size: 14px;
     font-weight: ${(props) => (props.chooseRole ? '500' : '400')};
   }

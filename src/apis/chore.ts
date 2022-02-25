@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { User } from '../interfaces/user';
 
 const BASE_URL = 'http://127.0.0.1:8000';
 
@@ -10,27 +11,23 @@ export const setChoreAPI = ({
   houseId,
   assignees,
   name,
-  categoryId,
   planned_at,
 }: {
   houseId: number;
-  assignees: { id: number }[];
+  assignees: User[];
   name: string;
-  categoryId: number;
   planned_at: Date;
 }) => {
-  return axios
-    .post(`/houses/${houseId}/chores`, {
-      assignees,
-      information: {
-        name,
-        category: {
-          id: categoryId,
-        },
-      },
-      planned_at,
-    })
-    .then((response) => response.data);
+  return axios.post(`/houses/${houseId}/chores/`, {
+    assignees,
+    information: {
+      name,
+    },
+    category: {
+      id: 2,
+    },
+    planned_at,
+  });
 };
 
 // 일회성 집안일 전체 목록
@@ -54,10 +51,39 @@ export const editChoreAPI = ({
 }: {
   houseId: number;
   choreId: number;
-  assignees: { id: number }[];
+  assignees: User[];
   name: string;
   categoryId: number;
   planned_at: Date;
+}) => {
+  return axios.patch(`/houses/${houseId}/chores/${choreId}`, {
+    assignees,
+    information: {
+      name,
+      category: {
+        id: categoryId,
+      },
+    },
+    planned_at,
+  });
+};
+
+export const returnEditChoreAPI = ({
+  houseId,
+  choreId,
+  assignees,
+  name,
+  categoryId,
+  planned_at,
+  completed_at,
+}: {
+  houseId: number;
+  choreId: number;
+  assignees: User[];
+  name: string;
+  categoryId: number;
+  planned_at: Date;
+  completed_at?: Date;
 }) => {
   return axios
     .patch(`/houses/${houseId}/chores/${choreId}`, {
@@ -69,6 +95,7 @@ export const editChoreAPI = ({
         },
       },
       planned_at,
+      completed_at: completed_at || null,
     })
     .then((response) => response.data);
 };

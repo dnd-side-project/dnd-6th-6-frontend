@@ -45,7 +45,8 @@ const MainPage = () => {
     enabled: !!me,
   });
   useEffect(() => {
-    setToken(localStorage.getItem('token') || '');
+    setToken(localStorage.getItem('Token') || '');
+    console.log(token);
     //token없을경우 login page로 redirect
   }, [token]);
 

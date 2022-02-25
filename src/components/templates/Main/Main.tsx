@@ -49,11 +49,8 @@ const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: 
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
         <Notice onClick={onClickNotice} notice_title={notice[0]?.content || ''} />
-        {houseMemberInfo.map((e) => {
-          <div>{e.member}</div>;
-        })}
-        <TodayToDoMe mb="6px" />
-        <TodayToDoHouse />
+        <TodayToDoMe todayToDos={todayChoresMe} mb="6px" />
+        <TodayToDoHouse todayToDoOthers={todayChoresOther} />
       </StyledMain>
       <BottomNavBar />
     </>

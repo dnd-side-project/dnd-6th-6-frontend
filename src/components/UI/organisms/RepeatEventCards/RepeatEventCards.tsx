@@ -2,7 +2,6 @@ import Title from '../../atoms/Title/Title';
 import { StyledRepeatEventCards } from './RepeatEventCardsStyled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import RepeatEventCard from '../../molecules/RepeatEventCard/RepeatEventCard';
-import { repeatChore1, repeatChore2 } from '../../../../dummyData/dummyRepeatChore';
 import { Link } from 'react-router-dom';
 import { RepeatChore } from '../../../../interfaces/chore';
 
@@ -20,7 +19,7 @@ const RepeatEventCards = ({ repeatChores }: IOrgRepeatEventCardsProps) => {
         {repeatChores.length > 0 ? (
           repeatChores.map((repeatChore) => (
             <SwiperSlide key={repeatChore.id}>
-              <Link to={`/event/${repeatChore.id}`}>
+              <Link to={`/event/repeat/${repeatChore.id}`}>
                 <RepeatEventCard repeatChore={repeatChore} />
               </Link>
             </SwiperSlide>

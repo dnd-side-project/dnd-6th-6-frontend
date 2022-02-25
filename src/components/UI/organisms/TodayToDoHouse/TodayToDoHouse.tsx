@@ -8,10 +8,10 @@ import { StyledTodayToDoHouse } from './TodayToDoHouseStyled';
 const todayToDoOthers: Chore[] = [chore1, chore2, chore3];
 
 export interface IOrgTodayToDoHouseProps {
-  // todayToDoOthers: Chore[];
+  todayToDoOthers: Chore[];
 }
 
-const TodayToDoHouse = (props: IOrgTodayToDoHouseProps) => {
+const TodayToDoHouse = ({ todayToDoOthers }: IOrgTodayToDoHouseProps) => {
   // 오늘 남의 할 일 목록 GET
   return (
     <StyledTodayToDoHouse>
