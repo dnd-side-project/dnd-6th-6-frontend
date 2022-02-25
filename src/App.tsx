@@ -23,10 +23,12 @@ import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 import RepeatEventDetailPage from './pages/RepeatEventDetail';
 import OneTimeEventDetail from './pages/OneTimeEventDetail';
+import ComplimentPage from './pages/ComplimentPage';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/compliment" element={<ComplimentPage />} />
         <Route path="/" element={<StartScreen />} />
         <Route path="/join">
           <Route path="email" element={<Join />} />

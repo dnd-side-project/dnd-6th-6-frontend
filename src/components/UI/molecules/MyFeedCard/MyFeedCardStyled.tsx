@@ -31,9 +31,9 @@ export const MyFeedCardStyled = styled.div`
   }
   .mywork {
     margin-top: 11px;
-    height: 17px;
+    height: 24px;
     display: flex;
-    align-itmes: center;
+    align-items: center;
     span {
       font-size: 12px;
       font-weight: 500;

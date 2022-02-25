@@ -48,9 +48,7 @@ export const StyledTodayToDoMe = styled.div<{ mb?: string }>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    .todayToDo_blank_image {
-      margin: 130px 0 45px;
-    }
+    justify-content: center;
     & > span {
       color: #9ca3ab;
       font-weight: 500;

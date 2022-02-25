@@ -50,6 +50,10 @@ export const StyledTodoReport = styled.div`
     .todotime {
       color: #696e73;
     }
+    .boxWrapper {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 

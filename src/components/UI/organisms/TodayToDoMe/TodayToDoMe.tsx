@@ -5,6 +5,7 @@ import 'swiper/css';
 import MyToDoCard from '../../molecules/MyToDoCard/MyToDoCard';
 import { Chore } from '../../../../interfaces/chore';
 import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
+import { emojiImgURLs } from '../../../../utils/emoji';
 
 //오늘 내 할 일 목록 Dummy Data
 const todayToDos: Chore[] = [chore3, chore2, chore1];
@@ -42,7 +43,7 @@ const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
             ))
           ) : (
             <div className="todayToDo_blank">
-              <div className="todayToDo_blank_image">스마일 이모지?</div>
+              <img className="todayToDo_blank_image" src={emojiImgURLs[1].src} />
               <span>오늘 할일이 없어요!</span>
             </div>
           )}

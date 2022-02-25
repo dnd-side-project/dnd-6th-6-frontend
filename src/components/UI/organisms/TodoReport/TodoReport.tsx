@@ -1,36 +1,58 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyledTodoReport, ReportBoxItem, PercentBarInner, StyledCalendar } from './TodoReportStyled';
 import Button from '../../atoms/Button/Button';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import BottomNavBar from '../../molecules/BottomNavBar/BottomNavBar';
 import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import getYear from 'date-fns/getYear';
 import getMonth from 'date-fns/getMonth';
+import { Chore } from '../../../../interfaces/chore';
+import { useQuery, useQueryClient } from 'react-query';
+import axios from 'axios';
+import moment from 'moment';
+import { categoryImgURLs } from '../../../../utils/category';
 
 const TodoReport = () => {
-  const [dateRange, setDateRange] = useState<Array<Date | null>>([null, null]);
+  const queryClient = useQueryClient();
+  const me: any = queryClient.getQueryData('me');
+  const { isFetching, data: mycompleteChore } = useQuery<Chore[]>(
+    'mycompleteChore',
+    () =>
+      axios
+        .get(`houses/${me?.user_profile.house?.id}/chores/completed?start_dt=${sendstartDate}&end_dt=${sendendDate}`)
+        .then((res) => res.data),
+    {
+      enabled: !!me,
+    },
+  );
+  const [dateRange, setDateRange] = useState<Array<Date | any>>([
+    new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    new Date(),
+  ]);
   const [startDate, endDate] = dateRange;
-  const eventlist = [
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '쓰레기 처리', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
-    { EventType: '청소', EventName: '할일이름드가야함', EventTime: '2012:00:04' },
+  const [sendstartDate, sendendDate] = [
+    moment(startDate).format('YYYY-MM-DD 00:00'),
+    moment(endDate).format('YYYY-MM-DD 23:59'),
   ];
-
-  const colorlist = ['#65A3FF', '#4BBEFF', '#76DEFF', '#76DEFF', '#76DEFF', '#76DEFF'];
-  const TodoType = ['전체', '청소', '쓰레기 처리', '빨래하기', '요리하기', '설거지하기', '장보기'];
+  const colorlist = ['#1470FB', '#57A8EF', '#4BBEFF', '#76DEFF', '#87C5FF', '#739BC2'];
+  const TodoType = ['전체', '요리하기', '청소하기', '세탁하기', '장보기', '쓰레기 버리기', '일회성 이벤트'];
   const eventCount: any = {};
   for (let i = 1; i < TodoType.length; i++) {
-    eventCount[TodoType[i]] = eventlist.filter((e) => e.EventType == TodoType[i]).length;
+    eventCount[TodoType[i]] = mycompleteChore?.filter((e) => e.information.category.name == TodoType[i]).length;
   }
   const [selectedType, setSelectedType] = useState('전체');
-  console.log(eventCount);
+  let total: any = mycompleteChore?.length;
+
+  useEffect(() => {
+    console.log('이거맞음?');
+    queryClient.refetchQueries(['mycompleteChore']);
+  }, [endDate]);
+
+  if (!mycompleteChore) {
+    return <div>에러에러 초비상</div>;
+  }
+
   return (
     <StyledTodoReport>
       <div className="TodoReportHeader">
@@ -38,7 +60,7 @@ const TodoReport = () => {
         <StyledCalendar>
           <DatePicker
             locale={ko}
-            dateFormat="MM월 dd일"
+            dateFormat={'MM월 dd일'}
             selectsRange={true}
             startDate={startDate}
             endDate={endDate}
@@ -91,7 +113,7 @@ const TodoReport = () => {
           <SwiperSlide>
             {selectedType == type ? (
               <Button
-                width="98px"
+                width="90px"
                 height="33px"
                 bgColor="#5BADFF"
                 color="white"
@@ -102,7 +124,7 @@ const TodoReport = () => {
               </Button>
             ) : (
               <Button
-                width="98px"
+                width="90px"
                 height="33px"
                 bgColor="#E1EAF9"
                 color="#B2BDD0"
@@ -118,39 +140,52 @@ const TodoReport = () => {
       <div className="TypeCounter">
         <span className="TypeCounterName">{selectedType} 수행횟수</span>
         <span className="Count">
-          {selectedType == '전체' ? eventlist.length : eventlist.filter((e) => e.EventType == selectedType).length}
+          {selectedType == '전체'
+            ? total
+            : mycompleteChore?.filter((e) => e.information.category.name == selectedType).length}
         </span>
       </div>
-      {/* 안에 이너 추가해야함 */}
       <div className="PercentBar">
         {selectedType == '전체'
           ? Object.keys(eventCount).map((e, index) => (
-              <PercentBarInner percentage={eventCount[e] / eventlist.length} bgColor={colorlist[index]} line={index} />
+              <PercentBarInner percentage={eventCount[e] / total} bgColor={colorlist[index]} line={index} />
             ))
           : Object.keys(eventCount).map((e, index) =>
               e == selectedType ? (
-                <PercentBarInner
-                  percentage={eventCount[e] / eventlist.length}
-                  bgColor={colorlist[index]}
-                  line={index}
-                />
+                <PercentBarInner percentage={eventCount[e] / total} bgColor={colorlist[index]} line={index} />
               ) : (
-                <PercentBarInner percentage={eventCount[e] / eventlist.length} bgColor={'#E1EAF9'} line={index} />
+                <PercentBarInner percentage={eventCount[e] / total} bgColor={'#E1EAF9'} line={index} />
               ),
             )}
       </div>
       <div className="ReportBox">
-        {eventlist.map((element, index) => (
+        {mycompleteChore?.map((element, index) => (
           <ReportBoxItem key={index}>
-            <div>
-              <span className="typeicon">{element.EventType}</span>
-              <span className="todoname">{element.EventName}</span>
+            <div className="boxWrapper">
+              {element.information.category.name === '세탁하기' && (
+                <img src={categoryImgURLs[0].src} width={24} height={24} />
+              )}
+              {element.information.category.name === '청소하기' && (
+                <img src={categoryImgURLs[1].src} width={24} height={24} />
+              )}
+              {element.information.category.name === '쓰레기 버리기' && (
+                <img src={categoryImgURLs[2].src} width={24} height={24} />
+              )}
+              {element.information.category.name === '요리하기' && (
+                <img src={categoryImgURLs[3].src} width={24} height={24} />
+              )}
+              {element.information.category.name === '장보기' && (
+                <img src={categoryImgURLs[4].src} width={24} height={24} />
+              )}
+              {element.information.category.name === '일회성' && (
+                <img src={categoryImgURLs[5].src} width={24} height={24} />
+              )}
+              <span className="todoname">{element.information.name}</span>
             </div>
-            <div className="todotime">{element.EventTime}</div>
+            <div className="todotime">{element.completed_at}</div>
           </ReportBoxItem>
         ))}
       </div>
-      <BottomNavBar />
     </StyledTodoReport>
   );
 };
