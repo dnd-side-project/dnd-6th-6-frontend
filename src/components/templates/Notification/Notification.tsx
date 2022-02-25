@@ -22,8 +22,11 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
         {notifications.map((notification) => {
           if ('feedback' in notification) {
             return (
-              <Link to={`/feedback/${notification.feedback?.id}/chore/${notification.feedback?.chore.id}`}>
-                <NotificationCard notification={notification} key={notification.id} mb="40px" />;
+              <Link
+                key={notification.id}
+                to={`/feedback/${notification.feedback?.id}/chore/${notification.feedback?.chore.id}`}
+              >
+                <NotificationCard notification={notification} mb="40px" />
               </Link>
             );
           }
