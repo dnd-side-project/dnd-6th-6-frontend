@@ -6,17 +6,37 @@ import OneTimeEventCards from '../../UI/organisms/OneTimeEventCards/OneTimeEvent
 import RepeatEventCards from '../../UI/organisms/RepeatEventCards/RepeatEventCards';
 import { StyledShareHouseWork } from './ShareHouseWorkStyled';
 import { ReactComponent as MakeEventBtn } from '../../../src_assets/makeEventBtn.svg';
+import MonthSelect from '../../UI/molecules/MonthSelect/MonthSelect';
+import { Dispatch, SetStateAction, useState } from 'react';
+import moment from 'moment';
+import getMonthDateRange from '../../../utils/startEndDate';
 export interface ITempShareHouseWorkProps {
   repeatChores: RepeatChore[];
   oneTimeChores: Chore[];
+  setStartDate: Dispatch<SetStateAction<string>>;
+  setEndDate: Dispatch<SetStateAction<string>>;
 }
 
-const ShareHouseWork = ({ repeatChores, oneTimeChores }: ITempShareHouseWorkProps) => {
+const ShareHouseWork = ({ repeatChores, oneTimeChores, setStartDate, setEndDate }: ITempShareHouseWorkProps) => {
+  const [isShowMonthSelect, setIsShowMonthSelect] = useState<boolean>(false);
+  const [chooseMonth, setChooseMonth] = useState<number>();
+  const onShowModal = () => {
+    setIsShowMonthSelect((prev) => !prev);
+  };
+  const onSelectMonth = (month: number) => {
+    const startEndDate = getMonthDateRange(moment().year(), month);
+    setStartDate(startEndDate.start.toISOString().slice(0, -1));
+    setEndDate(startEndDate.end.toISOString().slice(0, -1));
+    // window.localStorage.setItem('month', `${month}`);
+    setChooseMonth(month);
+    setIsShowMonthSelect((prev) => !prev);
+  };
+  console.log(chooseMonth);
   return (
     <StyledShareHouseWork>
-      <div className="ShareHouseWork_title">
+      <div className="ShareHouseWork_title" onClick={onShowModal}>
         <Title color="#3F4245" fontWeight="700">
-          가사분담 2월
+          가사분담 {chooseMonth}월
         </Title>
         <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -31,6 +51,13 @@ const ShareHouseWork = ({ repeatChores, oneTimeChores }: ITempShareHouseWorkProp
         <MakeEventBtn className="ShareHouseWorkBlank_makeEventBtn" />
       </Link>
       <BottomNavBar />
+      {isShowMonthSelect && (
+        <MonthSelect
+          onClick={onSelectMonth}
+          isShowMonthSelect={isShowMonthSelect}
+          setIsShowMonthSelect={setIsShowMonthSelect}
+        />
+      )}
     </StyledShareHouseWork>
   );
 };
