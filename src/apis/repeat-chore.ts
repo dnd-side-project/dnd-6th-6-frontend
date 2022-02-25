@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://미정';
+const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
 
 // 반복 집안일 생성
 export const setRepeatChore = ({

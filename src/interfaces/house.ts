@@ -7,5 +7,5 @@ export interface House {
 }
 
 export interface Member {
-  members: User;
+  member: User;
 }

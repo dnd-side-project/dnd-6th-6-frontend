@@ -21,7 +21,7 @@ const ProfileUserInfo = (props: IProfileUserInfo) => {
         <div
           className="HouseName"
           onClick={() => {
-            navigate('/userlist');
+            navigate('/userlist', { state: { name: props.house?.name, users: props.house?.members } });
           }}
         >
           {props.house?.name} &gt;

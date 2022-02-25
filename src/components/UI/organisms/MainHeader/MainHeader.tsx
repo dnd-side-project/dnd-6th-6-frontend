@@ -2,27 +2,32 @@ import Alarm from '../../atoms/Alarm/Alarm';
 import Avatar from '../../atoms/Avatar/Avatar';
 import { ReactComponent as Logo } from '../../../../src_assets/logo.svg';
 import { StyledMainHeader } from './MainHeaderStyled';
-import { Link } from 'react-router-dom';
+import { Member } from '../../../../interfaces/house';
 
 export interface IOrgMainHeaderPorps {
   mb?: string;
+  houseMemberInfo: Member[];
 }
 
-const MainHeader = (props: IOrgMainHeaderPorps) => {
+const MainHeader = ({ mb, houseMemberInfo }: IOrgMainHeaderPorps) => {
   //아바타 넘버는 나중에 컴포넌트 map돌릴때 키값 넣어주면 될듯?
-
   return (
-    <StyledMainHeader mb={props.mb}>
+    <StyledMainHeader mb={mb}>
       <Logo />
       <div className="innerflex">
         <div className="Avatarbox">
-          <Avatar position="absolute" number={1} />
-          <Avatar position="absolute" number={2} />
-          <Avatar position="absolute" number={3} />
+          {houseMemberInfo.length > 3 ? (
+            <>
+              {/* <Avatar position="absolute" imgUrl={houseMemberInfo[0].member.user_profile.avatar} />
+              <Avatar position="absolute" imgUrl={houseMemberInfo[1].member.user_profile.avatar} />
+              <Avatar position="absolute" imgUrl={houseMemberInfo[2].member.user_profile.avatar} /> */}
+              <Avatar position="absolute">{houseMemberInfo.length - 3}</Avatar>
+            </>
+          ) : (
+            houseMemberInfo.map((e, index) => <Avatar position="absolute" key={index} />)
+          )}
         </div>
-        <Link to="/notification">
-          <Alarm active={false} />
-        </Link>
+        <Alarm active={false} />
       </div>
     </StyledMainHeader>
   );

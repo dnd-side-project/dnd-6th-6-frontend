@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { User } from '../interfaces/user';
-
 const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
@@ -62,9 +61,9 @@ export const naverLoginAPI = () => {
 };
 
 // 로그인한 user 정보
-export const getLoginUser = () => {
+export const getLoginUser = async () => {
   // token 붙이기
-  return axios.get(`/users/mypage/profile`).then((response) => response.data);
+  return await axios.get(`/users/mypage/profile`).then((response) => response.data);
 };
 
 // 오늘 내 할일 목록

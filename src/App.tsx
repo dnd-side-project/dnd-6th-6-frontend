@@ -10,7 +10,7 @@ import JoinPassword from './components/templates/JoinPassword/JoinPassword';
 import EventMaking from './components/templates/EventMaking/EventMaking';
 import NoticeWrite from './components/templates/NoticeWrite/NoticeWrite';
 import StartScreen from './components/templates/StartScreen/StartScreen';
-import Profile from './components/templates/Profile/Profile';
+import ProfilePage from './pages/ProfilePage';
 import FeedbackGive from './components/templates/FeedbackGive/FeedbackGive';
 import EventDetail from './components/templates/EventDetail/EventDetail';
 import ShareHouseWorkPage from './pages/ShareHouseWorkPage';
@@ -55,7 +55,7 @@ function App() {
           <Route path="detail" element={<NoticeDetailPage />} />
           <Route path="write" element={<NoticeWrite />} />
         </Route>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/userlist" element={<UserList />} />
       </Routes>
     </Router>

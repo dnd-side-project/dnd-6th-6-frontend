@@ -8,12 +8,16 @@ import { Chore, RepeatChore } from '../interfaces/chore';
 import { Member } from '../interfaces/house';
 import { INotice } from '../interfaces/notice';
 import { User } from '../interfaces/user';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
-    enabled: !!token,
+    onError: () => {
+      navigate('/');
+    },
   });
   // 오늘 내 할일 목록
   const { data: todayChoresMe } = useQuery<Chore[]>(

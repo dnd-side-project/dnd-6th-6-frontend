@@ -45,12 +45,12 @@ const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: 
     <>
       <StyledMain>
         <header className="main_header">
-          <MainHeader mb="40px" />
+          <MainHeader mb="40px" houseMemberInfo={houseMemberInfo} />
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
         <Notice onClick={onClickNotice} notice_title={notice[0]?.content || ''} />
         {houseMemberInfo.map((e) => {
-          <div>{e.members}</div>;
+          <div>{e.member}</div>;
         })}
         <TodayToDoMe mb="6px" />
         <TodayToDoHouse />
