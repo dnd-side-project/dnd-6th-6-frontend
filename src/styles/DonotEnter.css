@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-size: 30px;
+  background-color: #e2edfe;
+  color: red;
+}
+
+.wrapper > img {
+  border-radius: 10px;
+}

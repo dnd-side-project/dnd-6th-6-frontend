@@ -3,7 +3,6 @@ import { user1, user2, user3 } from '../../../dummyData/dummyUser';
 import { Chore, RepeatChore } from '../../../interfaces/chore';
 import { INotice } from '../../../interfaces/notice';
 import { User } from '../../../interfaces/user';
-import { Member } from '../../../interfaces/house';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
 import Notice from '../../UI/molecules/Notice/Notice';
@@ -30,7 +29,7 @@ export interface ITempMainProps {
   todayChoresMe: Chore[];
   todayChoresOther: Chore[];
   notice: INotice[];
-  houseMemberInfo: Member[];
+  houseMemberInfo: User[];
   notifications: INotification[];
 }
 

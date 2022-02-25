@@ -2,18 +2,23 @@ import Alarm from '../../atoms/Alarm/Alarm';
 import Avatar from '../../atoms/Avatar/Avatar';
 import { ReactComponent as Logo } from '../../../../src_assets/logo.svg';
 import { StyledMainHeader } from './MainHeaderStyled';
-import { Member } from '../../../../interfaces/house';
+import { User } from '../../../../interfaces/user';
 import { INotification } from '../../../../interfaces/notification';
 import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useQueryClient } from 'react-query';
 
 export interface IOrgMainHeaderPorps {
   mb?: string;
-  houseMemberInfo: Member[];
+  houseMemberInfo: User[];
   notifications?: INotification[];
 }
 
 const MainHeader = ({ mb, houseMemberInfo, notifications }: IOrgMainHeaderPorps) => {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const me: User | any = queryClient.getQueryData('me');
+  const member: User[] = [me, ...houseMemberInfo];
   //아바타 넘버는 나중에 컴포넌트 map돌릴때 키값 넣어주면 될듯?
   return (
     <StyledMainHeader mb={mb}>
@@ -25,12 +30,14 @@ const MainHeader = ({ mb, houseMemberInfo, notifications }: IOrgMainHeaderPorps)
             navigate('/userlist');
           }}
         >
-          {houseMemberInfo.length > 3 ? (
+          {member.length > 3 ? (
             <>
-              {/* <Avatar position="absolute" number={1} imgUrl={houseMemberInfo[0].member.user_profile.avatar} />
-              <Avatar position="absolute" number={1} imgUrl={houseMemberInfo[1].member.user_profile.avatar} />
-              <Avatar position="absolute" number={3} imgUrl={houseMemberInfo[2].member.user_profile.avatar} /> */}
-              <Avatar position="absolute">{houseMemberInfo.length - 3}</Avatar>
+              <Avatar position="absolute" number={1} imgUrl={member[0].user_profile.avatar} />
+              <Avatar position="absolute" number={2} imgUrl={member[1].user_profile.avatar} />
+              <Avatar position="absolute" number={3} imgUrl={member[2].user_profile.avatar} />
+              <Avatar position="absolute" number={4}>
+                +{member.length - 3}
+              </Avatar>
             </>
           ) : (
             houseMemberInfo.map((e, index) => (

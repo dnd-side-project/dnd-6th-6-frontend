@@ -8,6 +8,7 @@ import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { useNavigate } from 'react-router-dom';
 import { sendLoginEmailAPI, sendLoginPasswordAPI } from '../../../apis/user';
 import { useQueryClient, useMutation } from 'react-query';
+import axios from 'axios';
 
 export interface ILoginForm {
   login_email: string;
@@ -19,8 +20,9 @@ const Login = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation<any, Error, ILoginForm>(sendLoginPasswordAPI, {
     onSuccess: (res) => {
-      queryClient.setQueryData('me', res.data.user);
+      // queryClient.setQueryData('me', res.data.user);
       window.localStorage.setItem('Token', res.data.token);
+      axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
       if (res.data.user.user_profile.house != null) {
         navigate('/main');
       } else {

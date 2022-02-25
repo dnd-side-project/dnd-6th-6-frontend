@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppLayout from '../../Layouts/Applayout';
-import { ReactComponent as HouseMaking } from '../../../src_assets/HouseMaking.svg';
+import { ReactComponent as HouseNoneImg } from '../../../src_assets/HouseNone.svg';
 import MainHeader from '../../UI/organisms/MainHeader/MainHeader';
 import { StyledHouseNone } from './HouseNoneStyled';
 import HouseMainTitle from '../../UI/molecules/HouseMainTitle/HouseMainTitle';
@@ -17,10 +17,10 @@ import { getMembersAPI } from '../../../apis/house';
 const HouseNone = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
-  const { data: me } = useQuery<User>('me', getLoginUser, {
-    enabled: !!token,
+  const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
+    onError: (err) => navigate('/'),
   });
-  const { data: houseMemberInfo } = useQuery<Member[]>('housemember', getMembersAPI, {
+  const { data: houseMemberInfo } = useQuery<User[]>('housemember', getMembersAPI, {
     enabled: !!me,
   });
   useEffect(() => {
@@ -40,7 +40,7 @@ const HouseNone = () => {
         </div>
         <div className="Wrapper">
           <div className="IconWrapper">
-            <HouseMaking width={141} height={148} />
+            <HouseNoneImg width={313} height={178} />
           </div>
           <Button
             className="basic"

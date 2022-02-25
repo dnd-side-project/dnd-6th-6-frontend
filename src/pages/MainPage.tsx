@@ -46,7 +46,7 @@ const MainPage = () => {
     enabled: !!me,
   });
   //하우스 멤버정보
-  const { data: houseMemberInfo } = useQuery<Member[]>('housemember', getMembersAPI, {
+  const { data: houseMemberInfo } = useQuery<User[]>('housemember', getMembersAPI, {
     enabled: !!me,
   });
   useEffect(() => {

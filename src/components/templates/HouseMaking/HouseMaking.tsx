@@ -9,12 +9,11 @@ import Header from '../../UI/molecules/Header/Header';
 import TextInput from '../../UI/molecules/TextInput/TextInput';
 import { ProgressiveBar } from './HouseMakingStyled';
 import { StyledForm } from './HouseMakingStyled';
-import { ReactComponent as HouseIcon } from '../../../src_assets/HouseMaking.svg';
+import { ReactComponent as HouseComplete } from '../../../src_assets/HouseComplete.svg';
 import Label from '../../UI/atoms/Label/Label';
 import { TextInputWrapper } from '../Join/JoinStyled';
 import InputwithButton from '../../UI/atoms/Input/InputwithButton';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { sendLoginEmailAPI } from '../../../apis/user';
 import { inviteHouseAPI, makeHouseAPI } from '../../../apis/house';
 import { useQueryClient } from 'react-query';
@@ -26,8 +25,6 @@ export interface IHouseMakingForm {
 
 const HouseMaking = () => {
   const queryClient = useQueryClient();
-  const userInfo = queryClient.getQueryData<any>(['me']);
-  const [submitdata, setsubmitdata] = useState<{ housename: string; invited: Array<{ email: string }> } | any>();
   const navigate = useNavigate();
   const {
     register,
@@ -60,10 +57,9 @@ const HouseMaking = () => {
       return setPageCount((prev) => prev + 1);
     }
     if (!errors.invited && pageCount == 2) {
-      setsubmitdata({ housename: data.housename, invited: [...data.invited, { email: userInfo?.username }] });
       return setPageCount((prev) => prev + 1);
     }
-    makeHouseAPI(submitdata.housename)
+    makeHouseAPI(data.housename)
       .then((res) => inviteHouseAPI(data.invited).then((res) => navigate('/main')))
       .catch((e) => console.log(e));
   };
@@ -182,7 +178,7 @@ const HouseMaking = () => {
                 하우스에 입장해볼까요?
               </Title>
               <div className="Result">
-                <HouseIcon />
+                <HouseComplete />
                 <div className="Board">
                   <div className="BoardInner" id="left">
                     <div className="BoardHeader">하우스 이름</div>
@@ -190,7 +186,7 @@ const HouseMaking = () => {
                   </div>
                   <div className="BoardInner">
                     <div className="BoardHeader">구성원</div>
-                    <div className="BoardValue">{submitdata?.invited.length}</div>
+                    <div className="BoardValue">{watch('invited').length}</div>
                   </div>
                 </div>
                 <Button bgColor="#5d9eff" color="white">
