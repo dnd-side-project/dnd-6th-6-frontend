@@ -5,6 +5,8 @@ import 'swiper/css';
 import MyToDoCard from '../../molecules/MyToDoCard/MyToDoCard';
 import { Chore } from '../../../../interfaces/chore';
 import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
+import { useState } from 'react';
+import CompletionModal from '../../molecules/CompletionModal/CompletionModal';
 
 //오늘 내 할 일 목록 Dummy Data
 const todayToDos: Chore[] = [chore3, chore2, chore1];
@@ -16,6 +18,12 @@ export interface IOrgTodayToDoMeProps {
 
 const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
   // 오늘 내 할 일 목록 GET
+  const [currentChore, setCurrentChore] = useState<Chore>();
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const onCompleteClick = (chore: Chore) => {
+    setCurrentChore(chore);
+    setShowCompletionModal((prev) => !prev);
+  };
   return (
     <StyledTodayToDoMe mb={mb}>
       <div className="todayToDoMe_header">
@@ -34,6 +42,8 @@ const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
             todayToDos.map((todayToDo) => (
               <SwiperSlide key={todayToDo.id}>
                 <MyToDoCard
+                  onClickButton={onCompleteClick}
+                  chore={todayToDo}
                   choreId={todayToDo.id}
                   title={todayToDo.information.name}
                   completed_at={todayToDo.completed_at}
@@ -49,6 +59,13 @@ const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
           )}
         </Swiper>
       </div>
+      {showCompletionModal && (
+        <CompletionModal
+          chore={currentChore as Chore}
+          showCompletionModal={showCompletionModal}
+          setShowCompletionModal={setShowCompletionModal}
+        />
+      )}
     </StyledTodayToDoMe>
   );
 };
