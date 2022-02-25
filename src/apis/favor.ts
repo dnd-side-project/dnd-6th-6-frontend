@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://미정';
+const BASE_URL = 'http://127.0.0.1:8000';
 
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token') || ''}`;
 
 // 부탁 보내기
 export const sendFavor = ({ choreId, toId, content }: { choreId: number; toId: number; content: string }) => {
