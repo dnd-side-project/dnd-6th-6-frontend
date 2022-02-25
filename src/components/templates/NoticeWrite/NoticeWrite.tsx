@@ -1,19 +1,34 @@
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { setNoticeAPI } from '../../../apis/notice';
+import { User } from '../../../interfaces/user';
 import AppLayout from '../../Layouts/Applayout';
 import Textarea from '../../UI/atoms/Textarea/Textarea';
 import Header from '../../UI/molecules/Header/Header';
 import { StyledNoticeWrite } from './NoticeWriteStyled';
 
-export interface ITempNoticeWriteProps {}
+interface IForm {
+  content: string;
+}
 
-const NoticeWrite = (props: ITempNoticeWriteProps) => {
-  const naveigate = useNavigate();
+export interface ITempNoticeWriteProps {
+  me: User;
+}
+
+const NoticeWrite = ({ me }: ITempNoticeWriteProps) => {
+  const navigate = useNavigate();
+  const { register, watch } = useForm<IForm>();
   const goBack = () => {
-    naveigate(-1);
+    navigate(-1);
   };
   const onClickWriteClear = () => {
     // 글작성 API
+    if (watch('content') === '') return;
+    setNoticeAPI({ houseId: me.user_profile.house?.id as number, content: watch('content') })
+      .then(() => navigate('/notice/detail'))
+      .catch((e) => console.log(e));
   };
+
   return (
     <StyledNoticeWrite>
       <Header
@@ -24,7 +39,16 @@ const NoticeWrite = (props: ITempNoticeWriteProps) => {
         threeItemContent="완료"
         itemCount={3}
       />
-      <Textarea height="80vh" placeholder="하우스 구성원과 공유할 내용을 입력해주세요" />
+
+      <Textarea
+        register={{
+          ...register('content', {
+            required: true,
+          }),
+        }}
+        height="80vh"
+        placeholder="하우스 구성원과 공유할 내용을 입력해주세요"
+      />
     </StyledNoticeWrite>
   );
 };

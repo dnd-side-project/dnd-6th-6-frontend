@@ -7,12 +7,14 @@ import pail from '../../../../src_assets/pail.svg';
 import React from 'react';
 import Time from '../../atoms/Time/Time';
 import { categoryImgURLs } from '../../../../utils/category';
+import { Link } from 'react-router-dom';
 
 export interface IMoleMyToDoCardProps {
   title: string;
   completed_at: Date | null; //completed_at: Date | null;
   days?: string;
   category: string;
+  choreId: number;
 }
 
 const MyToDoCard = (props: IMoleMyToDoCardProps) => {
@@ -40,13 +42,15 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
         )}
       </div>
       <CardCategoryImgWrapper>
-        {props.category === '빨래' && <CardCategoryImg src={basket} />}
-        {props.category === '청소' && <CardCategoryImg src={pail} />}
-        {categoryImgURLs.map((categoryImgURL) => {
-          if (categoryImgURL.category === props.category) {
-            return <CardCategoryImg src={categoryImgURL.src} />;
-          }
-        })}
+        <Link to={`/event/${props.choreId}/today`}>
+          {props.category === '빨래' && <CardCategoryImg src={basket} />}
+          {props.category === '청소' && <CardCategoryImg src={pail} />}
+          {categoryImgURLs.map((categoryImgURL) => {
+            if (categoryImgURL.category === props.category) {
+              return <CardCategoryImg key={categoryImgURL.category} src={categoryImgURL.src} />;
+            }
+          })}
+        </Link>
       </CardCategoryImgWrapper>
       {props.completed_at ? (
         <Button onClick={onClick} type="button" bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">

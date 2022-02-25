@@ -35,7 +35,7 @@ const TodayToDoMeDetail = ({ chore }: ITempTodayToDoMeDetailProps) => {
   return (
     <AppLayout>
       <StyledTodayToDoMeDetail>
-        <Header onClick={goBack} title="분리수거 하기" mb="43px" />
+        <Header onClick={goBack} title={`${chore.information.name}`} mb="43px" />
         <div className="todayToDoMeDatail_image"></div>
         <div className="todayToDoMeDatail_info">
           <div className="todayToDoMeDatail_calender">

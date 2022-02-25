@@ -56,7 +56,7 @@ export const editChoreAPI = ({
   categoryId: number;
   planned_at: Date;
 }) => {
-  return axios.patch(`/houses/${houseId}/chores/${choreId}`, {
+  return axios.patch(`/houses/${houseId}/chores/${choreId}/`, {
     assignees,
     information: {
       name,
@@ -86,7 +86,7 @@ export const returnEditChoreAPI = ({
   completed_at?: Date;
 }) => {
   return axios
-    .patch(`/houses/${houseId}/chores/${choreId}`, {
+    .patch(`/houses/${houseId}/chores/${choreId}/`, {
       assignees,
       information: {
         name,

@@ -34,6 +34,7 @@ const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
             todayToDos.map((todayToDo) => (
               <SwiperSlide key={todayToDo.id}>
                 <MyToDoCard
+                  choreId={todayToDo.id}
                   title={todayToDo.information.name}
                   completed_at={todayToDo.completed_at}
                   category={todayToDo.information.category.name}

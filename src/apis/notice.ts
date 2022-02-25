@@ -6,8 +6,8 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
 // 공지사항 만들기
-export const setNoticeAPI = ({ houseId, title, content }: { houseId: number; title: string; content: string }) => {
-  return axios.post(`/houses/${houseId}/notices`, { title, content }).then((response) => response.data);
+export const setNoticeAPI = ({ houseId, content }: { houseId: number; content: string }) => {
+  return axios.post(`/houses/${houseId}/notices/`, { content });
 };
 
 // 공지사항 목록
@@ -45,5 +45,5 @@ export const editNoticeAPI = ({
 
 // 공지사항 삭제
 export const deleteNoticeAPI = (houseId: number, noticeId: number) => {
-  return axios.delete(`/houses/${houseId}/notices/${noticeId}`).then((response) => response.data);
+  return axios.delete(`/houses/${houseId}/notices/${noticeId}/`);
 };

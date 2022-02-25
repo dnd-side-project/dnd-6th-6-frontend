@@ -23,6 +23,7 @@ import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 import RepeatEventDetailPage from './pages/RepeatEventDetail';
 import OneTimeEventDetail from './pages/OneTimeEventDetail';
+import NoticeWritePage from './pages/NoticeWritePage';
 function App() {
   return (
     <Router>
@@ -56,7 +57,7 @@ function App() {
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/notice">
           <Route path="detail" element={<NoticeDetailPage />} />
-          <Route path="write" element={<NoticeWrite />} />
+          <Route path="write" element={<NoticeWritePage />} />
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/userlist" element={<UserList />} />
