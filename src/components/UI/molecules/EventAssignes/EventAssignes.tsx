@@ -1,4 +1,6 @@
+import { useQuery } from 'react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { getMembersAPI } from '../../../../apis/house';
 import { user1, user2, user3 } from '../../../../dummyData/dummyUser';
 import { User } from '../../../../interfaces/user';
 import Avatar from '../../atoms/Avatar/Avatar';
@@ -13,9 +15,14 @@ export interface IMoleEventAssignesProps {
   onClick: (member: User) => void;
   checkMembers: User[];
   mb?: string;
+  me: User;
 }
 
-const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ children, onClick, checkMembers, mb }) => {
+const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ me, children, onClick, checkMembers, mb }) => {
+  const { data: members } = useQuery<User[]>('members', getMembersAPI);
+  if (!members) {
+    return <div>ㄹ로딩중</div>;
+  }
   return (
     <StyledEventAssignes mb={mb || '0px'}>
       <div className="eventAssignes_header">
@@ -27,7 +34,7 @@ const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ children, onClick, c
       {children}
       <div className="members_swiper">
         <Swiper slidesPerView={'auto'} className="mySwiper" spaceBetween={14}>
-          {members.map((member) => (
+          {[...members, me].map((member) => (
             <SwiperSlide key={member.id}>
               <div className="eventAssignes_member" onClick={() => onClick(member)}>
                 <Avatar imgUrl="" mb="10px" width="62px" height="62px">

@@ -17,10 +17,13 @@ export const setChoreAPI = ({
   name: string;
   planned_at: Date;
 }) => {
-  return axios.post(`/houses/${houseId}/chores`, {
+  return axios.post(`/houses/${houseId}/chores/`, {
     assignees,
     information: {
       name,
+    },
+    category: {
+      id: 2,
     },
     planned_at,
   });

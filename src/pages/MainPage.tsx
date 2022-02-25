@@ -30,14 +30,15 @@ const MainPage = () => {
   // 고정된 공지사항 값
   // 알림 여부
   useEffect(() => {
-    setToken(localStorage.getItem('token') || '');
+    setToken(localStorage.getItem('Token') || '');
+    console.log(token);
     //token없을경우 login page로 redirect
   }, [token]);
 
   if (!me || !todayChoresMe || !todayChoresOther) {
     return <div>로딩중...</div>;
   }
-  return <>{/* <Main me={me} todayChoresMe={todayChoresMe} todayChoresOther={todayChoresOther} /> */}</>;
+  return <Main me={me} todayChoresMe={todayChoresMe} todayChoresOther={todayChoresOther} />;
 };
 
 export default MainPage;

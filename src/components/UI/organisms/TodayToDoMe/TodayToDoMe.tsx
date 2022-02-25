@@ -11,12 +11,13 @@ const todayToDos: Chore[] = [chore3, chore2, chore1];
 
 export interface IOrgTodayToDoMeProps {
   mb?: string;
+  todayToDos: Chore[];
 }
 
-const TodayToDoMe = (props: IOrgTodayToDoMeProps) => {
+const TodayToDoMe = ({ todayToDos, mb }: IOrgTodayToDoMeProps) => {
   // 오늘 내 할 일 목록 GET
   return (
-    <StyledTodayToDoMe mb={props.mb}>
+    <StyledTodayToDoMe mb={mb}>
       <div className="todayToDoMe_header">
         <div>
           <Title fontWeight="700" fontSize="17px" color="#222222">

@@ -47,7 +47,7 @@ const EventMaking = (props: ITempEventMakingProps) => {
           </Button>
         </div>
         {plan === 'oneTime' && <OneTimeEventForm me={me} />}
-        {plan === 'repeat' && <RepeatEventForm />}
+        {plan === 'repeat' && <RepeatEventForm me={me} />}
       </StyledEventMaking>
     </AppLayout>
   );

@@ -28,7 +28,7 @@ export interface ITempMainProps {
   todayChoresOther: Chore[];
 }
 
-const Main = () => {
+const Main = ({ me, todayChoresMe, todayChoresOther }: ITempMainProps) => {
   const navigate = useNavigate();
   // 로그인한 user정보 GET
   // 하우스 정보 GET
@@ -45,8 +45,8 @@ const Main = () => {
           <HouseMainTitle first_name={me.first_name} house_name={house.name} />
         </header>
         <Notice onClick={onClickNotice} notice_title="금요일에 모여서 다같이 대청소 하는 것은 어떨까요?" />
-        <TodayToDoMe mb="6px" />
-        <TodayToDoHouse />
+        <TodayToDoMe todayToDos={todayChoresMe} mb="6px" />
+        <TodayToDoHouse todayToDoOthers={todayChoresOther} />
       </StyledMain>
       <BottomNavBar />
     </>

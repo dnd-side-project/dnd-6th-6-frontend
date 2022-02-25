@@ -21,6 +21,7 @@ import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 import RepeatEventDetailPage from './pages/RepeatEventDetail';
 import OneTimeEventDetail from './pages/OneTimeEventDetail';
+import MainPage from './pages/MainPage';
 function App() {
   return (
     <Router>
@@ -32,7 +33,7 @@ function App() {
           <Route path="password" element={<JoinPassword />} />
         </Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path="/profileSetting" element={<ProfileSetting />} />
         <Route path="/houseNone" element={<HouseNone />} />
         <Route path="/housemake" element={<HouseMaking />} />

@@ -10,8 +10,8 @@ export const makeHouseAPI = async (name: string) => {
 };
 
 // 하우스 구성원 목록
-export const getMembersAPI = (houseId: number) => {
-  return axios.get(`/houses/${houseId}/members`).then((response) => response.data);
+export const getMembersAPI = () => {
+  return axios.get(`/houses/members`).then((response) => response.data);
 };
 
 // 하우스 구성원 초대

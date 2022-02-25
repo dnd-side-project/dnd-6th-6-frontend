@@ -100,7 +100,7 @@ const OneTimeEventForm = ({ me }: IOrgOneTimeEventFormProps) => {
           <Message className="error">{dateErrorMessage}</Message>
         </div>
 
-        <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} />
+        <EventAssignes me={me} onClick={onClickAvatar} checkMembers={checkMembers} />
       </div>
       <Button className="basic">완료</Button>
     </StyledOneTimeEventForm>

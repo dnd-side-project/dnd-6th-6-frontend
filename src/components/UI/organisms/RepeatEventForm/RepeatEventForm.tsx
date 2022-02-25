@@ -21,9 +21,11 @@ interface IForm {
   title: string;
 }
 
-export interface IOrgRepeatEventFormProps {}
+export interface IOrgRepeatEventFormProps {
+  me: User;
+}
 
-const RepeatEventForm = (props: IOrgRepeatEventFormProps) => {
+const RepeatEventForm = ({ me }: IOrgRepeatEventFormProps) => {
   const navigate = useNavigate();
   const [checkCategory, setCheckCategory] = useState<{ id: number }>();
   const [checkMembers, setCheckMembers] = useState<User[]>([]);
@@ -113,7 +115,7 @@ const RepeatEventForm = (props: IOrgRepeatEventFormProps) => {
       <div className="repeatEvent_time">
         <TimePicker ref={ref} />
       </div>
-      <EventAssignes onClick={onClickAvatar} checkMembers={checkMembers} mb="52px">
+      <EventAssignes me={me} onClick={onClickAvatar} checkMembers={checkMembers} mb="52px">
         <AssignmentRole mb="25px" chooseRole={chooseRole} onClickRole={onClickRole} />
       </EventAssignes>
       <Button
