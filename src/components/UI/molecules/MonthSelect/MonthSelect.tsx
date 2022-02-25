@@ -1,30 +1,65 @@
 import moment from 'moment';
-import { StyledMonthSelect } from './MonthSelectStyled';
-
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import Checkbox from '../../atoms/Checkbox/Checkbox';
+import Title from '../../atoms/Title/Title';
+import { MonthBox, StyledMonthSelect } from './MonthSelectStyled';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Button from '../../atoms/Button/Button';
 const startOfMonth = moment().startOf('month').format('YYYY-MM-DD hh:mm');
 const endOfMonth = moment().endOf('month').format('YYYY-MM-DD hh:mm');
 
-export interface IMoleMonthSelectProps {}
+export interface IMoleMonthSelectProps {
+  isShowMonthSelect: boolean;
+  setIsShowMonthSelect: Dispatch<SetStateAction<boolean>>;
+  onClick: (month: number) => void;
+}
 
-const MonthSelect = (props: IMoleMonthSelectProps) => {
+const MonthSelect = ({ setIsShowMonthSelect, isShowMonthSelect, onClick }: IMoleMonthSelectProps) => {
+  const [selectMonth, setSelectMonth] = useState<number>();
   function getMonthDateRange(year: number, month: number) {
-    var moment = require('moment');
-
-    // month in moment is 0 based, so 9 is actually october, subtract 1 to compensate
-    // array is 'year', 'month', 'day', etc
     var startDate = moment([year, month - 1]);
-
-    // Clone the value before .endOf()
     var endDate = moment(startDate).endOf('month');
-
-    // just for demonstration:
     console.log(startDate.toDate());
     console.log(endDate.toDate());
-
-    // make sure to call toDate() for plain JavaScript date type
     return { start: startDate, end: endDate };
   }
-  return <StyledMonthSelect></StyledMonthSelect>;
+  const onClickMonth = (monthNumber: number) => {
+    getMonthDateRange(2022, monthNumber);
+  };
+  const onCloseBtn = () => {
+    setIsShowMonthSelect((prev) => !prev);
+  };
+
+  const onClickSwiper = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+  return (
+    <StyledMonthSelect onClick={onCloseBtn}>
+      <div className="monthSelect" onClick={onClickSwiper}>
+        <Title color="#3F4245" fontSize="17px" mb="24px">
+          날짜 선택
+        </Title>
+        <div>
+          <Swiper direction="vertical" slidesPerView={'auto'} className="mySwiper">
+            {moment.monthsShort().map((month, index) => (
+              <SwiperSlide key={month}>
+                <MonthBox
+                  onClick={() => setSelectMonth(index + 1)}
+                  isChecked={selectMonth === index + 1 ? true : false}
+                  className="month"
+                >
+                  <span>{month}</span>
+                </MonthBox>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <Button onClick={selectMonth ? () => onClick(selectMonth) : onCloseBtn} className="basic">
+          선택 완료
+        </Button>
+      </div>
+    </StyledMonthSelect>
+  );
 };
 
 export default MonthSelect;

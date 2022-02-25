@@ -5,6 +5,7 @@ export interface IAtomCheckboxProps {
   labelFor: string;
   mb?: string;
   onClick?: () => void;
+  isMonth?: boolean;
 }
 
 const Checkbox: React.FC<IAtomCheckboxProps> = ({ onClick, labelFor, children, mb }) => {
@@ -14,7 +15,7 @@ const Checkbox: React.FC<IAtomCheckboxProps> = ({ onClick, labelFor, children, m
       <label htmlFor={labelFor} className="radio_label">
         {children}
       </label>
-      <div className="check"></div>
+      <div className="checkbox_check"></div>
     </StyledCheckbox>
   );
 };

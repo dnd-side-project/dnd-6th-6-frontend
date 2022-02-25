@@ -5,12 +5,11 @@ import 'swiper/css';
 import MyToDoCard from '../../molecules/MyToDoCard/MyToDoCard';
 import { Chore } from '../../../../interfaces/chore';
 import { chore1, chore2, chore3 } from '../../../../dummyData/dummyChore';
-<<<<<<< HEAD
+
 import { emojiImgURLs } from '../../../../utils/emoji';
-=======
+
 import { useState } from 'react';
 import CompletionModal from '../../molecules/CompletionModal/CompletionModal';
->>>>>>> ca254b082a99608366f90cb43e7f9eef6cc961e8
 
 //오늘 내 할 일 목록 Dummy Data
 const todayToDos: Chore[] = [chore3, chore2, chore1];
