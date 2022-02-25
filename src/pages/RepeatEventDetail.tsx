@@ -12,7 +12,7 @@ import { RepeatChoreComment } from '../interfaces/comment';
 import { User } from '../interfaces/user';
 
 const chore = repeatChore1;
-const comments = [repeatComment1, repeatComment2, repeatComment3, repeatComment4];
+// const comments = [repeatComment1, repeatComment2, repeatComment3, repeatComment4];
 const me = user1;
 
 type ParamTypes = {
@@ -34,23 +34,16 @@ const RepeatEventDetailPage = () => {
       enabled: !!me,
     },
   );
-  const { data: comments } = useQuery<RepeatChoreComment[]>(
-    ['chore', choreId],
-    () => getRepeatChoreCommentAPI(+choreId as number),
-    {
-      enabled: !!me,
-    },
-  );
 
   useEffect(() => {
     setToken(localStorage.getItem('Token') || '');
     //token없을경우 login page로 redirect
   }, [token]);
 
-  if (!me || !chore || !comments) {
+  if (!me || !chore) {
     return <div>로딩중...</div>;
   }
-  return <EventDetail isOneTime={false} chore={chore} comments={comments} me={me} />;
+  return <EventDetail isOneTime={false} chore={chore} comments={chore.comments} me={me} />;
 };
 
 export default RepeatEventDetailPage;

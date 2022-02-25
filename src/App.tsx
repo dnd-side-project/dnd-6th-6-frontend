@@ -23,6 +23,8 @@ import RequestPage from './pages/RequestPage';
 import TodayToDoMeDetailPage from './pages/TodayToDoMeDetailPage';
 import RepeatEventDetailPage from './pages/RepeatEventDetail';
 import OneTimeEventDetail from './pages/OneTimeEventDetail';
+import NoticeWritePage from './pages/NoticeWritePage';
+import FeedbackGivePage from './pages/FeedbackGivePage';
 function App() {
   return (
     <Router>
@@ -40,7 +42,7 @@ function App() {
         <Route path="/housemake" element={<HouseMaking />} />
         <Route path="/feedback">
           <Route path=":feedbackId/chore/:choreId" element={<FeedbackAcceptPage />} />
-          <Route path="give" element={<FeedbackGive />} />
+          <Route path=":choreId/give" element={<FeedbackGivePage />} />
         </Route>
         <Route path="/request">
           <Route path=":choreId" element={<RequestPage />} />
@@ -56,16 +58,12 @@ function App() {
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/notice">
           <Route path="detail" element={<NoticeDetailPage />} />
-          <Route path="write" element={<NoticeWrite />} />
+          <Route path="write" element={<NoticeWritePage />} />
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/userlist" element={<UserList />} />
       </Routes>
     </Router>
-    // <>
-    //   {/* <Login /> */}
-    //   <Join />
-    // </>
   );
 }
 

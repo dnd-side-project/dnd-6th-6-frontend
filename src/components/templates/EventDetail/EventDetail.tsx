@@ -65,7 +65,7 @@ const EventDetail = ({ isOneTime, chore, comments, me }: ITempEventDetailProps) 
         )}
       </div>
       <Comments comments={comments} />
-      <CommentForm avatar={me.user_profile.avatar || ''} />
+      <CommentForm isOneTime={isOneTime} choreId={chore.id} avatar={me.user_profile.avatar || ''} />
     </StyledEventDetail>
   );
 };

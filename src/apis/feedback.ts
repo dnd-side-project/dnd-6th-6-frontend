@@ -6,8 +6,8 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
 // 피드백 보내기
-export const sendFeedbackAPI = ({ choreId, content }: { choreId: number; content: string }) => {
-  return axios.post(`/chores/${choreId}/feedbacks`, { content }).then((response) => response.data);
+export const sendFeedbackAPI = ({ choreId, content, emoji }: { choreId: number; content: string; emoji: number }) => {
+  return axios.post(`/chores/${choreId}/feedbacks/`, { content, emoji });
 };
 
 // 피드백 목록

@@ -7,7 +7,8 @@ import CompletionModal from '../../UI/molecules/CompletionModal/CompletionModal'
 import Header from '../../UI/molecules/Header/Header';
 import Calendar from '../../UI/organisms/Calendar/Calendar';
 import TimePicker from '../../UI/organisms/Timer/TimePicker';
-import { InfoWrapper, StyledTodayToDoMeDetail } from './TodayToDoMeDetailStyled';
+import { InfoWrapper, StyledTodayToDoMeDetail, TodayToDoMeDatailImage } from './TodayToDoMeDetailStyled';
+import blackFeedEvent from '../../../src_assets/blackFeedEvent.svg';
 
 export interface ITempTodayToDoMeDetailProps {
   chore: Chore;
@@ -35,8 +36,9 @@ const TodayToDoMeDetail = ({ chore }: ITempTodayToDoMeDetailProps) => {
   return (
     <AppLayout>
       <StyledTodayToDoMeDetail>
-        <Header onClick={goBack} title="분리수거 하기" mb="43px" />
-        <div className="todayToDoMeDatail_image"></div>
+        <Header onClick={goBack} title={`${chore.information.name}`} mb="43px" />
+        <img src={blackFeedEvent} className="todayToDoMeDatail_image"></img>
+        <TodayToDoMeDatailImage bgUrl={blackFeedEvent} />
         <div className="todayToDoMeDatail_info">
           <div className="todayToDoMeDatail_calender">
             <h5>날짜</h5>

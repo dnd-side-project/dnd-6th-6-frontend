@@ -9,6 +9,8 @@ import { Member } from '../interfaces/house';
 import { INotice } from '../interfaces/notice';
 import { User } from '../interfaces/user';
 import { useNavigate } from 'react-router-dom';
+import { INotification } from '../interfaces/notification';
+import { getNotificationAPI } from '../apis/notification';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -40,6 +42,9 @@ const MainPage = () => {
     enabled: !!me,
   });
   // 알림 여부
+  const { data: notifications } = useQuery<INotification[]>('notifications', getNotificationAPI, {
+    enabled: !!me,
+  });
   //하우스 멤버정보
   const { data: houseMemberInfo } = useQuery<Member[]>('housemember', getMembersAPI, {
     enabled: !!me,
@@ -50,11 +55,12 @@ const MainPage = () => {
     //token없을경우 login page로 redirect
   }, [token]);
 
-  if (!me || !todayChoresMe || !todayChoresOther || !topnotice || !houseMemberInfo) {
+  if (!me || !todayChoresMe || !todayChoresOther || !topnotice || !houseMemberInfo || !notifications) {
     return <div>로딩중...</div>;
   }
   return (
     <Main
+      notifications={notifications}
       me={me}
       todayChoresMe={todayChoresMe}
       todayChoresOther={todayChoresOther}

@@ -11,10 +11,6 @@ import { Chore } from '../interfaces/chore';
 import { ChoreComment } from '../interfaces/comment';
 import { User } from '../interfaces/user';
 
-const chore = chore1;
-const comments = [onetimeComment1, onetimeComment2, onetimeComment3, onetimeComment4];
-const me = user1;
-
 type ParamTypes = {
   choreId: string;
 };
@@ -34,19 +30,12 @@ const OneTimeEventDetail = () => {
       enabled: !!me,
     },
   );
-  const { data: comments } = useQuery<ChoreComment[]>(
-    ['chore', choreId],
-    () => getChoreCommentAPI(+choreId as number),
-    {
-      enabled: !!me,
-    },
-  );
 
   useEffect(() => {
     setToken(localStorage.getItem('Token') || '');
     //token없을경우 login page로 redirect
   }, [token]);
-  if (!me || !chore || !comments) {
+  if (!me || !chore) {
     return <div>로딩중...</div>;
   }
   return <EventDetail chore={chore} me={me} comments={chore.comments} isOneTime={true} />;

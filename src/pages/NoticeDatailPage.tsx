@@ -27,7 +27,7 @@ const NoticeDetailPage = () => {
   if (!me || !notices) {
     return <div>로딩중...</div>;
   }
-  return <NoticeDetail notices={notices} />;
+  return <NoticeDetail me={me} notices={notices} />;
 };
 
 export default NoticeDetailPage;

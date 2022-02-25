@@ -9,6 +9,7 @@ export const feedback1: Feedback = {
   content:
     '오늘 하루도 고마워!! 깔끔하게 잘 했던데? 다음에 내 차례가 되면 나도 이만큼 해야할듯ㅠㅠ[정해진 일을 잘 수행했어요,시간 약속을 잘 지켰어요]',
   sended_at: new Date(),
+  emoji: 1,
 };
 
 export const feedback2: Feedback = {
@@ -17,4 +18,5 @@ export const feedback2: Feedback = {
   _from: user2,
   content: '[정해진 일을 잘 수행했어요,시간 약속을 잘 지켰어요]',
   sended_at: new Date(),
+  emoji: 1,
 };

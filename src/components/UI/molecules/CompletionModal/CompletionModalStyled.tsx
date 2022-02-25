@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledCompletionModal = styled.div`
   position: fixed;
   top: 0;
+  z-index: 10000;
   left: 0;
   background: rgba(32, 34, 36, 0.8);
   width: 100vw;
