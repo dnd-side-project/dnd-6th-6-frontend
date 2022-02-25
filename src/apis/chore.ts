@@ -107,7 +107,7 @@ export const deleteChoreAPI = (houseId: number, choreId: number) => {
 
 // 일회성 집안일 댓글 작성
 export const setChoreCommentAPI = (choreId: number, content: string) => {
-  return axios.post(`/chores/${choreId}/comments`, { content }).then((response) => response.data);
+  return axios.post(`/chores/${choreId}/comments/`, { content });
 };
 
 // 일회성 집안일 댓글 목록

@@ -82,7 +82,7 @@ export const deleteRepeatChoreAPI = (houseId: number, choreId: number) => {
 
 // 반복 집안일 댓글 작성
 export const setRepeatChoreCommentAPI = (choreId: number, content: string) => {
-  return axios.post(`/repeat-chores/${choreId}/comments`, { content }).then((response) => response.data);
+  return axios.post(`/repeat-chores/${choreId}/comments/`, { content });
 };
 
 // 반복 집안일 댓글 목록
