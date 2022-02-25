@@ -35,7 +35,7 @@ const TodayToDoHouse = ({ todayToDoOthers }: IOrgTodayToDoHouseProps) => {
         {todayToDoOthers
           .filter((todayToDoOther) => todayToDoOther.completed_at)
           .map((todayToDoOther) => (
-            <Link to={`/event/onetime/${todayToDoOther.id}`} key={todayToDoOther.id}>
+            <Link to={`/feedback/${todayToDoOther.id}/give`} key={todayToDoOther.id}>
               <HouseCard
                 completed_at={todayToDoOther.completed_at}
                 planned_at={todayToDoOther.planned_at}

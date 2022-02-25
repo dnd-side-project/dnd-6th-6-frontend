@@ -7,13 +7,18 @@ import { StyledFeedbackGiveForm } from './FeedbackGiveFormStyled';
 import imgChoose from '../../../../src_assets/imgChoose.svg';
 import FeedbackGiveSimple from '../../molecules/FeedbackGiveSimple/FeedbackGiveSimple';
 import ChooseEmojiModal from '../../molecules/ChooseEmojiModal.tsx/ChooseEmojiModal';
+import { sendFeedbackAPI } from '../../../../apis/feedback';
+import { useNavigate } from 'react-router';
 interface IForm {
   message: string;
 }
 
-export interface IOrgFeedbackGiveFormProps {}
+export interface IOrgFeedbackGiveFormProps {
+  choreId: number;
+}
 
-const FeedbackGiveForm = (props: IOrgFeedbackGiveFormProps) => {
+const FeedbackGiveForm = ({ choreId }: IOrgFeedbackGiveFormProps) => {
+  const navigate = useNavigate();
   const [showEmojiModal, setShowEmojiModal] = useState(false);
   const [chooseEmoji, setChooseEmoji] = useState<{ src: string; id: number; emoji: string }>();
   const [checkSimpleMessages, setCheckSimpleMessages] = useState<string[]>([]);
@@ -44,6 +49,12 @@ const FeedbackGiveForm = (props: IOrgFeedbackGiveFormProps) => {
   };
   const onValid = (data: IForm) => {
     console.log({ ...data, emoji: chooseEmoji?.emoji, checkSimpleMessages });
+    console.log(`[${checkSimpleMessages}]`);
+    sendFeedbackAPI({ choreId, content: `${data.message}[${checkSimpleMessages}]`, emoji: chooseEmoji?.id as number })
+      .then(() => {
+        navigate('/main');
+      })
+      .catch((e) => console.log(e));
   };
 
   console.log(chooseEmoji?.emoji === undefined || (watch('message') === '' && checkSimpleMessages.length === 0));

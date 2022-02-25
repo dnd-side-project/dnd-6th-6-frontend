@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const StyledTodayToDoMeDetail = styled.div`
   .todayToDoMeDatail_image {
     width: 100%;
-    height: 232px;
-    background: #bfe0ff;
+    height: auto;
     box-shadow: inset -2px 2px 20px rgba(8, 36, 92, 0.08);
     border-radius: 9px;
     margin-bottom: 8px;
@@ -37,3 +36,5 @@ export const InfoWrapper = styled.div`
     font-weight: 500;
   }
 `;
+
+export const TodayToDoMeDatailImage = styled.div<{ bgUrl: string }>``;

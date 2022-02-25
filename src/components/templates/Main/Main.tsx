@@ -11,6 +11,7 @@ import MainHeader from '../../UI/organisms/MainHeader/MainHeader';
 import TodayToDoHouse from '../../UI/organisms/TodayToDoHouse/TodayToDoHouse';
 import TodayToDoMe from '../../UI/organisms/TodayToDoMe/TodayToDoMe';
 import { StyledMain } from './MainStyled';
+import { INotification } from '../../../interfaces/notification';
 
 //하우스 구성원 목록 Dummy Data
 const members = [user1, user2, user3];
@@ -30,9 +31,10 @@ export interface ITempMainProps {
   todayChoresOther: Chore[];
   notice: INotice[];
   houseMemberInfo: Member[];
+  notifications: INotification[];
 }
 
-const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: ITempMainProps) => {
+const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo, notifications }: ITempMainProps) => {
   const navigate = useNavigate();
   // 로그인한 user정보 GET
   // 하우스 정보 GET
@@ -45,7 +47,7 @@ const Main = ({ me, todayChoresMe, todayChoresOther, notice, houseMemberInfo }: 
     <>
       <StyledMain>
         <header className="main_header">
-          <MainHeader mb="40px" houseMemberInfo={houseMemberInfo} />
+          <MainHeader notifications={notifications} mb="40px" houseMemberInfo={houseMemberInfo} />
           <HouseMainTitle first_name={me.first_name} house_name={me.user_profile.house?.name} />
         </header>
         <Notice onClick={onClickNotice} notice_title={notice[0]?.content || ''} />

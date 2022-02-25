@@ -7,4 +7,5 @@ export interface Feedback {
   _from: User;
   content: string;
   sended_at: Date;
+  emoji: number;
 }

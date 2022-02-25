@@ -1,23 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router';
-import { getChoreCommentAPI, getDetailChoreAPI } from '../apis/chore';
+import { getDetailChoreAPI } from '../apis/chore';
+import { getDetailRepeatChoreAPI } from '../apis/repeat-chore';
 import { getLoginUser } from '../apis/user';
-import EventDetail from '../components/templates/EventDetail/EventDetail';
-import { chore1 } from '../dummyData/dummyChore';
-import { onetimeComment1, onetimeComment2, onetimeComment3, onetimeComment4 } from '../dummyData/dummyComment';
-import { user1 } from '../dummyData/dummyUser';
+import FeedbackGive from '../components/templates/FeedbackGive/FeedbackGive';
 import { Chore } from '../interfaces/chore';
-import { ChoreComment } from '../interfaces/comment';
 import { User } from '../interfaces/user';
 
 type ParamTypes = {
   choreId: string;
 };
 
-const OneTimeEventDetail = () => {
+const FeedbackGivePage = () => {
   const { choreId } = useParams() as ParamTypes;
-  console.log(choreId);
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
@@ -30,15 +26,15 @@ const OneTimeEventDetail = () => {
       enabled: !!me,
     },
   );
-
   useEffect(() => {
     setToken(localStorage.getItem('Token') || '');
     //token없을경우 login page로 redirect
   }, [token]);
+
   if (!me || !chore) {
     return <div>로딩중...</div>;
   }
-  return <EventDetail chore={chore} me={me} comments={chore.comments} isOneTime={true} />;
+  return <FeedbackGive chore={chore} />;
 };
 
-export default OneTimeEventDetail;
+export default FeedbackGivePage;
