@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { getDetailFeedbackAPI } from '../apis/feedback';
 import { getLoginUser } from '../apis/user';
 import FeedbackAccept from '../components/templates/FeedbackAccept/FeedbackAccept';
@@ -16,12 +16,16 @@ type ParamTypes = {
 const feedback = feedback1;
 
 const FeedbackAcceptPage = () => {
+  const navigate = useNavigate();
   const { feedbackId, choreId } = useParams() as ParamTypes;
   console.log(feedbackId, choreId);
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+    onError: () => {
+      navigate('/login');
+    },
   });
   const { data: feedback } = useQuery<Feedback>(
     ['feedback', feedbackId],

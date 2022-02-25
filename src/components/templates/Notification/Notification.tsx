@@ -30,7 +30,7 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
           if ('feedback' in notification) {
             return (
               <Link
-                key={notification.id}
+                key={`${notification.id}${notification.feedback?.id}${notification.created_at}`}
                 to={`/feedback/${notification.feedback?.id}/chore/${notification.feedback?.chore.id}`}
                 onClick={() => patchfeedNotificationAPI(notification.id)}
               >
@@ -41,7 +41,7 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
           if ('notice' in notification) {
             return (
               <Link
-                key={notification.id}
+                key={`${notification.id}${notification.notice?.id}${notification.created_at}`}
                 to={`/notice/detail`}
                 onClick={() => patchnoticeNotificationAPI(notification.id)}
               >
@@ -52,7 +52,7 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
           if ('favor' in notification) {
             return (
               <Link
-                key={notification.id}
+                key={`${notification.id}${notification.favor?.id}${notification.created_at}`}
                 to={`/request/${notification.favor?.chore.id}/favor/${notification.favor?.id}`}
                 onClick={() => patchfavorNotificationAPI(notification.id)}
               >

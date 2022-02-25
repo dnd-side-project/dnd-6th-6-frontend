@@ -16,7 +16,9 @@ const MainPage = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
   // 로그인한 user 정보
+  console.log(token);
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
+    enabled: !!token,
     onError: () => {
       navigate('/');
     },

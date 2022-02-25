@@ -18,21 +18,23 @@ type ParamTypes = {
 const RequestReceivePage = () => {
   const { choreId, favorId } = useParams() as ParamTypes;
   console.log(favorId, choreId);
-  // const [token, setToken] = useState('');
-  // // 로그인한 user 정보
-  // const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
-  //   enabled: !!token,
-  // });
-  // const {data: favor} = useQuery<Favor>(['favor',favorId],() => favoreDetailAPI(+choreId as number,+favorId as number))
+  const [token, setToken] = useState('');
+  // 로그인한 user 정보
+  const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
+    enabled: !!token,
+  });
+  const { data: favor } = useQuery<Favor>(['favor', favorId], () =>
+    favoreDetailAPI(+choreId as number, +favorId as number),
+  );
 
-  // useEffect(() => {
-  //   setToken(localStorage.getItem('token') || '');
-  //   //token없을경우 login page로 redirect
-  // }, [token]);
+  useEffect(() => {
+    setToken(localStorage.getItem('token') || '');
+    //token없을경우 login page로 redirect
+  }, [token]);
 
-  // if (!me || !favor) {
-  //   return <div>로딩중...</div>;
-  // }
+  if (!me || !favor) {
+    return <div>로딩중...</div>;
+  }
   return <RequestReceive choreId={choreId} favor={favor} />;
 };
 

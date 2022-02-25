@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router';
 import { getNoticeAPI } from '../apis/notice';
 import { getLoginUser } from '../apis/user';
 import NoticeDetail from '../components/templates/NoticeDetail/NoticeDetail';
@@ -10,10 +11,14 @@ import { User } from '../interfaces/user';
 const notices = [notice1, notice2, notice3, notice4, notice5, notice6];
 
 const NoticeDetailPage = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState('');
   // 로그인한 user 정보
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {
     enabled: !!token,
+    onError: () => {
+      navigate('/login');
+    },
   });
   const { data: notices } = useQuery<INotice[]>('notice', () => getNoticeAPI(me?.user_profile.house?.id as number), {
     enabled: !!me,
