@@ -11,14 +11,16 @@ import { getLoginUser } from '../../../apis/user';
 import { useQuery } from 'react-query';
 import { Feedback } from '../../../interfaces/feedback';
 import BottomNavBar from '../../UI/molecules/BottomNavBar/BottomNavBar';
+import { INotification } from '../../../interfaces/notification';
 
 interface IProfileProps {
   me: User;
   houseMemberInfo: Member[];
   feedBackInfo: Feedback[];
+  notification: INotification[];
 }
 
-const Profile = ({ me, houseMemberInfo, feedBackInfo }: IProfileProps) => {
+const Profile = ({ me, houseMemberInfo, feedBackInfo, notification }: IProfileProps) => {
   return (
     <>
       <ProfileWrapper>
@@ -34,7 +36,7 @@ const Profile = ({ me, houseMemberInfo, feedBackInfo }: IProfileProps) => {
               image={me.user_profile.avatar}
               house={me.user_profile.house}
             />
-            <RecentFeed feedBackInfo={feedBackInfo} />
+            <RecentFeed feedBackInfo={feedBackInfo} notification={notification} />
           </div>
           <TodoReport />
         </StyledProfile>

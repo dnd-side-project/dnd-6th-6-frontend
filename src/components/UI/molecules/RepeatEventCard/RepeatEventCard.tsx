@@ -18,13 +18,15 @@ const RepeatEventCard = ({ repeatChore }: IMoleRepeatEventCardProps) => {
   return (
     <StyledRepeatEventCard>
       <Title color="#3F4245" fontSize="16px" mb="7px">
-        세탁하기 및 널기
+        {repeatChore.information.name}
       </Title>
       <span className="repeatChore_time">매주 {dayArray.join('요일, ')}요일</span>
       <div className="repeatChore_category">
         <img
           src={
-            categoryImgURLs.filter((categoryImgURL) => categoryImgURL.id === repeatChore.information.category.id)[0].src
+            categoryImgURLs.filter(
+              (categoryImgURL) => categoryImgURL.category === repeatChore.information.category.name,
+            )[0].src
           }
         />
       </div>

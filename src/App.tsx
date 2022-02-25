@@ -26,6 +26,7 @@ import OneTimeEventDetail from './pages/OneTimeEventDetail';
 import ComplimentPage from './pages/ComplimentPage';
 import NoticeWritePage from './pages/NoticeWritePage';
 import FeedbackGivePage from './pages/FeedbackGivePage';
+import AllFeed from './components/templates/AllFeed/AllFeed';
 function App() {
   return (
     <Router>
@@ -64,6 +65,7 @@ function App() {
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/userlist" element={<UserList />} />
+        <Route path="/allFeed" element={<AllFeed />} />
       </Routes>
     </Router>
   );

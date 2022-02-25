@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import RepeatEventCard from '../../molecules/RepeatEventCard/RepeatEventCard';
 import { Link } from 'react-router-dom';
 import { RepeatChore } from '../../../../interfaces/chore';
+import { emojiImgURLs } from '../../../../utils/emoji';
 
 export interface IOrgRepeatEventCardsProps {
   repeatChores: RepeatChore[];
@@ -26,7 +27,7 @@ const RepeatEventCards = ({ repeatChores }: IOrgRepeatEventCardsProps) => {
           ))
         ) : (
           <div className="todayToDo_blank">
-            <div className="todayToDo_blank_image">스마일 이모지?</div>
+            <img className="todayToDo_blank_image" src={emojiImgURLs[1].src} />
             <span>오늘 할일이 없어요!</span>
           </div>
         )}

@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../../../../src_assets/logo.svg';
 import { StyledMainHeader } from './MainHeaderStyled';
 import { Member } from '../../../../interfaces/house';
 import { INotification } from '../../../../interfaces/notification';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export interface IOrgMainHeaderPorps {
   mb?: string;
@@ -13,12 +13,18 @@ export interface IOrgMainHeaderPorps {
 }
 
 const MainHeader = ({ mb, houseMemberInfo, notifications }: IOrgMainHeaderPorps) => {
+  const navigate = useNavigate();
   //아바타 넘버는 나중에 컴포넌트 map돌릴때 키값 넣어주면 될듯?
   return (
     <StyledMainHeader mb={mb}>
       <Logo />
       <div className="innerflex">
-        <div className="Avatarbox">
+        <div
+          className="Avatarbox"
+          onClick={() => {
+            navigate('/userlist');
+          }}
+        >
           {houseMemberInfo.length > 3 ? (
             <>
               {/* <Avatar position="absolute" imgUrl={houseMemberInfo[0].member.user_profile.avatar} />

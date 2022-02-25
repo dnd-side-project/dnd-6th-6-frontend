@@ -2,8 +2,9 @@ import moment from 'moment';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { DefaultValue } from 'recoil';
 import { setRepeatChoreAPI } from '../../../../apis/repeat-chore';
-import { Day } from '../../../../interfaces/chore';
+import { RepeatChore, Day } from '../../../../interfaces/chore';
 import { User } from '../../../../interfaces/user';
 import Button from '../../atoms/Button/Button';
 import InputwithButton from '../../atoms/Input/InputwithButton';
@@ -16,6 +17,7 @@ import EventAssignes from '../../molecules/EventAssignes/EventAssignes';
 import TextInput from '../../molecules/TextInput/TextInput';
 import TimePicker from '../Timer/TimePicker';
 import { StyledRepeatEventForm } from './RepeatEventFormStyled';
+import { editChoreAPI } from '../../../../apis/repeat-chore';
 
 interface IForm {
   title: string;
@@ -23,9 +25,10 @@ interface IForm {
 
 export interface IOrgRepeatEventFormProps {
   me: User;
+  chore?: RepeatChore | any;
 }
 
-const RepeatEventForm = ({ me }: IOrgRepeatEventFormProps) => {
+const RepeatEventForm = ({ me, chore }: IOrgRepeatEventFormProps) => {
   const navigate = useNavigate();
   const [checkCategory, setCheckCategory] = useState<{ id: number }>();
   const [checkMembers, setCheckMembers] = useState<User[]>([]);
@@ -36,7 +39,7 @@ const RepeatEventForm = ({ me }: IOrgRepeatEventFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IForm>();
+  } = useForm<IForm>({ defaultValues: { title: chore?.information.name } });
 
   const onClickCategory = (category: { src: string; id: number; category: string }) => {
     setCheckCategory({ id: category.id });
@@ -73,17 +76,34 @@ const RepeatEventForm = ({ me }: IOrgRepeatEventFormProps) => {
     const time = moment(`${currentTime}`, 'HH:mm').toDate();
     const planned_at = moment(time).format('HH:mm:ss');
     console.log(planned_at);
-    setRepeatChoreAPI({
-      houseId: checkMembers[0].user_profile.house?.id as number,
-      assignees: checkMembers,
-      name: data.title,
-      category: checkCategory as { id: number },
-      days: chooseDays,
-      allotcaion_method: chooseRole.id,
-      planned_at,
-    }).then(() => {
-      navigate('/shareHousework');
-    });
+    if (chore == undefined) {
+      setRepeatChoreAPI({
+        houseId: checkMembers[0].user_profile.house?.id as number,
+        assignees: checkMembers,
+        name: data.title,
+        category: checkCategory as { id: number },
+        days: chooseDays,
+        allotcaion_method: chooseRole.id,
+        planned_at,
+      }).then(() => {
+        navigate('/shareHousework');
+      });
+    } else {
+      editChoreAPI({
+        houseId: me.user_profile.house?.id as number,
+        choreId: chore.id,
+        assignees: checkMembers,
+        name: data.title,
+        categoryId: checkCategory?.id as number,
+        days: chooseDays,
+      })
+        .then(() => {
+          navigate('/shareHousework');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <StyledRepeatEventForm onSubmit={handleSubmit(onValid)}>

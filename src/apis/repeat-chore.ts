@@ -62,7 +62,7 @@ export const editChoreAPI = ({
   days: { id: number }[];
 }) => {
   return axios
-    .patch(`/houses/${houseId}/repeat-chores/${choreId}`, {
+    .patch(`/houses/${houseId}/repeat-chores/${choreId}/`, {
       assignees,
       information: {
         name,

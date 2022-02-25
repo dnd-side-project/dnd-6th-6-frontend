@@ -182,7 +182,7 @@ const TodoReport = () => {
               )}
               <span className="todoname">{element.information.name}</span>
             </div>
-            <div className="todotime">{element.completed_at}</div>
+            <div className="todotime">{moment(element.completed_at).format('MM월 DD일 hh시 mm분')}</div>
           </ReportBoxItem>
         ))}
       </div>

@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { getMembersAPI } from '../../../../apis/house';
 import { user1, user2, user3 } from '../../../../dummyData/dummyUser';
+import { Chore } from '../../../../interfaces/chore';
 import { User } from '../../../../interfaces/user';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Label from '../../atoms/Label/Label';
@@ -37,7 +38,7 @@ const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ me, children, onClic
           {[...members, me].map((member) => (
             <SwiperSlide key={member.id}>
               <div className="eventAssignes_member" onClick={() => onClick(member)}>
-                <Avatar imgUrl="" mb="10px" width="62px" height="62px">
+                <Avatar imgUrl={member.user_profile.avatar} mb="10px" width="62px" height="62px">
                   {checkMembers.includes(member) && (
                     <div className="check">
                       <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">

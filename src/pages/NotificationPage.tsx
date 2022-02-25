@@ -22,7 +22,6 @@ const NotificationPage = () => {
     setToken(localStorage.getItem('Token') || '');
     //token없을경우 login page로 redirect
   }, [token]);
-
   if (!me || !notifications) {
     return <div>로딩중...</div>;
   }

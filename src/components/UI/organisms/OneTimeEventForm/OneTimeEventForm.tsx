@@ -12,16 +12,19 @@ import { User } from '../../../../interfaces/user';
 import { setChoreAPI } from '../../../../apis/chore';
 import moment from 'moment';
 import { useNavigate } from 'react-router';
-
+import { FileExtensionInfo } from 'typescript';
+import { Chore } from '../../../../interfaces/chore';
+import { editChoreAPI } from '../../../../apis/chore';
 interface IForm {
   title: string;
 }
 
 export interface IOrgOneTimeEventFormProps {
   me: User;
+  chore?: Chore;
 }
 
-const OneTimeEventForm = ({ me }: IOrgOneTimeEventFormProps) => {
+const OneTimeEventForm = ({ me, chore }: IOrgOneTimeEventFormProps) => {
   const navigate = useNavigate();
   const [checkMembers, setCheckMembers] = useState<User[]>([]);
   const ref = useRef({ 시간대: '', 시: 0, 분: 0 });
@@ -31,10 +34,9 @@ const OneTimeEventForm = ({ me }: IOrgOneTimeEventFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IForm>();
+  } = useForm<IForm>({ defaultValues: { title: chore?.information.name } });
 
   const onClickAvatar = (member: User) => {
-    console.log(member);
     if (checkMembers.includes(member)) {
       setCheckMembers((clickMembers) => {
         return clickMembers.filter((clickMember) => clickMember !== member);
@@ -59,50 +61,102 @@ const OneTimeEventForm = ({ me }: IOrgOneTimeEventFormProps) => {
         : `${ref.current.시 + 12}:${ref.current.분}`;
     const planned_at = moment(`${currentday} ${currentTime}`, 'YYYY/MM/DD HH:mm').toDate();
     console.log(planned_at);
-    setChoreAPI({
-      houseId: me.user_profile.house?.id as number,
-      assignees: checkMembers,
-      name: data.title,
-      planned_at,
-    })
-      .then(() => {
-        navigate('/shareHousework');
+    if (chore == undefined) {
+      setChoreAPI({
+        houseId: me.user_profile.house?.id as number,
+        assignees: checkMembers,
+        name: data.title,
+        planned_at,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(() => {
+          navigate('/shareHousework');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      editChoreAPI({
+        houseId: me.user_profile.house?.id as number,
+        choreId: chore.id,
+        assignees: checkMembers,
+        name: data.title,
+        categoryId: chore.information.category.id,
+        planned_at: planned_at,
+      })
+        .then(() => {
+          navigate('/shareHousework');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
     <StyledOneTimeEventForm onSubmit={handleSubmit(onVaild)}>
-      <div className="oneTimeEvent_info">
-        <TextInput
-          register={{
-            ...register('title', {
-              required: '이벤트 이름을 입력해주세요',
-            }),
-          }}
-          labelText="어떤 이벤트인가요?"
-          labelColor="#3F4245"
-          labelFontSize="17px"
-          labelFontWeight="700"
-          placeholder="이벤트 이름을 입력해주세요"
-          message={errors.title?.message}
-          mb="38px"
-        />
-        <div className="oneTimeEvent_calender">
-          <Label color="#3F4245" fontSize="17px" mb="16px" fontWeight="700">
-            언제 실행 예정인가요?
-          </Label>
-          <Calendar startDate={startDate} setStartDate={setStartDate} setDateErrorMessage={setDateErrorMessage} />
-          {/* 타이머 */}
-          <TimePicker ref={ref} />
-          <Message className="error">{dateErrorMessage}</Message>
-        </div>
+      {chore == undefined ? (
+        <>
+          <div className="oneTimeEvent_info">
+            <TextInput
+              register={{
+                ...register('title', {
+                  required: '이벤트 이름을 입력해주세요',
+                }),
+              }}
+              labelText="어떤 이벤트인가요?"
+              labelColor="#3F4245"
+              labelFontSize="17px"
+              labelFontWeight="700"
+              placeholder="이벤트 이름을 입력해주세요"
+              message={errors.title?.message}
+              mb="38px"
+            />
+            <div className="oneTimeEvent_calender">
+              <Label color="#3F4245" fontSize="17px" mb="16px" fontWeight="700">
+                언제 실행 예정인가요?
+              </Label>
+              <Calendar startDate={startDate} setStartDate={setStartDate} setDateErrorMessage={setDateErrorMessage} />
+              {/* 타이머 */}
+              <TimePicker ref={ref} />
+              <Message className="error">{dateErrorMessage}</Message>
+            </div>
 
-        <EventAssignes me={me} onClick={onClickAvatar} checkMembers={checkMembers} />
-      </div>
-      <Button className="basic">완료</Button>
+            <EventAssignes me={me} onClick={onClickAvatar} checkMembers={checkMembers} />
+          </div>
+          <Button className="basic">완료</Button>
+        </>
+      ) : (
+        <>
+          <div className="oneTimeEvent_info">
+            <TextInput
+              register={{
+                ...register('title', {
+                  required: '이벤트 이름을 입력해주세요',
+                }),
+              }}
+              labelText="어떤 이벤트인가요?"
+              labelColor="#3F4245"
+              labelFontSize="17px"
+              labelFontWeight="700"
+              placeholder="이벤트 이름을 입력해주세요"
+              message={errors.title?.message}
+              mb="38px"
+            />
+            <div className="oneTimeEvent_calender">
+              <Label color="#3F4245" fontSize="17px" mb="16px" fontWeight="700">
+                언제 실행 예정인가요?
+              </Label>
+              <Calendar startDate={startDate} setStartDate={setStartDate} setDateErrorMessage={setDateErrorMessage} />
+              {/* 타이머 */}
+              <TimePicker ref={ref} />
+              <Message className="error">{dateErrorMessage}</Message>
+            </div>
+
+            <EventAssignes me={me} onClick={onClickAvatar} checkMembers={checkMembers} />
+          </div>
+          <Button className="basic">완료</Button>
+        </>
+      )}
     </StyledOneTimeEventForm>
   );
 };

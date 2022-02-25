@@ -2,10 +2,20 @@ import AppLayout from '../../Layouts/Applayout';
 import { StyledUserList, StyledUserListHeader } from './UserListStyled';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Avatar from '../../UI/atoms/Avatar/Avatar';
+import { User } from '../../../interfaces/user';
+import { getLoginUser } from '../../../apis/user';
+import { getMembersAPI } from '../../../apis/house';
+import { useQuery } from 'react-query';
 const UserList = () => {
   const navigate = useNavigate();
-  const { state }: any = useLocation();
-  const dummy = [{ username: 1 }, { username: 1 }, { username: 1 }, { username: 1 }];
+  const { data: me } = useQuery<User>('me', getLoginUser, {
+    onError: () => {
+      navigate('/');
+    },
+  });
+  const { data: houseMemberInfo } = useQuery<User[]>('housemember', getMembersAPI, {
+    enabled: !!me,
+  });
   return (
     <AppLayout>
       <StyledUserList>
@@ -23,10 +33,14 @@ const UserList = () => {
         <div className="UserListBox">
           <div className="boxtitle">함께하는 룸메이트</div>
           <div className="box">
-            {dummy.map((e, index) => (
-              <div className="innerbox" key={index}>
-                <Avatar />
-                <div className="username">{e.username}님</div>
+            <div className="innerbox">
+              <Avatar imgUrl={me?.user_profile.avatar} />
+              <div className="username">{me?.first_name}</div>
+            </div>
+            {houseMemberInfo?.map((e) => (
+              <div className="innerbox" key={e.id}>
+                <Avatar imgUrl={e.user_profile.avatar} />
+                <div className="username">{e.first_name}님</div>
               </div>
             ))}
           </div>

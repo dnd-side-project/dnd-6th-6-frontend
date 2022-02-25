@@ -8,6 +8,8 @@ import Profile from '../components/templates/Profile/Profile';
 import { useNavigate } from 'react-router-dom';
 import { Feedback } from '../interfaces/feedback';
 import { getFeedbackAPI } from '../apis/feedback';
+import { INotification } from '../interfaces/notification';
+import { getNotificationAPI } from '../apis/notification';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -24,13 +26,16 @@ const ProfilePage = () => {
   const { data: feedBackInfo } = useQuery<Feedback[]>('feedback', () => getFeedbackAPI(1), {
     enabled: !!me,
   });
+  const { data: notifications } = useQuery<INotification[]>('notifications', getNotificationAPI, {
+    enabled: !!token,
+  });
 
   useEffect(() => {
     setToken(localStorage.getItem('Token') || '');
   }, [token]);
-  if (!me || !houseMemberInfo || !feedBackInfo) {
+  if (!me || !houseMemberInfo || !feedBackInfo || !notifications) {
     return <div>로딩중</div>;
   }
-  return <Profile me={me} houseMemberInfo={houseMemberInfo} feedBackInfo={feedBackInfo} />;
+  return <Profile me={me} houseMemberInfo={houseMemberInfo} feedBackInfo={feedBackInfo} notification={notifications} />;
 };
 export default ProfilePage;

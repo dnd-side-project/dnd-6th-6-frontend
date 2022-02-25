@@ -41,7 +41,13 @@ const FeedbackAccept = ({ feedback }: ITempFeedbackAcceptProps) => {
             information_name={feedback.chore.information.name}
           />
         </div>
-        <Button type="submit" className="basic">
+        <Button
+          type="submit"
+          className="basic"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           확인
         </Button>
       </div>
