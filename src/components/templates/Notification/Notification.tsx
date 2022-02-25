@@ -6,7 +6,11 @@ import AppLayout from '../../Layouts/Applayout';
 import Header from '../../UI/molecules/Header/Header';
 import NotificationCard from '../../UI/molecules/NotificationCard/NotificationCard';
 import { StyledNotification } from './NotificationStyled';
-import { patchfeedNotificationAPI } from '../../../apis/notification';
+import {
+  patchfeedNotificationAPI,
+  patchnoticeNotificationAPI,
+  patchfavorNotificationAPI,
+} from '../../../apis/notification';
 
 export interface ITempNotificationProps {
   notifications: INotification[];
@@ -39,7 +43,7 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
               <Link
                 key={notification.id}
                 to={`/notice/detail`}
-                onClick={() => patchfeedNotificationAPI(notification.id)}
+                onClick={() => patchnoticeNotificationAPI(notification.id)}
               >
                 <NotificationCard notification={notification} mb="40px" />
               </Link>
@@ -50,7 +54,7 @@ const Notification = ({ notifications }: ITempNotificationProps) => {
               <Link
                 key={notification.id}
                 to={`/request/${notification.favor?.chore.id}/favor/${notification.favor?.id}`}
-                onClick={() => patchfeedNotificationAPI(notification.id)}
+                onClick={() => patchfavorNotificationAPI(notification.id)}
               >
                 <NotificationCard notification={notification} mb="40px" />
               </Link>
