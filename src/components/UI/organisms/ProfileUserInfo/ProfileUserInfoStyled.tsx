@@ -17,5 +17,8 @@ export const StyledProfileUserInfo = styled.div`
       color: #696e73;
       font-size: 14px;
     }
+    .HouseName {
+      cursor: pointer;
+    }
   }
 `;

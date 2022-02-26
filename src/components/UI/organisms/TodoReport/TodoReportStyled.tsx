@@ -51,6 +51,7 @@ export const StyledTodoReport = styled.div`
       color: #696e73;
     }
     .boxWrapper {
+      flex: 1;
       display: flex;
       align-items: center;
     }
@@ -91,6 +92,5 @@ export const ReportBoxItem = styled.div`
   width: 100%;
   border-bottom: solid 1px #e4e6ec;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;

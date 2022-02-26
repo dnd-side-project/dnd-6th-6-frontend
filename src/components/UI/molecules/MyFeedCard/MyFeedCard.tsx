@@ -28,7 +28,7 @@ const MyFeedCard = (props: IMyFeedCard) => {
         {props.category === '쓰레기 버리기' && <img src={categoryImgURLs[2].src} width={24} height={24} />}
         {props.category === '요리하기' && <img src={categoryImgURLs[3].src} width={24} height={24} />}
         {props.category === '장보기' && <img src={categoryImgURLs[4].src} width={24} height={24} />}
-        {props.category === '일회성 이벤트' && <img src={categoryImgURLs[5].src} width={24} height={24} />}
+        {props.category === '일회성' && <img src={categoryImgURLs[5].src} width={24} height={24} />}
         <span>{props.category}</span>
       </div>
     </MyFeedCardStyled>

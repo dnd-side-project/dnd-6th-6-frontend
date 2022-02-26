@@ -22,7 +22,7 @@ export interface IMoleEventAssignesProps {
 const EventAssignes: React.FC<IMoleEventAssignesProps> = ({ me, children, onClick, checkMembers, mb }) => {
   const { data: members } = useQuery<User[]>('members', getMembersAPI);
   if (!members) {
-    return <div>ㄹ로딩중</div>;
+    return <div>로딩중</div>;
   }
   return (
     <StyledEventAssignes mb={mb || '0px'}>

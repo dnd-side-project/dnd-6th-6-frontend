@@ -29,25 +29,25 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
   return (
     <>
       <StyledMyToDoCard>
-        <header className="myToDoCard_header">
-          {props.completed_at ? (
-            <CardButton className="meComplete">완료</CardButton>
-          ) : (
-            <CardButton className="meIncomplete">미완료</CardButton>
-          )}
-        </header>
-        <div className="cardInfo">
-          <Title fontWeight="700" fontSize="16px" color="#3F4245">
-            {props.title}
-          </Title>
-          {props.category !== '일회성' && (
-            <h6 className="subTitle">
-              매주 <Time createdAt={new Date()} className="day" />
-            </h6>
-          )}
-        </div>
-        <CardCategoryImgWrapper>
-          <Link to={`/event/${props.choreId}/today`}>
+        <Link to={`/event/${props.choreId}/today`}>
+          <header className="myToDoCard_header">
+            {props.completed_at ? (
+              <CardButton className="meComplete">완료</CardButton>
+            ) : (
+              <CardButton className="meIncomplete">미완료</CardButton>
+            )}
+          </header>
+          <div className="cardInfo">
+            <Title fontWeight="700" fontSize="16px" color="#3F4245">
+              {props.title}
+            </Title>
+            {props.category !== '일회성' && (
+              <h6 className="subTitle">
+                매주 <Time createdAt={new Date()} className="day" />
+              </h6>
+            )}
+          </div>
+          <CardCategoryImgWrapper>
             {props.category === '빨래' && <CardCategoryImg src={basket} />}
             {props.category === '청소' && <CardCategoryImg src={pail} />}
             {categoryImgURLs.map((categoryImgURL) => {
@@ -55,8 +55,8 @@ const MyToDoCard = (props: IMoleMyToDoCardProps) => {
                 return <CardCategoryImg key={categoryImgURL.category} src={categoryImgURL.src} />;
               }
             })}
-          </Link>
-        </CardCategoryImgWrapper>
+          </CardCategoryImgWrapper>
+        </Link>
         {props.completed_at ? (
           <Button type="button" bgColor="#D5D9E0" color="#ffffff" borderRedius="6px" height="36px">
             완료됨

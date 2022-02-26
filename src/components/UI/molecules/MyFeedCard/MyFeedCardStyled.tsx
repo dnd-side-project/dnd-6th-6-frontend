@@ -12,9 +12,10 @@ export const MyFeedCardStyled = styled.div`
   }
   .feedtext {
     margin-top: 8px;
-    line-height: 19px;
+    line-height: 1.4;
     font-size: 16px;
     color: #74797e;
+    font-weight: 500;
     span {
       color: #3f4245;
       font-weight: 700;

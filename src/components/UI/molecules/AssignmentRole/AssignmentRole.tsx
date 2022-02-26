@@ -24,7 +24,7 @@ const AssignmentRole = ({ chooseRole, mb, onClickRole }: IMoleAssignmentRoleProp
         chooseRole={chooseRole.content}
         onClick={() => setShowModal((prev) => !prev)}
       >
-        <span>{chooseRole.content === '' ? '역학분담 방식을 선택해주세요!' : chooseRole.content}</span>
+        <span>{chooseRole.content === '' ? '역할분담 방식을 선택해주세요!' : chooseRole.content}</span>
         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M-1.11547e-06 10.9273L1.0617 12L7 6L1.0617 7.65789e-07L-2.53954e-07 1.07273L4.87661 6L-1.11547e-06 10.9273Z"

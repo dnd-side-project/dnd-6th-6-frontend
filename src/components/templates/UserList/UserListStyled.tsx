@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const StyledUserList = styled.div`
   .UserListBox {
     margin-top: 32px;
+    strong {
+      color: #5badff;
+    }
     .boxtitle {
       font-size: 17px;
       font-weight: 700;

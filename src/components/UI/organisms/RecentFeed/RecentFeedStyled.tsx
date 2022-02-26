@@ -15,6 +15,7 @@ export const StyledRecentFeed = styled.div`
       font-weight: 400;
       font-size: 14px;
       color: #80878e;
+      cursor: pointer;
     }
   }
   .todayToDo_blank {

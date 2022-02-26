@@ -6,6 +6,7 @@ import { User } from '../../../interfaces/user';
 import { getLoginUser } from '../../../apis/user';
 import { getMembersAPI } from '../../../apis/house';
 import { useQuery } from 'react-query';
+import Title from '../../UI/atoms/Title/Title';
 const UserList = () => {
   const navigate = useNavigate();
   const { data: me } = useQuery<User>('me', getLoginUser, {
@@ -31,6 +32,11 @@ const UserList = () => {
           <div className="myhouse">내 하우스</div>
         </StyledUserListHeader>
         <div className="UserListBox">
+          <Title color="#3F4245" lineHeight="35.2px" fontSize="22px" mb="22px">
+            {me?.user_profile.house?.name}에서 <strong>{}일</strong>
+            <br />
+            함께했어요
+          </Title>
           <div className="boxtitle">함께하는 룸메이트</div>
           <div className="box">
             <div className="innerbox">
