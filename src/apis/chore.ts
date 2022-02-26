@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { User } from '../interfaces/user';
-
 const BASE_URL = 'http://ec2-13-125-38-145.ap-northeast-2.compute.amazonaws.com';
 
 axios.defaults.baseURL = BASE_URL;

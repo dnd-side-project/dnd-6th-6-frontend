@@ -60,7 +60,13 @@ const HouseMaking = () => {
       return setPageCount((prev) => prev + 1);
     }
     makeHouseAPI(data.housename)
-      .then((res) => inviteHouseAPI(data.invited).then((res) => navigate('/main')))
+      .then((res) => {
+        if (data.invited[0].email != '') {
+          inviteHouseAPI(data.invited).then((res) => navigate('/main'));
+        } else {
+          navigate('/main');
+        }
+      })
       .catch((e) => console.log(e));
   };
 

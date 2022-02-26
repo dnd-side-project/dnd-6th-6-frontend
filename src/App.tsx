@@ -25,10 +25,12 @@ import NoticeWritePage from './pages/NoticeWritePage';
 import FeedbackGivePage from './pages/FeedbackGivePage';
 import AllFeed from './components/templates/AllFeed/AllFeed';
 import axios from 'axios';
+import OAuth2RedirectHandler from './OAuth2RedirectHandeler';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/oauth/callback/kakao" element={<OAuth2RedirectHandler />} />
         <Route path="/compliment" element={<ComplimentPage />} />
         <Route path="/" element={<StartScreen />} />
         <Route path="/join">

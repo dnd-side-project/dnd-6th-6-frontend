@@ -11,10 +11,11 @@ import { User } from '../interfaces/user';
 import { useNavigate } from 'react-router-dom';
 import { INotification } from '../interfaces/notification';
 import { getNotificationAPI } from '../apis/notification';
-
+import axios from 'axios';
 const MainPage = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState('');
+  axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
   // 로그인한 user 정보
   console.log(token);
   const { isLoading, data: me } = useQuery<User>('me', getLoginUser, {

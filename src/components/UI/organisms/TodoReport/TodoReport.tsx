@@ -36,7 +36,7 @@ const TodoReport = () => {
     moment(endDate).format('YYYY-MM-DD 23:59'),
   ];
   const colorlist = ['#1470FB', '#57A8EF', '#4BBEFF', '#76DEFF', '#87C5FF', '#739BC2'];
-  const TodoType = ['전체', '요리하기', '청소하기', '세탁하기', '장보기', '쓰레기 버리기', '일회성 이벤트'];
+  const TodoType = ['전체', '요리하기', '청소하기', '세탁하기', '장보기', '쓰레기 버리기', '일회성'];
   const eventCount: any = {};
   for (let i = 1; i < TodoType.length; i++) {
     eventCount[TodoType[i]] = mycompleteChore?.filter((e) => e.information.category.name == TodoType[i]).length;

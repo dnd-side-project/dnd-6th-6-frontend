@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://ec2-13-125-38-145.ap-northeast-2.compute.amazonaws.com';
+
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('Token')}`;
 
