@@ -52,7 +52,7 @@ const HouseNone = () => {
           </Button>
         </div>
       </StyledHouseNone>
-      <BottomNavBar />
+      {/* <BottomNavBar /> */}
     </AppLayout>
   );
 };
