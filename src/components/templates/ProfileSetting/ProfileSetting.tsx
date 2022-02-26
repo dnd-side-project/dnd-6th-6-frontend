@@ -12,6 +12,7 @@ import { StyledProfileSetting } from './ProfileSettingStyled';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { setProfileAPI } from '../../../apis/user';
 import { useMutation, useQueryClient } from 'react-query';
+import axios from 'axios';
 
 export interface ITempProfileSettingProps {}
 
@@ -27,6 +28,7 @@ const ProfileSetting = (props: ITempProfileSettingProps) => {
     onSuccess: (res) => {
       queryClient.setQueryData('me', res.data.user);
       window.localStorage.setItem('Token', res.data.token);
+      axios.defaults.headers.common['Authorization'] = `Token ${res.data.token}`;
       if (res.data.user.house != null) {
         navigate('/main');
       } else {
