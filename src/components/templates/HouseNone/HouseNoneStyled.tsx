@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHouseNone = styled.div`
-  height: calc(100% - 68px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   .LabelWrapper {
