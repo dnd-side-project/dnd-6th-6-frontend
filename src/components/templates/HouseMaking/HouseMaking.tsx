@@ -61,12 +61,14 @@ const HouseMaking = () => {
       return setPageCount((prev) => prev + 1);
     }
     makeHouseAPI(data.housename)
-      .then((res) =>
-        inviteHouseAPI(data.invited).then((res) => {
-          axios.defaults.headers.common['Authorization'] = `Token ${res.data.token}`;
-          navigate('/main');
-        }),
-      )
+      .then((res) => {
+        if (data.invited[0].email != '') {
+          inviteHouseAPI(data.invited).then((res) => {
+            axios.defaults.headers.common['Authorization'] = `Token ${res.data.token}`;
+            navigate('/main');
+          });
+        }
+      })
       .catch((e) => console.log(e));
   };
 
