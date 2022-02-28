@@ -1,8 +1,8 @@
 # 🐶 dnd-6th-6-frontend 🐶
 
-## URL 
+<!-- ## URL 
 <a href="http://roundtable-react.s3-website.ap-northeast-2.amazonaws.com/">Roundtable</a>
-
+ -->
 ## Tech Stack
 
   * React with typescript 🪝
